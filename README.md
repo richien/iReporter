@@ -42,7 +42,7 @@ TO-DO
 TO-DO
 
 ```
-Give an example
+Give an example - TO-DO
 ```
 
 ### And coding style tests
@@ -50,7 +50,7 @@ Give an example
 TO-DO
 
 ```
-Give an example
+Give an example - TO-DO
 ```
 
 ## Deployment
