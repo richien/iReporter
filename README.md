@@ -59,7 +59,7 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* HTML5, CSS3 ,Javascript
+* HTML5, CSS3, Javascript
 * Python (Flask)
 
 
