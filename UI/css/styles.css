@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    
+}
+header {
+    overflow: hidden;
+    background-color: coral;
+}
+
+.logo {
+    display: inline-block;
+    float: left;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.logo span {
+    padding: 0;
+    overflow: hidden;
+}
+.logo a {
+    text-decoration: none;
+    font-size: 30px;
+}
+.menu-header ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 10px;
+    float: right;
+}
+
+.login-form-wrapper {
+    padding: 40px;
+    margin: 10px;
+    width: 60%;
+    height: 100%;
+    float: right;
+    background-color: chocolate;
+}
