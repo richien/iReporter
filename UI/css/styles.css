@@ -12,7 +12,7 @@ header {
 }
 
 .logo {
-    display: inline-block;
+    /*display: inline-block;*/
     float: left;
     font-weight: bold;
     padding: 10px;
@@ -34,7 +34,7 @@ header {
 }
 .menu-header ul li {
     list-style: none;
-    display: inline-block;
+    /*display: inline-block;*/
     padding: 10px;
     float: right;
 }
@@ -61,7 +61,7 @@ header {
 .main-content .col-1, .col-2, .col-3{
     width: 30%;
     display: inline-block;
-    float: left;
+    /*float: left;*/
     margin: 3px;
     padding: 10px;
     text-align: justify;
@@ -135,6 +135,10 @@ header {
     box-shadow: 10px 10px 5px #aaa;
     border: 1px solid lightcoral;
 }
+.main-content #login-form input {
+    width: 90%;
+    padding: 1px;
+}
 
 .main-content  #signinBtn input{
     background-color: darksalmon;
@@ -143,7 +147,7 @@ header {
     box-shadow: 5px 2px 5px #aaa;
     color: azure;
     font-size: 20;
-    width: 100px;
+    width: 80px;
     border-radius: 5px;
 }
 .main-content  #signinBtn input:hover{
@@ -184,6 +188,10 @@ header {
     box-shadow: 10px 10px 5px #aaa;
     border: 1px solid lightcoral;
 }
+.main-content #signup-form input{
+    width: 50%;
+    padding: 1px;
+}
 
 .main-content  #signupBtn input{
     background-color: darksalmon;
@@ -191,7 +199,7 @@ header {
     font-weight: bold;
     box-shadow: 5px 2px 5px #aaa;
     color: azure;
-    font-size: 20;
+    font-size: 15px;
     width: 100px;
     border-radius: 5px;
 }
@@ -236,31 +244,37 @@ header {
 
 
 footer {
-    margin-top:0%;
-    overflow: hidden;
+    position: static;
+    left: 0;
+    bottom: 0;
+    width :100%;
 	background-color: rgba(243, 243, 243, 0.904);
     color: rgb(122, 123, 124);
-    height: 100%;
 }
 footer .footer-upper {
+    margin: 0;
 	padding: 1px 1px 1px 50px;
 	font-size: 15px;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	border-bottom: 1px solid lightgrey;
 }
 
+footer .footer-lower {
+    padding: 1px;
+    bottom: 0;
+}
+
 footer .footer-lower ul li {
 	display: inline-block;
 	text-decoration: none;
-	float: left;
 	padding: 1px 10px 10px 10px;
-	color: rgb(122, 123, 124);
+    color: rgb(122, 123, 124);
 }
 footer .footer-lower ul li a{
 	text-decoration: none;
 	font-size: 13px;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	color: rgb(122, 123, 124);
+    color: rgb(122, 123, 124);
 }	
 footer .footer-lower ul li a:hover{
 	text-decoration: underline;
