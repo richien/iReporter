@@ -1,10 +1,14 @@
+html {
+    text-align: center;
+}
 body {
     margin: 0;
-    
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(85, 80, 80);
 }
+
 header {
     overflow: hidden;
-    background-color: coral;
 }
 
 .logo {
@@ -12,6 +16,7 @@ header {
     float: left;
     font-weight: bold;
     padding: 10px;
+   
 }
 
 .logo span {
@@ -21,6 +26,11 @@ header {
 .logo a {
     text-decoration: none;
     font-size: 30px;
+    color: lightcoral;
+}
+.logo a:hover {
+    font-weight: bolder;
+    font-size: 32px;
 }
 .menu-header ul li {
     list-style: none;
@@ -28,12 +38,230 @@ header {
     padding: 10px;
     float: right;
 }
+.menu-header ul li a{
+   text-decoration: none;
+   color: rgb(85, 80, 80);
+}
+.menu-header ul li a:hover {
+   text-decoration: underline;
+}
+.wrapper {
+    margin-bottom: 2%;
+    overflow: hidden;
+}
+/*The welcome page(index) rules*/
+.main-content #welcome p {
+    font-weight: bolder;
+    font-size: 80px;
+}
+.main-content #welcome p strong{
+    color: lightcoral;
+}
 
-.login-form-wrapper {
+.main-content .col-1, .col-2, .col-3{
+    width: 30%;
+    display: inline-block;
+    float: left;
+    margin: 3px;
+    padding: 10px;
+    text-align: justify;
+}
+.main-content .row p strong{
+    color: lightcoral;
+    font-size: 20px;
+}
+.main-content .row .col-2 {
+    background-color: lightcoral;
+}
+.main-content .row .col-2 p{
+    color:white;
+}
+.main-content .row .col-2 p strong{
+    color:white;
+}
+
+.main-content .col-4 {
+    width: 100%;
+    display: inline-block;
+    margin: 3px;
+    padding: 10px;
+    text-align: justify;
+}
+
+.main-content .row .col-4 p strong a{
+   text-decoration: none;
+   font-weight: bolder;
+   background-color: lightcoral;
+   padding: 10px;
+   border-radius: 3px;
+   color: white;
+}
+.main-content .row .col-4 p strong a:hover{
+   box-shadow: 1px 3px 5px #aaa;
+ }
+/*The login page side bar*/
+.wrapper .login-sidebar{
+    display:block;
+    float: left;
+    width: 60%;
+    position: absolute;
+    padding: 20px;
+}
+.wrapper .login-sidebar p{
+    font-size: 30px;
+}
+.wrapper .login-sidebar p a{
+    text-decoration: none;
+    color:  lightcoral;
+}
+.wrapper .login-sidebar p a:hover{
+    box-shadow: 5px 5px 5px #aaa;
+    border: 1px solid lightcoral;
+    border-radius: 5px;
+}
+.wrapper .main-content {
+	text-align: center;
+	padding-top: 60px;
+}
+/*The login form rules*/
+.main-content #login-form {
+    display: block;
+    padding: 40px;
+    margin: 10px;
+    width: 30%;
+    height: 100%;
+    float: right;
+    padding: 10px;
+    box-shadow: 10px 10px 5px #aaa;
+    border: 1px solid lightcoral;
+}
+
+.main-content  #signinBtn input{
+    background-color: darksalmon;
+    padding: 5px;
+    font-weight: bold;
+    box-shadow: 5px 2px 5px #aaa;
+    color: azure;
+    font-size: 20;
+    width: 100px;
+    border-radius: 5px;
+}
+.main-content  #signinBtn input:hover{
+    background-color: rgb(149, 181, 184);
+    box-shadow: 5px 5px 5px #aaa;
+    color: azure;
+    
+}
+.main-content #login-form #cancel-signin a {
+    text-decoration: none;
+    color: lightcoral;
+}
+.main-content #login-form #cancel-signin a:hover {
+    color: brown;
+    background-color: beige;
+    box-shadow: 5px 5px 5px beige;
+    padding: 10px;
+}
+.main-content #login-form #forgot-pwd a {
+    text-decoration: none;
+    color: lightcoral;
+}
+.main-content #login-form #forgot-pwd a:hover {
+    color: brown;
+    background-color: beige;
+    box-shadow: 5px 5px 5px beige;
+    padding: 10px;
+}
+/*The signup form rules*/
+ .main-content #signup-form {
+    display: block;
     padding: 40px;
     margin: 10px;
     width: 60%;
     height: 100%;
+    float: left;
+    padding: 10px;
+    box-shadow: 10px 10px 5px #aaa;
+    border: 1px solid lightcoral;
+}
+
+.main-content  #signupBtn input{
+    background-color: darksalmon;
+    padding: 5px;
+    font-weight: bold;
+    box-shadow: 5px 2px 5px #aaa;
+    color: azure;
+    font-size: 20;
+    width: 100px;
+    border-radius: 5px;
+}
+.main-content  #signupBtn input:hover{
+    background-color: rgb(149, 181, 184);
+    box-shadow: 5px 5px 5px #aaa;
+    color: azure;
+    
+}
+.main-content #signup-form #cancel-signup a {
+    text-decoration: none;
+    color: lightcoral;
+}
+.main-content #signup-form #cancel-signup a:hover {
+    color: brown;
+    background-color: beige;
+    box-shadow: 5px 5px 5px beige;
+    padding: 10px;
+}
+/*The sign up page sidebar*/
+.wrapper .signup-sidebar{
+    display:block;
     float: right;
-    background-color: chocolate;
+    width: 30%;
+    position: relative;
+    padding: 20px;
+}
+.wrapper .signup-sidebar p{
+    font-size: 30px;
+}
+.wrapper .signup-sidebar p a{
+    text-decoration: none;
+    color:  lightcoral;
+}
+.wrapper .signup-sidebar p a:hover{
+    box-shadow: 5px 5px 5px #aaa;
+    border: 1px solid lightcoral;
+    border-radius: 5px;
+}
+
+
+
+
+footer {
+    margin-top:0%;
+    overflow: hidden;
+	background-color: rgba(243, 243, 243, 0.904);
+    color: rgb(122, 123, 124);
+    height: 100%;
+}
+footer .footer-upper {
+	padding: 1px 1px 1px 50px;
+	font-size: 15px;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	border-bottom: 1px solid lightgrey;
+}
+
+footer .footer-lower ul li {
+	display: inline-block;
+	text-decoration: none;
+	float: left;
+	padding: 1px 10px 10px 10px;
+	color: rgb(122, 123, 124);
+}
+footer .footer-lower ul li a{
+	text-decoration: none;
+	font-size: 13px;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	color: rgb(122, 123, 124);
+}	
+footer .footer-lower ul li a:hover{
+	text-decoration: underline;
 }
