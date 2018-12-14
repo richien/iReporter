@@ -1,7 +1,6 @@
 *{
     box-sizing: border-box;
 }
-
 .row::after {
     content: "";
     clear: both;
@@ -26,7 +25,7 @@ header {
 }
 
 .logo {
-    /*display: inline-block;*/
+    display: inline-block;
     float: left;
     font-weight: bold;
     padding: 10px;
@@ -46,7 +45,6 @@ header {
     font-weight: bolder;
     font-size: 32px;
 }
-
 .menu-header ul li {
     list-style: none;
     /*display: inline-block;*/
@@ -61,27 +59,24 @@ header {
    text-decoration: underline;
 }
 
+.aside {
+    padding: 15px;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
 /*The welcome page(index) rules*/
 .main-content #welcome p {
     font-weight: bolder;
-    font-size: 80px;
+    font-size: 200%;
 }
 .main-content #welcome p strong{
     color: lightcoral;
 }
 
-<<<<<<< HEAD
-.main-content .col-1, .col-2, .col-3{
-    width: 30%;
-    display: inline-block;
-    /*float: left;*/
-    margin: 3px;
-    padding: 10px;
-    text-align: justify;
-=======
 .main-content .greeting {
     font-size: 110%;
->>>>>>> gh-pages
 }
 
 .main-content .greeting p strong{
@@ -94,6 +89,7 @@ header {
     color: antiquewhite;
     padding: 5px;
     border-radius: 100px;
+
 }
 
 .main-content #intervene p strong{
@@ -119,45 +115,6 @@ header {
    box-shadow: 1px 3px 5px #aaa;
  }
 
-.aside {
-    padding: 15px;
-    text-align: center;
-    font-size: 14px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-}
-.wrapper .main-content {
-	text-align: center;
-	padding: 0;
-}
-/*The login and signup pages' side bars*/
-.wrapper .login-sidebar p{
-    font-size: 120%;
-}
-.wrapper .login-sidebar p a{
-    text-decoration: none;
-    color:  lightcoral;
-}
-.wrapper .login-sidebar p a:hover{
-    box-shadow: 5px 5px 5px #aaa;
-    border: 1px solid lightcoral;
-    border-radius: 5px;
-}
-
-.wrapper .login-sidebar, .signup-sidebar{
-    padding: 2px;
-}
-.wrapper .signup-sidebar p{
-    font-size: 120%;
-}
-.wrapper .signup-sidebar p a{
-    text-decoration: none;
-    color:  lightcoral;
-}
-.wrapper .signup-sidebar p a:hover{
-    box-shadow: 5px 5px 5px #aaa;
-    border: 1px solid lightcoral;
-    border-radius: 5px;
-}
 /*The login form rules*/
 .main-content #login-form {
     padding: 10px;
@@ -176,11 +133,7 @@ header {
     box-shadow: 5px 2px 5px #aaa;
     color: azure;
     font-size: 20;
-<<<<<<< HEAD
-    width: 80px;
-=======
     /*width: 100px;*/
->>>>>>> gh-pages
     border-radius: 5px;
 }
 .main-content  #signinBtn input:hover{
@@ -248,30 +201,55 @@ header {
     box-shadow: 5px 5px 5px beige;
     padding: 10px;
 }
-
+/*The signup and signin page's sidebars*/
+.wrapper {
+    overflow: hidden;
+}
+.wrapper .signup-sidebar{
+    padding: 20px;
+}
+.wrapper .signup-sidebar p{
+    font-size: 100%;
+}
+.wrapper .signup-sidebar p a{
+    text-decoration: none;
+    color:  lightcoral;
+}
+.wrapper .signup-sidebar p a:hover{
+    box-shadow: 5px 5px 5px #aaa;
+    border: 1px solid lightcoral;
+    border-radius: 5px;
+}
+.wrapper .login-sidebar p{
+    font-size: 30px;
+}
+.wrapper .login-sidebar p a{
+    text-decoration: none;
+    color:  lightcoral;
+}
+.wrapper .login-sidebar p a:hover{
+    box-shadow: 5px 5px 5px #aaa;
+    border: 1px solid lightcoral;
+    border-radius: 5px;
+}
+.wrapper .main-content {
+	text-align: center;
+	padding: 0;
+}
 
 footer {
     position: static;
     left: 0;
     bottom: 0;
-<<<<<<< HEAD
-    width :100%;
-	background-color: rgba(243, 243, 243, 0.904);
-    color: rgb(122, 123, 124);
-=======
     width: 100%;
     /*margin-top:0%;*/
     overflow: hidden;
     /*background-color: rgba(243, 243, 243, 0.904);*/
     color: antiquewhite;
     /*height: 100%;*/
->>>>>>> gh-pages
 }
 
 footer .footer-upper {
-<<<<<<< HEAD
-    margin: 0;
-=======
     text-align: center;
     background-color: lightcoral;
 }
@@ -280,7 +258,6 @@ footer .footer-lower {
     background-color: rgb(233, 117, 117);
 }
 footer .footer-upper, .footer-lower{
->>>>>>> gh-pages
 	padding: 1px 1px 1px 50px;
 	font-size: 15px;
 
@@ -294,24 +271,14 @@ footer .footer-lower {
 footer .footer-lower ul li {
 	display: inline-block;
 	text-decoration: none;
-<<<<<<< HEAD
-	padding: 1px 10px 10px 10px;
-    color: rgb(122, 123, 124);
-=======
 	/*float: left;*/
 	padding: 1px 10px 10px 10px;
 	/*color: rgb(122, 123, 124);*/
->>>>>>> gh-pages
 }
 footer .footer-lower ul li a{
 	text-decoration: none;
 	font-size: 13px;
-<<<<<<< HEAD
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: rgb(122, 123, 124);
-=======
 	color: antiquewhite;
->>>>>>> gh-pages
 }	
 footer .footer-lower ul li a:hover{
 	text-decoration: underline;
@@ -354,6 +321,8 @@ footer .footer-lower ul li a:hover{
     .col-10 {width: 83.33%}
     .col-11 {width: 91.66%}
     .col-12 {width: 100%}
-    
+    .main-content #welcome p {
+        font-size: 80px;
+    }
 }
 
