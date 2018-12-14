@@ -45,6 +45,7 @@ header {
     font-weight: bolder;
     font-size: 32px;
 }
+
 .menu-header ul li {
     list-style: none;
     /*display: inline-block;*/
@@ -64,6 +65,10 @@ header {
     text-align: center;
     font-size: 14px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    visibility: hidden;
+    display: none;
+    width: 100%;
+    margin-top: 10px;
 }
 
 /*The welcome page(index) rules*/
@@ -87,7 +92,7 @@ header {
 .main-content #intervene {
     background-color: lightcoral;
     color: antiquewhite;
-    padding: 5px;
+    padding: 10px;
     border-radius: 100px;
 
 }
@@ -124,6 +129,7 @@ header {
 .main-content #login-form input {
     width: 50%;
     padding: 1px;
+    height: 50px;
 }
 
 .main-content  #signinBtn input{
@@ -134,6 +140,7 @@ header {
     color: azure;
     font-size: 20;
     width: 100px;
+    height: 30px;
     border-radius: 5px;
 }
 .main-content  #signinBtn input:hover{
@@ -172,6 +179,7 @@ header {
 }
 .main-content #signup-form input{
     width: 50%;
+    height: 50px;
     padding: 1px;
 }
 
@@ -183,6 +191,7 @@ header {
     color: azure;
     font-size: 15px;
     width: 100px;
+    height: 30px;
     border-radius: 5px;
 }
 .main-content  #signupBtn input:hover{
@@ -203,12 +212,12 @@ header {
 }
 /*The signup and signin page's sidebars*/
 .wrapper {
+    margin-top: 50px;
+    min-height: 100vh;
     overflow: hidden;
 }
 .wrapper .signup-sidebar, .login-sidebar{
     padding: 20px;
-    visibility: hidden;
-    display: none;
 }
 .wrapper .signup-sidebar p{
     font-size: 100%;
@@ -216,6 +225,9 @@ header {
 .wrapper .signup-sidebar p a{
     text-decoration: none;
     color:  lightcoral;
+    font-size: 120%;
+    display: inline-block;
+    padding: 2px;
 }
 .wrapper .signup-sidebar p a:hover{
     box-shadow: 5px 5px 5px #aaa;
@@ -223,11 +235,13 @@ header {
     border-radius: 5px;
 }
 .wrapper .login-sidebar p{
-    font-size: 30px;
+    font-size: 150%;
 }
 .wrapper .login-sidebar p a{
     text-decoration: none;
     color:  lightcoral;
+    display: inline-block;
+    padding: 2px;
 }
 .wrapper .login-sidebar p a:hover{
     box-shadow: 5px 5px 5px #aaa;
@@ -240,20 +254,13 @@ header {
 }
 
 footer {
-    position: static;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    /*margin-top:0%;*/
-    overflow: hidden;
-    /*background-color: rgba(243, 243, 243, 0.904);*/
     color: antiquewhite;
-    /*height: 100%;*/
 }
 
 footer .footer-upper {
     text-align: center;
     background-color: lightcoral;
+    min-height: 100px;
 }
 footer .footer-lower {
     text-align: left;
@@ -262,7 +269,6 @@ footer .footer-lower {
 footer .footer-upper, .footer-lower{
 	padding: 1px 1px 1px 50px;
 	font-size: 15px;
-
 }
 
 footer .footer-lower {
@@ -273,9 +279,7 @@ footer .footer-lower {
 footer .footer-lower ul li {
 	display: inline-block;
 	text-decoration: none;
-	/*float: left;*/
 	padding: 1px 10px 10px 10px;
-	/*color: rgb(122, 123, 124);*/
 }
 footer .footer-lower ul li a{
 	text-decoration: none;
@@ -305,10 +309,16 @@ footer .footer-lower ul li a:hover{
     .col-s-11 {width: 91.66%}
     .col-s-12 {width: 100%}
     .wrapper .signup-sidebar p{
-        font-size: 20px;
+        font-size: 15px;
     }
-    .wrapper .signup-sidebar, .login-sidebar{
+    .aside {
         visibility: visible;
+        display: inline-block;
+    }
+    
+    .wrapper .signup-sidebar p a{
+        font-size: 120%;
+        display: inline-block;
     }
 }
 
@@ -329,9 +339,13 @@ footer .footer-lower ul li a:hover{
     .main-content #welcome p {
         font-size: 80px;
     }
-    .wrapper .signup-sidebar, .login-sidebar {
+    .aside {
         visibility: visible;
-        display: inline;
+        display: inline-block;
+    }
+    .wrapper .signup-sidebar p {
+        font-size: 220%;
+        display: inline-block;
     }
 }
 
