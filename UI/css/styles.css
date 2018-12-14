@@ -58,14 +58,18 @@ header {
 .menu-header ul li a:hover {
    text-decoration: underline;
 }
-.wrapper {
-    /*margin-bottom: 2%;
-    overflow: hidden;*/
+
+.aside {
+    padding: 15px;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
+
 /*The welcome page(index) rules*/
 .main-content #welcome p {
     font-weight: bolder;
-    font-size: 80px;
+    font-size: 200%;
 }
 .main-content #welcome p strong{
     color: lightcoral;
@@ -94,16 +98,14 @@ header {
     background-color: lightcoral;
     color: antiquewhite;
     padding: 5px;
+    border-radius: 100px;
+
 }
 
 .main-content #intervene p strong{
     color:white;
 }
-/*
-.main-content .row .col-2 p strong{
-    color:white;
-}
-*/
+
 .main-content #signup-link{
     display: inline-block;
     margin: 3px;
@@ -122,33 +124,9 @@ header {
 .main-content #signup-link p strong a:hover{
    box-shadow: 1px 3px 5px #aaa;
  }
-/*The login page side bar*/
-.aside {
-    padding: 15px;
-    text-align: center;
-    font-size: 14px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-}
 
-.wrapper .login-sidebar p{
-    font-size: 30px;
-}
-.wrapper .login-sidebar p a{
-    text-decoration: none;
-    color:  lightcoral;
-}
-.wrapper .login-sidebar p a:hover{
-    box-shadow: 5px 5px 5px #aaa;
-    border: 1px solid lightcoral;
-    border-radius: 5px;
-}
-.wrapper .main-content {
-	text-align: center;
-	padding-top: 60px;
-}
 /*The login form rules*/
 .main-content #login-form {
-    padding: 40px;
     padding: 10px;
     box-shadow: 10px 10px 5px #aaa;
     border: 1px solid lightcoral;
@@ -166,9 +144,12 @@ header {
     color: azure;
     font-size: 20;
 <<<<<<< HEAD
+<<<<<<< HEAD
     width: 80px;
 =======
     /*width: 100px;*/
+>>>>>>> gh-pages
+=======
 >>>>>>> gh-pages
     border-radius: 5px;
 }
@@ -237,11 +218,11 @@ header {
     box-shadow: 5px 5px 5px beige;
     padding: 10px;
 }
-/*The sign up page sidebar*/
+/*The signup and signin page's sidebars*/
+.wrapper {
+    overflow: hidden;
+}
 .wrapper .signup-sidebar{
-    /*display:block;
-    float: right; 
-    position: relative; */
     padding: 20px;
 }
 .wrapper .signup-sidebar p{
@@ -255,6 +236,22 @@ header {
     box-shadow: 5px 5px 5px #aaa;
     border: 1px solid lightcoral;
     border-radius: 5px;
+}
+.wrapper .login-sidebar p{
+    font-size: 30px;
+}
+.wrapper .login-sidebar p a{
+    text-decoration: none;
+    color:  lightcoral;
+}
+.wrapper .login-sidebar p a:hover{
+    box-shadow: 5px 5px 5px #aaa;
+    border: 1px solid lightcoral;
+    border-radius: 5px;
+}
+.wrapper .main-content {
+	text-align: center;
+	padding: 0;
 }
 
 footer {
@@ -361,6 +358,8 @@ footer .footer-lower ul li a:hover{
     .col-10 {width: 83.33%}
     .col-11 {width: 91.66%}
     .col-12 {width: 100%}
-    
+    .main-content #welcome p {
+        font-size: 80px;
+    }
 }
 
