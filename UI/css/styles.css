@@ -1,9 +1,23 @@
+*{
+    box-sizing: border-box;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+[class*="col-"]{
+    float: left;
+    padding: 15px;
+}
+
 html {
-    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: rgb(85, 80, 80);
 }
 
@@ -32,6 +46,7 @@ header {
     font-weight: bolder;
     font-size: 32px;
 }
+
 .menu-header ul li {
     list-style: none;
     /*display: inline-block;*/
@@ -45,10 +60,7 @@ header {
 .menu-header ul li a:hover {
    text-decoration: underline;
 }
-.wrapper {
-    margin-bottom: 2%;
-    overflow: hidden;
-}
+
 /*The welcome page(index) rules*/
 .main-content #welcome p {
     font-weight: bolder;
@@ -58,6 +70,7 @@ header {
     color: lightcoral;
 }
 
+<<<<<<< HEAD
 .main-content .col-1, .col-2, .col-3{
     width: 30%;
     display: inline-block;
@@ -65,30 +78,36 @@ header {
     margin: 3px;
     padding: 10px;
     text-align: justify;
+=======
+.main-content .greeting {
+    font-size: 110%;
+>>>>>>> gh-pages
 }
-.main-content .row p strong{
+
+.main-content .greeting p strong{
     color: lightcoral;
-    font-size: 20px;
+    font-size: 130%;
 }
-.main-content .row .col-2 {
+
+.main-content #intervene {
     background-color: lightcoral;
+    color: antiquewhite;
+    padding: 5px;
+    border-radius: 100px;
 }
-.main-content .row .col-2 p{
-    color:white;
-}
-.main-content .row .col-2 p strong{
+
+.main-content #intervene p strong{
     color:white;
 }
 
-.main-content .col-4 {
-    width: 100%;
+.main-content #signup-link{
     display: inline-block;
     margin: 3px;
     padding: 10px;
-    text-align: justify;
+    text-align: center;
 }
 
-.main-content .row .col-4 p strong a{
+.main-content #signup-link p strong a{
    text-decoration: none;
    font-weight: bolder;
    background-color: lightcoral;
@@ -96,19 +115,23 @@ header {
    border-radius: 3px;
    color: white;
 }
-.main-content .row .col-4 p strong a:hover{
+.main-content #signup-link p strong a:hover{
    box-shadow: 1px 3px 5px #aaa;
  }
-/*The login page side bar*/
-.wrapper .login-sidebar{
-    display:block;
-    float: left;
-    width: 60%;
-    position: absolute;
-    padding: 20px;
+
+.aside {
+    padding: 15px;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
+.wrapper .main-content {
+	text-align: center;
+	padding: 0;
+}
+/*The login and signup pages' side bars*/
 .wrapper .login-sidebar p{
-    font-size: 30px;
+    font-size: 120%;
 }
 .wrapper .login-sidebar p a{
     text-decoration: none;
@@ -119,18 +142,24 @@ header {
     border: 1px solid lightcoral;
     border-radius: 5px;
 }
-.wrapper .main-content {
-	text-align: center;
-	padding-top: 60px;
+
+.wrapper .login-sidebar, .signup-sidebar{
+    padding: 2px;
+}
+.wrapper .signup-sidebar p{
+    font-size: 120%;
+}
+.wrapper .signup-sidebar p a{
+    text-decoration: none;
+    color:  lightcoral;
+}
+.wrapper .signup-sidebar p a:hover{
+    box-shadow: 5px 5px 5px #aaa;
+    border: 1px solid lightcoral;
+    border-radius: 5px;
 }
 /*The login form rules*/
 .main-content #login-form {
-    display: block;
-    padding: 40px;
-    margin: 10px;
-    width: 30%;
-    height: 100%;
-    float: right;
     padding: 10px;
     box-shadow: 10px 10px 5px #aaa;
     border: 1px solid lightcoral;
@@ -147,7 +176,11 @@ header {
     box-shadow: 5px 2px 5px #aaa;
     color: azure;
     font-size: 20;
+<<<<<<< HEAD
     width: 80px;
+=======
+    /*width: 100px;*/
+>>>>>>> gh-pages
     border-radius: 5px;
 }
 .main-content  #signinBtn input:hover{
@@ -178,12 +211,8 @@ header {
 }
 /*The signup form rules*/
  .main-content #signup-form {
-    display: block;
     padding: 40px;
     margin: 10px;
-    width: 60%;
-    height: 100%;
-    float: left;
     padding: 10px;
     box-shadow: 10px 10px 5px #aaa;
     border: 1px solid lightcoral;
@@ -219,44 +248,42 @@ header {
     box-shadow: 5px 5px 5px beige;
     padding: 10px;
 }
-/*The sign up page sidebar*/
-.wrapper .signup-sidebar{
-    display:block;
-    float: right;
-    width: 30%;
-    position: relative;
-    padding: 20px;
-}
-.wrapper .signup-sidebar p{
-    font-size: 30px;
-}
-.wrapper .signup-sidebar p a{
-    text-decoration: none;
-    color:  lightcoral;
-}
-.wrapper .signup-sidebar p a:hover{
-    box-shadow: 5px 5px 5px #aaa;
-    border: 1px solid lightcoral;
-    border-radius: 5px;
-}
-
-
 
 
 footer {
     position: static;
     left: 0;
     bottom: 0;
+<<<<<<< HEAD
     width :100%;
 	background-color: rgba(243, 243, 243, 0.904);
     color: rgb(122, 123, 124);
+=======
+    width: 100%;
+    /*margin-top:0%;*/
+    overflow: hidden;
+    /*background-color: rgba(243, 243, 243, 0.904);*/
+    color: antiquewhite;
+    /*height: 100%;*/
+>>>>>>> gh-pages
 }
+
 footer .footer-upper {
+<<<<<<< HEAD
     margin: 0;
+=======
+    text-align: center;
+    background-color: lightcoral;
+}
+footer .footer-lower {
+    text-align: left;
+    background-color: rgb(233, 117, 117);
+}
+footer .footer-upper, .footer-lower{
+>>>>>>> gh-pages
 	padding: 1px 1px 1px 50px;
 	font-size: 15px;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	border-bottom: 1px solid lightgrey;
+
 }
 
 footer .footer-lower {
@@ -267,15 +294,66 @@ footer .footer-lower {
 footer .footer-lower ul li {
 	display: inline-block;
 	text-decoration: none;
+<<<<<<< HEAD
 	padding: 1px 10px 10px 10px;
     color: rgb(122, 123, 124);
+=======
+	/*float: left;*/
+	padding: 1px 10px 10px 10px;
+	/*color: rgb(122, 123, 124);*/
+>>>>>>> gh-pages
 }
 footer .footer-lower ul li a{
 	text-decoration: none;
 	font-size: 13px;
+<<<<<<< HEAD
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: rgb(122, 123, 124);
+=======
+	color: antiquewhite;
+>>>>>>> gh-pages
 }	
 footer .footer-lower ul li a:hover{
 	text-decoration: underline;
 }
+/* For mobile phones: */
+[class*="col-"]{
+    width: 100%;
+}
+
+@media only screen and (min-width: 600px){
+    /* For tablets: */
+    .col-s-1 {width: 8.33%;}
+    .col-s-2 {width: 16.66%;}
+    .col-s-3 {width: 25%}
+    .col-s-4 {width: 33.33%}
+    .col-s-5 {width: 41.66%;}
+    .col-s-6 {width: 50%}
+    .col-s-7 {width: 58.33%}
+    .col-s-8 {width: 66.66%}
+    .col-s-9 {width: 75%}
+    .col-s-10 {width: 83.33%}
+    .col-s-11 {width: 91.66%}
+    .col-s-12 {width: 100%}
+    .wrapper .signup-sidebar p{
+        font-size: 20px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%}
+    .col-4 {width: 33.33%}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%}
+    .col-7 {width: 58.33%}
+    .col-8 {width: 66.66%}
+    .col-9 {width: 75%}
+    .col-10 {width: 83.33%}
+    .col-11 {width: 91.66%}
+    .col-12 {width: 100%}
+    
+}
+
