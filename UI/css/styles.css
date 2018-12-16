@@ -47,6 +47,10 @@ header {
 }
 .menu-header {
     visibility: hidden;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    visibility: hidden;
 }
 .menu-header ul li {
     list-style: none;
