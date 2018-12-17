@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>iReporter-landing</title>
+        <link rel="stylesheet" type="text/css" href="./css/styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+    <body>
+        <header>
+            <div class="logo">
+                <span><a href="index.html">iReporter</a></span>
+            </div>
+            <div class="menu-header">
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="#">Signout</a></li>
+                    <li><a href="landing.html">Home</a></li>
+                </ul>
+            </div>
+            <div class="drop-menu">
+                <button class="drop-menu-btn">Menu</button>
+                    <div class="drop-menu-content">
+                        <a href="landing.html">Home</a>          
+                        <a href="#">Signout</a>
+                        <a href="about.html">About</a>  
+                    </div>
+            </div>
+        </header>
+        <div class="wrapper">
+            <section class="main-content">
+                <div class="row"><h1>Welcome {username}: Role {user}</h1>
+                    <div class="col-3 col-s-3"style="border-left:1px solid lightcoral;height:250px">                      
+                        <h2>Incidents Reported</h2>
+                        <p>Red Flag(s) - <strong> 0 </strong></p>
+                        <p>Intervention(s) - <strong> 2 </strong></p>
+                        <div class="drop-menu">
+                            <button class="drop-menu-btn" id="report-btn">Report</button>
+                                <div class="drop-menu-content">
+                                    <a href="incident.html">Red-Flag</a>
+                                    <a href="incident.html">Intervention</a>            
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-3 col-s-3" id="vertical-rule">
+                        <h2>Incidents Resolved</h2>
+                            <p>Red Flag(s) - <strong> 0 </strong></p>
+                            <p>Intervention(s) - <strong> 1 </strong></p>
+                    </div>
+                    <div class="col-3 col-s-3" id="vertical-rule">
+                        <h2>Under Investigation</h2>
+                            <p>Red Flag(s) - <strong> 0 </strong></p>
+                            <p>Intervention(s) - <strong> 1 </strong></p>
+                            
+                    </div>
+                    <div class="col-3 col-s-3" id="vertical-rule">
+                        <h2>Rejected</h2>
+                            <p>Red Flag(s) - <strong> 0 </strong></p>
+                            <p>Intervention(s) - <strong> 0 </strong></p>
+                    </div>
+                </div>
+                <div class="row"> 
+                    <div class="col-2 col-s-2" style="border-left:1px solid lightcoral;height:250px">
+                        <div class="aside">
+                            <aside id="landing-sidebar">
+                                <div class="drop-menu">
+                                    <button class="drop-menu-btn" id="report-btn">Report</button>
+                                    <div class="drop-menu-content">
+                                        <a href="incident.html">Red-Flag</a>
+                                        <a href="incident.html">Intervention</a>            
+                                    </div>
+                                </div>
+                                <div class="drop-menu" >
+                                    <button class="drop-menu-btn"id="profile-btn">Profile</button>
+                                    <div class="drop-menu-content">
+                                        <a href="profile.html#view">View Profile</a>
+                                        <a href="profile.html#edit">Edit Profile</a>
+                                    </div>
+                                </div>
+                                <div class="drop-menu" id="admin-btn">
+                                    <button class="drop-menu-btn" id="admin-btn">Admin</button>
+                                    <div class="drop-menu-content">
+                                        <a href="admin.html">View Users</a>
+                                        <a href="admin.html">View Incidents</a>
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
+                    </div>
+                    <div class="col-10 col-s-10">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Type</th>
+                                    <th>Title</th>
+                                    <th>Creation Date</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Intervention</td>
+                                    <td>Fallen powerlines</td>
+                                    <td>13/Dec/2018</td>
+                                    <td>resolved</td>
+                                    <td><span><a href="incident.html">View</a></href></td>
+                                    <td><span><a  href="incident.html">Edit</a></span></td>
+                                    <td><span><a href="incident.html">Delete</a></href></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Intervention</td>
+                                    <td>Damages to Ntinda-Kisaasi road</td>
+                                    <td>15/Dec/2018</td>
+                                    <td>under investigation</td>
+                                    <td><span><a href="incident.html">View</a></href></td>
+                                    <td><span><a  href="incident.html">Edit</a></span></td>
+                                    <td><span><a href="incident.html">Delete</a></href></td>
+                                </tr>
+                            </tbody>
+                            
+                        </table>
+                    </div> 
+                </div>  
+            </section>
+        </div>
+        <footer>
+                <div class="footer-upper">
+                        <h4>iReporter</h4>
+                    </div>
+                    
+                    <div class="footer-lower">
+                        <ul>
+                            <li><a href="landing.html">Home</a></li>
+                            <li><a href="#">Signout</a></li>
+                            <li><a href="about.html">About</a></li>
+                        </ul>
+                    </div>
+        </footer>
+    </body>
+</html>
