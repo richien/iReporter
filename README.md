@@ -5,63 +5,15 @@ Conceived as part of the developer challenges for joining the Andela Fellowship,
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-### Prerequisites
-
-TO-DO
-
-```
-Give examples - TO-DO
-```
-
-### Installing
-
-TO-DO - A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example - TO-DO
-```
-
-And repeat
-
-```
-until finished - TO-DO
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-TO-DO
-
-### Break down into end to end tests
-
-TO-DO
-
-```
-Give an example - TO-DO
-```
-
-### And coding style tests
-
-TO-DO
-
-```
-Give an example - TO-DO
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+- List A preview of the application is hosted with github pages on [LINK](https://richien.github.io/iReporter/UI/index.html) 
+- List The project's user interface documents are stored in the UI folder.
+- List The project uses a mobile first development approach to enable use across devices of varying screen sizes.
 
 ## Built With
 
-* HTML5, CSS3, Javascript
-* Python (Flask)
-
+* HTML5, CSS3, Javascript - Frontend
 
 ## Acknowledgments
+
+* W3Schools - [Link](https://www.w3schools.com/html/default.asp)
 
