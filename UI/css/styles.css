@@ -292,6 +292,27 @@ header {
 	text-align: center;
 	padding: 0;
 }
+.form-wrapper {
+    width:100%;
+    border: 1px solid lightcoral;
+    box-shadow: 5px 5px 5px #aaa;
+    padding: 10px;
+    border-radius: 50px;
+    font-size: 20px;  
+}
+.form-wrapper p{
+   color: rgb(85, 85, 83);  
+}
+.form-wrapper p .input-text{
+    width: 50%;
+    height: 50px;
+    border-radius: 2px;  
+ }
+ .form-wrapper p .input-area{
+    width: 50%;
+    height: 150px;
+    border-radius: 2px;  
+ }
 
 footer {
     color: antiquewhite;
