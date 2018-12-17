@@ -80,24 +80,27 @@ header {
 .drop-menu-content {
     display: none;
     position: absolute;
-    background-color: lightsalmon;
+    background-color: rgb(251, 245, 245);
     min-width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
 .drop-menu-content a {
-    color: white;
-    font-weight: bold;
+    color: rgb(100, 89, 89);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
 .drop-menu-content a:hover {
-    background-color: rgb(243, 103, 103);
+    text-decoration: underline;
 }
 
 .drop-menu:hover .drop-menu-content {
     display: block;
+}
+
+.drop-menu-btn #profile-btn {
+    background-color: lightgreen;
 }
 
 .aside {
@@ -109,6 +112,37 @@ header {
     display: none;
     width: 100%;
     margin-top: 10px;
+}
+.aside #landing-sidebar {
+    visibility: hidden;
+    display: none;
+    padding: 0px;
+}
+.aside #landing-sidebar .drop-menu{
+    visibility: visible;
+    margin: 10px 0px 10px ;
+    padding: 0px;
+    width: 100%;
+}
+
+.aside #landing-sidebar .drop-menu #report-btn.drop-menu-btn{
+    width: 100%;
+    font-weight: bold;
+}
+
+.aside #landing-sidebar .drop-menu #profile-btn.drop-menu-btn{
+    width: 100%;
+    background-color: darkseagreen;
+    font-weight: bold;
+}
+.aside #landing-sidebar .drop-menu #profile-btn.drop-menu-btn .drop-menu-content a{
+
+    background-color: darkseagreen;
+}
+.aside #landing-sidebar .drop-menu #admin-btn.drop-menu-btn{
+    width: 100%;
+    background-color: rgb(235, 137, 45);
+    font-weight: bold;
 }
 
 /*The welcome page(index) rules*/
@@ -252,9 +286,9 @@ header {
 }
 /*The signup and signin page's sidebars*/
 .wrapper {
-    margin-top: 50px;
     min-height: 100vh;
-    overflow: hidden;
+    overflow: auto;
+    margin-top: 1px;
 }
 .wrapper .signup-sidebar, .login-sidebar{
     padding: 20px;
@@ -292,6 +326,7 @@ header {
 	text-align: center;
 	padding: 0;
 }
+<<<<<<< HEAD
 .form-wrapper {
     width:100%;
     border: 1px solid lightcoral;
@@ -313,6 +348,28 @@ header {
     height: 150px;
     border-radius: 2px;  
  }
+=======
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+tr:nth-of-type(odd){
+    background: #eee;
+}
+th {
+    background: lightcoral;
+    color: whitesmoke;
+}
+td, th {
+    padding: 6px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+#vertical-rule {
+    border-left:1px solid lightcoral;height:200px;
+}
+>>>>>>> features
 
 footer {
     color: antiquewhite;
@@ -355,6 +412,7 @@ footer .footer-lower ul li a:hover{
     width: 100%;
 }
 
+
 @media only screen and (min-width: 600px){
     /* For tablets: */
     .col-s-1 {width: 8.33%;}
@@ -369,6 +427,10 @@ footer .footer-lower ul li a:hover{
     .col-s-10 {width: 83.33%}
     .col-s-11 {width: 91.66%}
     .col-s-12 {width: 100%}
+    .wrapper {
+        margin-top: 15px;
+        overflow: hidden;
+    }
     .wrapper .signup-sidebar p{
         font-size: 15px;
     }
@@ -387,6 +449,14 @@ footer .footer-lower ul li a:hover{
     .drop-menu {
         visibility: hidden;
     }
+    .aside #landing-sidebar {
+        visibility: visible;
+        display: block;
+    }
+    /*.aside #landing-sidebar .drop-menu {
+        visibility: visible;
+        display: block;
+    }*/
 }
 
 @media only screen and (min-width: 768px) {
@@ -403,6 +473,10 @@ footer .footer-lower ul li a:hover{
     .col-10 {width: 83.33%}
     .col-11 {width: 91.66%}
     .col-12 {width: 100%}
+    .wrapper {
+        margin-top: 15px;
+        overflow: hidden;
+    }
     .main-content #welcome p {
         font-size: 80px;
     }
@@ -420,5 +494,13 @@ footer .footer-lower ul li a:hover{
     .drop-menu {
         visibility: hidden;
     }
+    .aside #landing-sidebar {
+        visibility: visible;
+        display: block;
+    }
+   /*.aside #landing-sidebar .drop-menu {
+        visibility: visible;
+        display: block;
+    }*/
 }
 
