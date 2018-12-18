@@ -204,6 +204,8 @@ header {
     width: 50%;
     padding: 1px;
     height: 50px;
+    border: 1px solid #aaa;
+    text-align: center;
 }
 
 .main-content  #signinBtn input{
@@ -255,6 +257,8 @@ header {
     width: 50%;
     height: 50px;
     padding: 1px;
+    border: 1px solid #aaa;
+    text-align: center;
 }
 
 .main-content  #signupBtn input{
@@ -326,7 +330,6 @@ header {
 	text-align: center;
 	padding: 0;
 }
-<<<<<<< HEAD
 .form-wrapper {
     width:100%;
     border: 1px solid lightcoral;
@@ -338,17 +341,68 @@ header {
 .form-wrapper p{
    color: rgb(85, 85, 83);  
 }
+.form-wrapper p a{
+    color: rgb(236, 104, 104);  
+    text-decoration: none;
+    
+ }
+ .form-wrapper p a:hover{  
+    text-decoration: underline;
+    
+ }
+ 
 .form-wrapper p .input-text{
     width: 50%;
     height: 50px;
     border-radius: 2px;  
+    border: 1px solid #aaa;
+    text-align: center;
  }
  .form-wrapper p .input-area{
     width: 50%;
     height: 150px;
     border-radius: 2px;  
+    border: 1px solid #aaa;
+    text-align: center;
  }
-=======
+ .btn-green {
+     background-color: rgb(2, 168, 2);
+     color: whitesmoke;
+     font-weight: bold;
+     border-radius: 14px;
+     padding: 5px;
+     text-decoration: none;
+ }
+ .btn-green:hover {
+    font-weight: normal;
+    box-shadow: 0px 2px 0px #aaa;
+}
+.btn-grey {
+    background-color: rgb(147, 167, 147);
+    padding: 5px;
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+    border-radius: 14px;
+    text-decoration: none;
+}
+.btn-grey:hover {
+   font-weight: normal;
+   box-shadow: 0px 2px 0px #aaa;
+}
+.btn-coral {
+    background-color: lightcoral;
+    padding: 5px;
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+    border-radius: 14px;
+    width: 100px;
+    text-decoration: none;
+}
+.btn-coral:hover {
+   font-weight: normal;
+   box-shadow: 0px 2px 0px #aaa;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -362,14 +416,13 @@ th {
 }
 td, th {
     padding: 6px;
-    border: 1px solid #ccc;
+    border: 1px none lightcoral;
     text-align: left;
 }
 
 #vertical-rule {
-    border-left:1px solid lightcoral;height:200px;
+    border-left:1px solid lightcoral;height:110px;
 }
->>>>>>> features
 
 footer {
     color: antiquewhite;
@@ -429,7 +482,7 @@ footer .footer-lower ul li a:hover{
     .col-s-12 {width: 100%}
     .wrapper {
         margin-top: 15px;
-        overflow: hidden;
+        overflow:visible;
     }
     .wrapper .signup-sidebar p{
         font-size: 15px;
@@ -453,10 +506,6 @@ footer .footer-lower ul li a:hover{
         visibility: visible;
         display: block;
     }
-    /*.aside #landing-sidebar .drop-menu {
-        visibility: visible;
-        display: block;
-    }*/
 }
 
 @media only screen and (min-width: 768px) {
@@ -498,9 +547,5 @@ footer .footer-lower ul li a:hover{
         visibility: visible;
         display: block;
     }
-   /*.aside #landing-sidebar .drop-menu {
-        visibility: visible;
-        display: block;
-    }*/
 }
 

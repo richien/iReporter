@@ -35,13 +35,13 @@
                         <div id="signup-form">
                             <h2>Sign up today and make a difference!</h2>
                             <p>Fill this form to register with <strong>iReporter</strong> </p>
-                            <form>
-                                    <p><input name="firstname" value="" placeholder="Firstname"></p>
-                                    <p><input name="surname"  value="" placeholder="Surname"></p>
-                                    <p><input name="email" value="" placeholder="Email address"></p>
-                                    <p><input name="password" type="password" value="" type="password" placeholder="Password"></p>
-                                    <p><input name="confirm_password" value="" type="password" placeholder="Confirm Password"></p>
-                                    <p id="signupBtn"><input name="signUp" type="button" value="Sign Up" > &nbsp; <span id="cancel-signup"><a href="index.html">Cancel</a></span></span></p>
+                            <form action="signin.html">
+                                    <p><input name="firstname" value="" placeholder="Firstname" required></p>
+                                    <p><input name="surname"  value="" placeholder="Surname" required></p>
+                                    <p><input name="email" value="" placeholder="Email address" required></p>
+                                    <p><input name="password" type="password" value="" type="password" placeholder="Password" required></p>
+                                    <p><input name="confirm_password" value="" type="password" placeholder="Confirm Password" required></p>
+                                    <p id="signupBtn"><input name="signUp" type="button" value="Sign Up" onclick="window.location.href='signin.html'"> &nbsp; <span id="cancel-signup"><a href="index.html">Cancel</a></span></span></p>
                             </form>
                         </div>
                     </section>

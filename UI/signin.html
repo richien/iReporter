@@ -50,10 +50,10 @@
                     <section class="main-content">
                         <div id="login-form">
                             <h2>Login</h2>
-                            <form>
-                                    <p><input name="email" value="" placeholder="Email"></p>
-                                    <p><input name="password" type="password" value="" placeholder="Password"></p>
-                                    <p id="signinBtn"><input name="signIn" type="button" value="Sign In" > &nbsp;&nbsp; <span id="cancel-signin"><a href="signin.html">Cancel</a></span></span></p>
+                            <form method="POST" action="#">
+                                    <p><input name="email" value="" placeholder="Email" required></p>
+                                    <p><input name="password" type="password" value="" placeholder="Password" required></p>
+                                    <p id="signinBtn"><input name="signIn" type="button" value="Sign In" onclick="window.location.href='landing.html'"> &nbsp;&nbsp; <span id="cancel-signin"><a href="signin.html">Cancel</a></span></span></p>
                             </form>
                             <p id="forgot-pwd"><a href="">Forgot password?</a></p>
                         </div>

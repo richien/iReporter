@@ -33,28 +33,11 @@
         </header>
         <div class="wrapper">
             <section class="main-content">
-                <div class="row"><h1>Welcome {username}: Role {user}</h1>
-                    <div class="col-3 col-s-3">                      
-                        <strong> Reported</strong>
-                        <p>Red Flag(s) - <strong> 0 </strong></p>
-                        <p>Intervention(s) - <strong> 2 </strong></p>                      
-                    </div>
-                    <div class="col-3 col-s-3" id="vertical-rule">
-                        <strong>Resolved</strong>
-                            <p>Red Flag(s) - <strong> 0 </strong></p>
-                            <p>Intervention(s) - <strong> 1 </strong></p>
-                    </div>
-                    <div class="col-3 col-s-3" id="vertical-rule">
-                        <strong>Under Investigation</strong>
-                            <p>Red Flag(s) - <strong> 0 </strong></p>
-                            <p>Intervention(s) - <strong> 1 </strong></p>                      
-                    </div>
-                    <div class="col-3 col-s-3" id="vertical-rule">
-                        <strong>Rejected</strong>
-                            <p>Red Flag(s) - <strong> 0 </strong></p>
-                            <p>Intervention(s) - <strong> 0 </strong></p>
-                    </div>
-                </div>
+                <h1>Welcome {username}: Role {user}</h1>
+                <strong style="color:red;">Take note: the following buttons change the status as described below</strong>
+                <p>res - Resolve</p>
+                <p>ui - Under investigation</p>
+                <p>rej - Reject</p>
                 <div class="row"> 
                     <div class="col-12 col-s-12">
                         <table>
@@ -65,6 +48,9 @@
                                     <th>Title</th>
                                     <th>Creation Date</th>
                                     <th>Status</th>
+                                    <th>Repoted By</th>
+                                    <th>Location Coords</th>
+                                    <th>Location Name</th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
@@ -77,19 +63,12 @@
                                     <td>Fallen powerlines</td>
                                     <td>13/Dec/2018</td>
                                     <td>resolved</td>
-                                    <td><span><a class="btn-green" href="incidentdetail.html">View</a></href></td>
-                                    <td><span><a class="btn-grey"  href="incidentdetail.html">Edit</a></span></td>
-                                    <td><span><a class="btn-coral" href="#">Delete</a></href></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Intervention</td>
-                                    <td>Damages to Ntinda-Kisaasi road</td>
-                                    <td>15/Dec/2018</td>
-                                    <td>under investigation</td>
-                                    <td><span><a class="btn-green" href="incidentdetail.html">View</a></href></td>
-                                    <td><span><a class="btn-grey" href="incidentdetail.html">Edit</a></span></td>
-                                    <td><span><a class="btn-coral" href="#">Delete</a></href></td>
+                                    <td>user</td>
+                                    <td>32.6lat12.6long</td>
+                                    <td>Nalya</td>
+                                    <td><a class="btn-green" href="incidentdetail.html">res</a></td>
+                                    <td><a class="btn-grey"  href="incidentdetail.html">ui</a></td>
+                                    <td><a class="btn-coral" href="incident.html">rej</a></td>
                                 </tr>
                             </tbody>                      
                         </table>
