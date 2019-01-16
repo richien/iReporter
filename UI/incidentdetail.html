@@ -15,13 +15,15 @@
                     <li><a href="about.html">About</a></li>
                     <li><a href="#">Signout</a></li>
                     <li><a href="landing.html">Home</a></li>
+                    <li><a href="profile.html">Profile</a></li>
                 </ul>
             </div>
             <div class="drop-menu">
                 <button class="drop-menu-btn">Menu</button>
                     <div class="drop-menu-content">
                         <a href="landing.html">Home</a>
-                        <a href="about.html">About</a>            
+                        <a href="about.html">About</a> 
+                        <a href="profile.html">Profile</a>       
                         <a href="#">Signout</a>
                     </div>
             </div>
@@ -30,14 +32,14 @@
             <section class="main-content">
                 <div class="row">
                     <div class="col-12 col-s-12">
-                        <strong style="color:lightcoral;">Incident {id}</strong><strong style="color:lightcoral;">Date {13/Dec/2018} </strong><strong style="color:lightcoral;">Status {Resolved}</strong>
+                        <strong style="color:lightcoral;">Incident {id} </strong><strong style="color:lightcoral;">Date {13/Dec/2018} </strong><strong style="color:lightcoral;">Status {Resolved}</strong>
                         <form>
                             <div class="form-wrapper">
-                                 <p><input name="type" value="Intervention" placeholder="Type" class="input-text" required></p>
+                                <p><input name="type" value="Intervention" placeholder="Type" class="input-text" required></p>
                                 <p><input name="title" value="Fallen power lines" placeholder="Title" class="input-text" required></p>
                                 <p><input name="description" type="area" value="Description goes here" placeholder="Enter Description here"  class="input-area" required></p>
-                                <p><input class="btn-green" name="location-btn" type="submit" value="Attach Location">&nbsp;&nbsp;<input class="btn-green" name="upload-image-btn" type="submit" value="Upload Image">&nbsp;&nbsp;<input class="btn-green" name="upload-video-btn" type="submit" value="Upload Video"></p>
-                                <p><input class="btn-grey" name="save-btn" type="submit" value="Save">&nbsp;&nbsp;&nbsp;&nbsp;<input class="btn-coral" name="edit" type="submit" value="Edit" class="">&nbsp;&nbsp;<a href="landing.html">Cancel</a></p>
+                                <p><input class="btn-green" name="location-btn" type="image" src="images/location.png" alt="submit" value=""><input class="btn-green" name="upload-image-btn" type="image" src="images/photo.png" alt="submit" value=""><input class="btn-green" name="upload-video-btn" type="image" src="images/video.png" alt="submit" value=""></p>
+                                <p><input class="btn-green" name="save-btn" type="image" src="images/save.png" alt="submit" value=""><a id="cancel-btn" href="landing.html"><img src="images/cancel.png"></a></p>
                             </div>
                         </form>
                     </div>

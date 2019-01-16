@@ -17,6 +17,7 @@
                     <li><a href="#">Signout</a></li>
                     <li><a href="incident.html">Report</a></li>
                     <li><a href="landing.html">Home</a></li>
+                    <li><a href="profile.html">Profile</a></li>
 
                 </ul>
             </div>
@@ -28,33 +29,13 @@
                         <a href="#">Signout</a>
                         <a href="about.html">About</a>
                         <li><a href="admin.html">Admin</a></li>  
+                        <li><a href="profile.html">Profile</a></li> 
                     </div>
             </div>
         </header>
         <div class="wrapper">
             <section class="main-content">
-                <div class="row"><h1>Welcome <strong>{username}</strong> Role <strong>{user}</strong></h1>
-                    <div class="col-3 col-s-3">                      
-                        <strong> Reported</strong>
-                        <p>Red Flag(s) - <strong> 0 </strong></p>
-                        <p>Intervention(s) - <strong> 2 </strong></p>                      
-                    </div>
-                    <div class="col-3 col-s-3" id="vertical-rule">
-                        <strong>Resolved</strong>
-                            <p>Red Flag(s) - <strong> 0 </strong></p>
-                            <p>Intervention(s) - <strong> 1 </strong></p>
-                    </div>
-                    <div class="col-3 col-s-3" id="vertical-rule">
-                        <strong>Under Investigation</strong>
-                            <p>Red Flag(s) - <strong> 0 </strong></p>
-                            <p>Intervention(s) - <strong> 1 </strong></p>                      
-                    </div>
-                    <div class="col-3 col-s-3" id="vertical-rule">
-                        <strong>Rejected</strong>
-                            <p>Red Flag(s) - <strong> 0 </strong></p>
-                            <p>Intervention(s) - <strong> 0 </strong></p>
-                    </div>
-                </div>
+                <h1>Recently reported Incidents</h1>
                 <div class="row"> 
                     <div class="col-12 col-s-12">
                             <table class="table-landing">
@@ -80,8 +61,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="row" id="row-footer">
-                                                 <div class="col-12 col-s-12">
-                                                    <p class="links-footer" ><a href="incidentdetail.html">Edit</a><a href="">Delete</a></p>
+                                                    <div class="col-6 col-s-6">
+                                                        <li id="edit"><a href="incidentdetail.html"><img src="images/edit.png"></a></li>
+                                                    </div>
+                                                    <div class="col-6 col-s-6">
+                                                        <li id="delete"><a href=""><img src="images/delete.png"></a></li>    
+                                                    </div>
                                                 </div>
                                             </td>  
                                         </tr>                        
@@ -110,8 +95,11 @@
                                                         </div>
                                                     </div>
                                                 <div class="row" id="row-footer">
-                                                    <div class="col-12 col-s-12">
-                                                        <p class="links-footer" ><a href="incidentdetail.html">Edit</a><a href="">Delete</a></p>
+                                                    <div class="col-6 col-s-6">
+                                                        <li id="edit"><a href="incidentdetail.html"><img src="images/edit.png"></a></li>
+                                                    </div>
+                                                    <div class="col-6 col-s-6">
+                                                        <li id="delete"><a href=""><img src="images/delete.png"></a></li>    
                                                     </div>
                                                 </div>
                                            </td>  
