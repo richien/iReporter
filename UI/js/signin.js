@@ -4,6 +4,7 @@ const url = 'http://localhost:5000/api/v1/auth/login';
 const message = document.getElementById("flash-message")
 const success = "green";
 const fail = "red";
+const successText = "Successfully Logged in";
 
 
 function displayText(color, text) {
@@ -17,46 +18,39 @@ function signIn() {
     let signinForm = {
         email : email.value,
         password : password.value };
-    
-    if (isValid) {
-        fetch(url, {
-            method: "POST",
-            mode: "cors",
-            headers: {
-                "Content-Type" : "application/json"
-                },    
-            body: JSON.stringify(signinForm)
-            })
-            .then(function(response) {
-                return response.json();
-            })
-            .then(function(data) {
-
-                if (data["status"] !== 200) {
-                    throw new Error(data["error"]);
-                }
-                displayText(success, data["data"][0]["message"]);
-                if (typeof(Storage) !== "undefined") {
-                    sessionStorage.setItem("user_id", data["data"][0]["id"]);
-                    sessionStorage.setItem("token", data["data"][0]["access-token"]);
-                    window.setTimeout( function() {
-                        window.location.replace("landing.html")
-                    }, 4000);
+    fetch(url, {
+        method: "POST",
+        mode: "cors",
+        headers: {
+            "Content-Type" : "application/json"
+            },    
+        body: JSON.stringify(signinForm)
+        })
+        .then(function(response) {
+             return response.json();
+        })
+        .then(function(data) {
+            if (data["status"] !== 200) {
+                throw new Error(data["error"]);
+            }
+            displayText(success, successText);
+            if (typeof(Storage) !== "undefined") {
+                sessionStorage.setItem("user", data["data"][0]["user"]);
+                sessionStorage.setItem("token", data["data"][0]["access-token"]);
+                window.setTimeout( function() {
+                    window.location.replace("landing.html")
+                }, 4000);
                         
-                }
-                else {
-                    displayText(fail, "Browser does not support Web Storage");
-                }
-            })
-            .catch(function(error){
-                displayText(fail, error.message)
-            });
-            return false; 
+            }
+            else {
+                displayText(fail, "Browser does not support Web Storage");
+            }
+        })
+        .catch(function(error){
+            displayText(fail, error.message)
+        });
+        return false; 
     }
-    else {
-        return false;
-    }
-}
     
 
 
