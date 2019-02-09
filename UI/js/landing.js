@@ -74,10 +74,12 @@ function createTable(title, type, text, status, date) {
                 <td>
                     <div class="row" id="row-describe">
                         <div class="col-10 col-s-10">
-                            <p id="comment">${text}</p>
-                            <p class="status"id="status">${type}</p>
-                            <p class="status" id="posted">Posted on: ${date}</p>
-                            <p class="status"id="status">Status: ${status}</p>
+                            <p id="comment">${text}...<a id="more-link" href=#>More</a></p>
+                            <p class="status"id="status">
+                                <img src="images/redflag1.jpg" height="20px" width="20px">
+                            </p>
+                            <p class="status" id="posted"><b>Posted on: ${date}</b></p>
+                            <p class="status"id="status"><b>Status:</b> ${status}</b></p>
                         </div>
                         <div class="col-2 col-s-2" id="col-deco"></div>
                         <div class="row" id="row-footer">
@@ -103,9 +105,8 @@ function displayData(result) {
         let text = result.data[i].comment;
         let status =  result.data[i].status;
         let createdOn = result.data[i].createdOn;
-
+        let less = text.slice(0, 250);
         let table = createTable(title, type, text, status, createdOn);
-        document.getElementById("display-incidents").innerHTML += table;
-    }
-     
+        document.getElementById("display-incidents").innerHTML += table;  
+    }     
 }
