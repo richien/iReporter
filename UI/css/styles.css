@@ -482,6 +482,7 @@ header {
 }
 .table-landing  p#posted.status {  
     color: ghostwhite;
+    font-size: small;
 }
 .table-landing #row-footer {
     height: 50px;
