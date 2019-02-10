@@ -2,7 +2,7 @@ let incidents = document.querySelector('#display-incidents');
 const message = document.getElementById("flash-message")
 const success = "green";
 const fail = "red";
-const url = 'http://localhost:5000/api/v1/red-flags';
+const url = 'https://irepo-api.herokuapp.com/api/v1/red-flags';
 let response = {
     title : null,
     type : null,
