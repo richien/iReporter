@@ -35,8 +35,9 @@ function signIn() {
             }
             displayText(success, successText);
             if (typeof(Storage) !== "undefined") {
+                sessionStorage.clear();
                 sessionStorage.setItem("user", data["data"][0]["user"]);
-                sessionStorage.setItem("token", data["data"][0]["access-token"]);
+                sessionStorage.setItem("token", data["data"][0]["access_token"]);
                 window.setTimeout( function() {
                     window.location.replace("landing.html")
                 }, 4000);
