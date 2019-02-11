@@ -4,8 +4,8 @@ let interveneClicked = false;
 const message = document.getElementById("flash-message");
 const success = "green";
 const fail = "red";
-const urlRedflags = 'http://localhost:5000/api/v1/red-flags';
-const urlInterventions = 'http://localhost:5000/api/v1/interventions';
+const urlRedflags = 'https://irepo-api.herokuapp.com/api/v1/red-flags';
+const urlInterventions = 'https://irepo-api.herokuapp.com/v1/interventions';
 
 function getAll_redflags() {
     if (typeof(Storage) !== "undefined") {
