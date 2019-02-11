@@ -478,16 +478,22 @@ header {
 }
 .table-landing  p.status  {
     font-size: 15px;
-    padding: 5px;
+    padding: 1px;
     text-align: right;
-    margin: 0px;
+    margin: 2px;
     position: relative;
     right: 0px;
-    color: lightcoral;
+    color: ghostwhite;
+    border: 1px solid #aaa;
+    border-radius: 5px 5px;
+    background-color: #aaa;
+    width: 100%;
 }
 .table-landing  p#posted.status {  
-    color: ghostwhite;
     font-size: small;
+}
+.table-landing  p#status.status {  
+    font-weight: bolder;
 }
 .table-landing .row-footer {
     height: 50px;
@@ -659,6 +665,7 @@ footer .footer-lower ul li a:hover{
     }
     .table-landing  p.status  {
         font-size: 20px;
+        width: 50%;
     }
     .table-landing p.links-footer a{
         margin: 20px 20px auto;
@@ -725,6 +732,7 @@ footer .footer-lower ul li a:hover{
     }
     .table-landing  p.status  {
         font-size: 20px;
+        width: 50%;
     }
 
     .table-landing p.links-footer a{

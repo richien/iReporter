@@ -108,9 +108,7 @@ function createTable(data) {
                             <p id="comment">${data.text}&nbsp;&nbsp;&nbsp;
                                 <button id="more-link" onclick="showLess('${data.id}');"><b>LESS</b></button>
                             </p>
-                            <p class="status"id="status">
-                                <img src="images/redflag1.jpg" height="20px" width="20px">
-                            </p>
+                            <p class="status"id="status">${data.type}</p>
                             <p class="status" id="posted"><b>Posted on: ${data.createdOn}</b></p>
                             <p class="status"id="status"><b>Status:</b> ${data.status}</b></p>
                         </div>
