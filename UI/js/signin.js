@@ -1,6 +1,6 @@
 let email = document.getElementById('email');
 let password = document.getElementById('password')
-const url = 'http://localhost:5000/api/v1/auth/login';
+const url = 'https://irepo-api.herokuapp.com/v1/auth/login';
 const message = document.getElementById("flash-message")
 const success = "green";
 const fail = "red";
