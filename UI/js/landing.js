@@ -12,6 +12,7 @@ function getAll_redflags() {
         let user = sessionStorage.getItem("user");
         let token = sessionStorage.getItem("token"); 
         if (redflagClicked !== true) {  
+            displayText(success, "")
             document.getElementById("display-incidents").innerHTML = "";
             fetchAllIncidents(token, urlRedflags); 
             redflagClicked = true;
@@ -31,6 +32,7 @@ function getAll_interventions() {
         let user = sessionStorage.getItem("user");
         let token = sessionStorage.getItem("token"); 
         if (interveneClicked !== true) {  
+            displayText(success, "")
             document.getElementById("display-incidents").innerHTML = "";
             fetchAllIncidents(token, urlInterventions); 
             interveneClicked = true;
@@ -71,8 +73,8 @@ function fetchAllIncidents(token, url){
     })
     .catch(function(error){
         displayText(fail, error.message);
-        // sessionStorage.clear();
-        // window.location.replace("signin.html");
+        sessionStorage.clear();
+        window.location.replace("signin.html");
     });
 }
 
