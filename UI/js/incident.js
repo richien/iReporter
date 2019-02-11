@@ -3,7 +3,6 @@ let btnRedflag = document.getElementById("redflag");
 let btnIntervene = document.getElementById("intervene");
 let title = document.getElementById('title');
 let comment = document.getElementById('description');
-let coordinates = "";
 let images = [];
 let videos = [];
 let url = "";
@@ -21,6 +20,10 @@ function displayText(color, text) {
 }
 
 function createIncident() {
+    if (coordinates.lat === "" || coordinates.lng == "") {
+        displayText(fail, "Drag marker to select a location on the map below")
+        return false;
+    }
     let type = "";
     types.forEach(element => {
         if (element.checked) {
@@ -41,7 +44,7 @@ function createIncident() {
         type : type,
         title : title.value,
         comment : comment.value,
-        location : coordinates,
+        location : `"${coordinates.lat}, ${coordinates.lng}"`,
         status : "draft",
         images : images,
         videos : videos };
