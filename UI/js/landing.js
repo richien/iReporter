@@ -1,21 +1,22 @@
-let incidents = document.querySelector('#display-incidents');
-const message = document.getElementById("flash-message")
+let incident = document.getElementById("display-incidents");
+let redflagClicked = false;
+let interveneClicked = false;
+const message = document.getElementById("flash-message");
 const success = "green";
 const fail = "red";
 const url = 'http://localhost:5000/api/v1/red-flags';
-let response = {
-    title : null,
-    type : null,
-    text : null,
-    status : null,
-    createdOn : null
-}
 
 function getAll_redflags() {
     if (typeof(Storage) !== "undefined") {
         let user = sessionStorage.getItem("user");
-        let token = sessionStorage.getItem("token");   
-        fetchAllRedFlags(token); 
+        let token = sessionStorage.getItem("token"); 
+        if (redflagClicked !== true) {  
+            fetchAllRedFlags(token); 
+            redflagClicked = true;
+        }
+        else {
+            return;
+        }
     }                  
     else {
         displayText(fail, "Browser does not support Web Storage");
@@ -48,8 +49,8 @@ function fetchAllRedFlags(token){
     })
     .catch(function(error){
         displayText(fail, error.message);
-        sessionStorage.clear();
-        window.location.replace("signin.html");
+        // sessionStorage.clear();
+        // window.location.replace("signin.html");
     });
 }
 
@@ -68,19 +69,21 @@ function displayError(error) {
 }
 
 function createTable(data) {
-    let table = `
+    let table = `   
     <table class="table-landing">
         <thead>
             <tr>
-                <th>${data.title}</th>
+                <th id="title" onclick="showMore('${data.id}');">${data.title}</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>
-                    <div class="row" id="row-describe">
+                    <div class="row row-describe"  id="${data.id}">
                         <div class="col-10 col-s-10">
-                            <p id="comment">${data.text}...<button id="more-link">More</button></p>
+                            <p id="comment">${data.text}&nbsp;&nbsp;&nbsp;
+                                <button id="more-link" onclick="showLess('${data.id}');"><b>LESS</b></button>
+                            </p>
                             <p class="status"id="status">
                                 <img src="images/redflag1.jpg" height="20px" width="20px">
                             </p>
@@ -88,7 +91,7 @@ function createTable(data) {
                             <p class="status"id="status"><b>Status:</b> ${data.status}</b></p>
                         </div>
                         <div class="col-2 col-s-2" id="col-deco"></div>
-                        <div class="row" id="row-footer">
+                        <div class="row row-footer">
                             <div class="col-6 col-s-6">
                                 <li id="edit"><a href="incidentdetail.html"><img src="images/edit.png"></a></li>
                             </div>
@@ -108,27 +111,29 @@ function displayData(dataArray) {
     for(let i = 0; i < dataArray.length; i++) {
         data = dataArray[i].data();
         let table = createTable(data);
-        document.getElementById("display-incidents").innerHTML += table; 
-    }     
+        incident.innerHTML += table;
+    }    
 }
 
 function storeResponse(data) {
     let results = [];
     for(let i = 0; i < data.data.length; i++) {
+        id = data.data[i].id;
         title = data.data[i].title;
         type =  data.data[i].type;
         text = data.data[i].comment;
         status =  data.data[i].status;
         createdOn = data.data[i].createdOn; 
         
-        response = new ResponseObj(title, type, text, status, createdOn);
+        response = new ResponseObj(id, title, type, text, status, createdOn);
         results.push(response)
     }
     return results;
 }
 
 class ResponseObj {
-    constructor(title, type, text, status, createdOn) {
+    constructor(id, title, type, text, status, createdOn) {
+        this._id =  id; 
         this._title = title;
         this._type = type;
         this._text = text;
@@ -137,6 +142,7 @@ class ResponseObj {
     }
     data() {
         let obj = {
+            id : this._id,
             title : this._title,
             type : this._type,
             text : this._text,
@@ -147,11 +153,13 @@ class ResponseObj {
     }
 }
 
-function showMore(text) {
-    return text;
+function showMore(id) {
+    document.getElementById(id).style.display = "block";
 }
 
-function showLess(text) {
-    let less = response.text.slice(0, 100);
-    return less;
+function showLess(id) {
+    document.getElementById(id).style.display = "none";
+    message.scrollIntoView();
 }
+
+

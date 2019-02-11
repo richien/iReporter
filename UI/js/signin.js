@@ -1,10 +1,11 @@
 let email = document.getElementById('email');
 let password = document.getElementById('password')
-const url = 'https://irepo-api.herokuapp.com/api/v1/auth/login';
+const url = 'http://localhost:5000/api/v1/auth/login';
 const message = document.getElementById("flash-message")
 const success = "green";
 const fail = "red";
 const successText = "Successfully Logged in";
+const signInText = "Please wait ..."
 
 
 function displayText(color, text) {
@@ -18,6 +19,7 @@ function signIn() {
     let signinForm = {
         email : email.value,
         password : password.value };
+    displayText(success, signInText);
     fetch(url, {
         method: "POST",
         mode: "cors",
@@ -40,7 +42,7 @@ function signIn() {
                 sessionStorage.setItem("token", data["data"][0]["access_token"]);
                 window.setTimeout( function() {
                     window.location.replace("landing.html")
-                }, 4000);
+                }, 2000);
                         
             }
             else {

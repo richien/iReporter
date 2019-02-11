@@ -37,10 +37,14 @@
         </header>
         <div class="wrapper">
             <section class="main-content">
-                <h1>Recently reported Incidents</h1>
                 <div id="flash-message"></div>
-                <div class="row"> 
-                    <div class="col-12 col-s-12" id="display-incidents"></div> 
+                <div class="row">
+                    <div class="col-2 col-s-2" id="display-sidebar">
+                        <p>View Incidents</p>
+                        <p><button class="btn-coral" onclick="getAll_redflags();">RED FLAGS</button></p>
+                        <p><button class="btn-coral">INTERVENTIONS</button></p>
+                    </div>  
+                    <div class="col-10 col-s-10" id="display-incidents"></div> 
                 </div>  
             </section>
         </div>
@@ -57,7 +61,7 @@
                         </ul>
                     </div>
         </footer>
-        <script src="js/main.js"></script>
+        <!--<script src="js/main.js"></script>-->
         <script src="js/landing.js"></script>
     </body>
 </html>
