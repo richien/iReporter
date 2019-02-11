@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>iReporter-landing</title>
+        <link rel="stylesheet" type="text/css" href="./css/styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+    <body>
+        <header>
+            <div class="logo">
+                <span><a href="index.html">iReporter</a></span>
+            </div>
+            <div class="menu-header">
+                <ul>
+                    <li><a href="admin.html">Admin</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="#">Signout</a></li>
+                    <li><a href="incident.html">Report</a></li>
+                    <li><a href="landing.html">Home</a></li>
+
+                </ul>
+            </div>
+            <div class="drop-menu">
+                <button class="drop-menu-btn">Menu</button>
+                    <div class="drop-menu-content">
+                        <a href="landing.html">Home</a>
+                        <li><a href="incident.html">Report</a></li>          
+                        <a href="#">Signout</a>
+                        <a href="about.html">About</a>
+                        <li><a href="admin.html">Admin</a></li>  
+                    </div>
+            </div>
+        </header>
+        <div class="wrapper">
+            <section class="main-content">
+                <h1>Welcome {username}: Role {user}</h1>
+                <strong style="color:red;">Take note: the following buttons change the status as described below</strong>
+                <p>res - Resolve</p>
+                <p>ui - Under investigation</p>
+                <p>rej - Reject</p>
+                <div class="row"> 
+                    <div class="col-12 col-s-12">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Type</th>
+                                    <th>Title</th>
+                                    <th>Creation Date</th>
+                                    <th>Status</th>
+                                    <th>Repoted By</th>
+                                    <th>Location Coords</th>
+                                    <th>Location Name</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Intervention</td>
+                                    <td>Fallen powerlines</td>
+                                    <td>13/Dec/2018</td>
+                                    <td>resolved</td>
+                                    <td>user</td>
+                                    <td>32.6lat12.6long</td>
+                                    <td>Nalya</td>
+                                    <td><a class="btn-green" href="">res</a></td>
+                                    <td><a class="btn-grey"  href="">ui</a></td>
+                                    <td><a class="btn-coral" href="">rej</a></td>
+                                </tr>
+                            </tbody>                      
+                        </table>
+                    </div> 
+                </div>  
+            </section>
+        </div>
+        <footer>
+                <div class="footer-upper">
+                        <h4>iReporter</h4>
+                    </div>
+                    
+                    <div class="footer-lower">
+                        <ul>
+                            <li><a href="landing.html">Home</a></li>
+                            <li><a href="#">Signout</a></li>
+                            <li><a href="about.html">About</a></li>
+                        </ul>
+                    </div>
+        </footer>
+    </body>
+</html>

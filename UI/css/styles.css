@@ -1,0 +1,736 @@
+*{
+    box-sizing: border-box;
+}
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+[class*="col-"]{
+    float: left;
+    padding: 15px;
+}
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+html {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+body {
+    margin: 0;
+    color: rgb(85, 80, 80);
+}
+
+header {
+    overflow: hidden;
+}
+
+.logo {
+    display: inline-block;
+    float: left;
+    font-weight: bold;
+    padding: 10px;
+   
+}
+
+.logo span {
+    padding: 0;
+    overflow: hidden;
+}
+.logo a {
+    text-decoration: none;
+    font-size: 30px;
+    color: lightcoral;
+}
+.logo a:hover {
+    font-weight: bolder;
+    font-size: 32px;
+}
+.menu-header {
+    visibility: hidden;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    visibility: hidden;
+}
+.menu-header ul li {
+    list-style: none;
+    padding: 10px;
+    float: right;
+}
+.menu-header ul li a{
+   text-decoration: none;
+   color: rgb(85, 80, 80);
+}
+.menu-header ul li a:hover {
+   text-decoration: underline;
+}
+
+.drop-menu-btn {
+    background-color: lightcoral;
+    color: azure;
+    padding: 10px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+}
+.drop-menu {
+    margin: 20px;
+    float: right;
+}
+.drop-menu-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(251, 245, 245);
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.drop-menu-content a {
+    color: rgb(100, 89, 89);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.drop-menu-content a:hover {
+    text-decoration: underline;
+}
+
+.drop-menu:hover .drop-menu-content {
+    display: block;
+}
+
+.drop-menu-btn #profile-btn {
+    background-color: lightgreen;
+}
+
+.aside {
+    padding: 15px;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    visibility: hidden;
+    display: none;
+    width: 100%;
+    margin-top: 10px;
+}
+.aside #landing-sidebar {
+    visibility: hidden;
+    display: none;
+    padding: 0px;
+}
+.aside #landing-sidebar .drop-menu{
+    visibility: visible;
+    margin: 10px 0px 10px ;
+    padding: 0px;
+    width: 100%;
+}
+
+.aside #landing-sidebar .drop-menu #report-btn.drop-menu-btn{
+    width: 100%;
+    font-weight: bold;
+}
+
+.aside #landing-sidebar .drop-menu #profile-btn.drop-menu-btn{
+    width: 100%;
+    background-color: darkseagreen;
+    font-weight: bold;
+}
+.aside #landing-sidebar .drop-menu #profile-btn.drop-menu-btn .drop-menu-content a{
+
+    background-color: darkseagreen;
+}
+.aside #landing-sidebar .drop-menu #admin-btn.drop-menu-btn{
+    width: 100%;
+    background-color: rgb(235, 137, 45);
+    font-weight: bold;
+}
+
+/*The welcome page(index) rules*/
+.main-content #welcome p {
+    font-weight: bolder;
+    font-size: 200%;
+}
+.main-content #welcome p strong{
+    color: lightcoral;
+}
+
+.main-content .greeting {
+    font-size: 110%;
+}
+
+.main-content .greeting p strong{
+    color: lightcoral;
+    font-size: 130%;
+}
+
+.main-content #intervene {
+    background-color: lightcoral;
+    color: antiquewhite;
+    padding: 10px;
+    border-radius: 100px;
+
+}
+
+.main-content #intervene p strong{
+    color:white;
+}
+
+.main-content #signup-link{
+    display: inline-block;
+    margin: 3px;
+    padding: 10px;
+    text-align: center;
+}
+
+.main-content #signup-link p strong a{
+   text-decoration: none;
+   font-weight: bolder;
+   background-color: lightcoral;
+   padding: 10px;
+   border-radius: 3px;
+   color: white;
+}
+.main-content #signup-link p strong a:hover{
+   box-shadow: 1px 3px 5px #aaa;
+ }
+
+/*The login form rules*/
+.main-content #login-form {
+    padding: 10px;
+    box-shadow: 10px 10px 5px #aaa;
+    border: 1px solid lightcoral;
+}
+.main-content #login-form input {
+    width: 50%;
+    padding: 1px;
+    height: 50px;
+    border: 1px solid #aaa;
+    text-align: center;
+}
+
+.main-content  #signinBtn input{
+    background-color: darksalmon;
+    padding: 5px;
+    font-weight: bold;
+    box-shadow: 5px 2px 5px #aaa;
+    color: azure;
+    font-size: 20;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+}
+.main-content  #signinBtn input:hover{
+    background-color: rgb(149, 181, 184);
+    box-shadow: 5px 5px 5px #aaa;
+    color: azure;
+    
+}
+.main-content #login-form #cancel-signin a {
+    text-decoration: none;
+    color: lightcoral;
+}
+.main-content #login-form #cancel-signin a:hover {
+    color: brown;
+    background-color: beige;
+    box-shadow: 5px 5px 5px beige;
+    padding: 10px;
+}
+.main-content #login-form #forgot-pwd a {
+    text-decoration: none;
+    color: lightcoral;
+}
+.main-content #login-form #forgot-pwd a:hover {
+    color: brown;
+    background-color: beige;
+    box-shadow: 5px 5px 5px beige;
+    padding: 10px;
+}
+/*The signup form rules*/
+ .main-content #signup-form {
+    padding: 40px;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 10px 10px 5px #aaa;
+    border: 1px solid lightcoral;
+}
+.main-content #signup-form input{
+    width: 50%;
+    height: 50px;
+    padding: 1px;
+    border: 1px solid #aaa;
+    text-align: center;
+}
+
+.main-content  #signupBtn input{
+    background-color: darksalmon;
+    padding: 5px;
+    font-weight: bold;
+    box-shadow: 5px 2px 5px #aaa;
+    color: azure;
+    font-size: 15px;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+}
+.main-content  #signupBtn input:hover{
+    background-color: rgb(149, 181, 184);
+    box-shadow: 5px 5px 5px #aaa;
+    color: azure;
+    
+}
+.main-content #signup-form #cancel-signup a {
+    text-decoration: none;
+    color: lightcoral;
+}
+.main-content #signup-form #cancel-signup a:hover {
+    color: brown;
+    background-color: beige;
+    box-shadow: 5px 5px 5px beige;
+    padding: 10px;
+}
+.main-content .row strong {
+    color: lightcoral;
+}
+/*The signup and signin page's sidebars*/
+.wrapper {
+    min-height: 100vh;
+    overflow: auto;
+    margin-top: 1px;
+}
+.wrapper .signup-sidebar, .login-sidebar{
+    padding: 20px;
+}
+.wrapper .signup-sidebar p{
+    font-size: 100%;
+}
+.wrapper .signup-sidebar p a{
+    text-decoration: none;
+    color:  lightcoral;
+    font-size: 120%;
+    display: inline-block;
+    padding: 2px;
+}
+.wrapper .signup-sidebar p a:hover{
+    box-shadow: 5px 5px 5px #aaa;
+    border: 1px solid lightcoral;
+    border-radius: 5px;
+}
+.wrapper .login-sidebar p{
+    font-size: 150%;
+}
+.wrapper .login-sidebar p a{
+    text-decoration: none;
+    color:  lightcoral;
+    display: inline-block;
+    padding: 2px;
+}
+.wrapper .login-sidebar p a:hover{
+    box-shadow: 5px 5px 5px #aaa;
+    border: 1px solid lightcoral;
+    border-radius: 5px;
+}
+.wrapper .main-content {
+	text-align: center;
+	padding: 0;
+}
+.form-wrapper {
+    width:100%;
+    box-shadow: 5px 5px 5px #aaa;
+    padding: 10px;
+    border-radius: 50px;
+    font-size: 20px;  
+}
+.form-wrapper p{
+   color: rgb(85, 85, 83);  
+}
+.form-wrapper p a{
+    color: rgb(236, 104, 104);  
+    text-decoration: none;
+    
+ }
+ .form-wrapper p a:hover{  
+    text-decoration: underline;
+    
+ }
+ 
+.form-wrapper p .input-text{
+    width: 50%;
+    height: 50px;
+    border-radius: 2px;  
+    border: 1px solid #aaa;
+    text-align: center;
+ }
+ .form-wrapper p .input-area{
+    width: 50%;
+    height: 150px;
+    border-radius: 2px;  
+    border: 1px solid #aaa;
+    text-align: center;
+ }
+ .btn-green {
+     width: 30px;
+     height: 30px;
+     margin: 0px 20px 5px 20px;
+     display: inline-block;
+ }
+
+ .form-wrapper a#cancel-btn img {
+    width: 30px;
+    height: 30px;
+    margin: 0px 20px 5px 20px;
+ }
+
+ .btn-green:hover {
+    border: 2px solid coral;
+    background-color: coral;
+    border-radius: 5px;
+}
+
+.form-wrapper a#cancel-btn img:hover {
+    border: 2px solid coral;
+    background-color: coral;
+    border-radius: 5px;
+ }
+
+.btn-grey {
+    background-color: rgb(147, 167, 147);
+    padding: 5px;
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+    border-radius: 14px;
+    text-decoration: none;
+}
+.btn-grey:hover {
+   font-weight: normal;
+   box-shadow: 0px 2px 0px #aaa;
+}
+.btn-coral {
+    background-color: lightcoral;
+    padding: 5px;
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+    border-radius: 14px;
+    width: 100px;
+    text-decoration: none;
+}
+.btn-coral:hover {
+   font-weight: normal;
+   box-shadow: 0px 2px 0px #aaa;
+}
+
+.table-landing {
+    width: 70%;
+    border-collapse: collapse;
+    margin: 30px auto;
+    float: none;
+    border-radius: 14px;
+}
+
+.table-landing th {
+    background: rgb(238, 181, 181);
+    height: 70px;
+    width: 100%; 
+    margin: 10px 110px;  
+    font-size: 15px;
+    text-align: center;
+}
+.table-landing td, th {
+    padding: 6px;
+    border: 1px none lightcoral;
+    border-radius: 5px;
+    
+}
+.table-landing td p {
+    font-size: 15px;
+    margin: 0px;
+}
+
+.table-landing #row-describe {
+    background-color: lightgray;
+    height: 250px;
+    border-radius: 5px;
+    margin-bottom: 20px
+}
+.table-landing #row-describe #col-deco{
+    background-color: rgb(238, 181, 181);
+    height: 250px;
+    border-radius: 5px;
+    margin-bottom: 0px;
+    display: none;
+}
+.table-landing  p.status  {
+    font-size: 15px;
+    padding: 5px;
+    text-align: right;
+    margin: 0px;
+    position: relative;
+    right: 0px;
+    color: lightcoral;
+}
+.table-landing  p#posted.status {  
+    color: ghostwhite;
+}
+.table-landing #row-footer {
+    height: 70px;
+    width: 100%;
+    background-color: lightcoral;
+    float: right;
+    border-radius: 5px;
+
+}
+.table-landing p.links-footer {
+    margin: 10px;
+}
+.table-landing p.links-footer a{
+    padding: 10px;
+    margin: 10px 10px auto;
+    float: none;
+    font-size: 15px;
+    text-decoration: none;
+    color: antiquewhite;
+}
+.table-landing p.links-footer a:hover{
+    box-shadow: 2px 5px 2px antiquewhite;
+    text-decoration: underline;
+    color: antiquewhite;
+}
+
+.table-landing #row-footer li, p.links-footer a {
+    height: 10px;
+    display: block;
+  }
+
+.table-landing #row-footer li#edit img{
+    width: 30px;
+    height: 30px;
+}
+
+.table-landing #row-footer li#delete img{
+    width: 30px;
+    height: 30px;
+}
+
+.table-landing #row-footer li#edit img:hover{
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+.table-landing #row-footer li#delete img:hover{
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+#vertical-rule {
+    border-left:1px solid lightcoral;height:110px;
+}
+
+.main-content .profile-pic {
+    border: 1px solid #aaa;
+    width: 100%;
+    height: 100%;
+}
+
+.main-content .display-list {
+    border: 1px dashed coral;
+    background-color: bisque;
+    padding: 5px;
+    margin-bottom: 5px;
+    height: 50px;
+}
+
+footer {
+    color: antiquewhite;
+}
+
+footer .footer-upper {
+    text-align: center;
+    background-color: lightcoral;
+    min-height: 100px;
+}
+footer .footer-lower {
+    text-align: left;
+    background-color: rgb(233, 117, 117);
+}
+footer .footer-upper, .footer-lower{
+	padding: 1px 1px 1px 50px;
+	font-size: 15px;
+}
+
+footer .footer-lower {
+    padding: 1px;
+    bottom: 0;
+}
+
+footer .footer-lower ul li {
+	display: inline-block;
+	text-decoration: none;
+	padding: 1px 10px 10px 10px;
+}
+footer .footer-lower ul li a{
+	text-decoration: none;
+	font-size: 13px;
+	color: antiquewhite;
+}	
+footer .footer-lower ul li a:hover{
+	text-decoration: underline;
+}
+/* For mobile phones: */
+[class*="col-"]{
+    width: 100%;
+}
+
+
+@media only screen and (min-width: 600px){
+    /* For tablets: */
+    .col-s-1 {width: 8.33%;}
+    .col-s-2 {width: 16.66%;}
+    .col-s-3 {width: 25%}
+    .col-s-4 {width: 33.33%}
+    .col-s-5 {width: 41.66%;}
+    .col-s-6 {width: 50%}
+    .col-s-7 {width: 58.33%}
+    .col-s-8 {width: 66.66%}
+    .col-s-9 {width: 75%}
+    .col-s-10 {width: 83.33%}
+    .col-s-11 {width: 91.66%}
+    .col-s-12 {width: 100%}
+    .wrapper {
+        margin-top: 15px;
+        overflow:visible;
+    }
+    .wrapper .signup-sidebar p{
+        font-size: 15px;
+    }
+    .aside {
+        visibility: visible;
+        display: inline-block;
+    }
+    
+    .wrapper .signup-sidebar p a{
+        font-size: 120%;
+        display: inline-block;
+    }
+    .menu-header {
+        visibility: visible;
+    }
+    .drop-menu {
+        visibility: hidden;
+    }
+    .aside #landing-sidebar {
+        visibility: visible;
+        display: block;
+    }
+    .table-landing th {
+        height: 100px;   
+        font-size: 20px;
+    }
+    
+    .table-landing td p {
+        font-size: 20px;
+    }
+    
+    .table-landing #row-describe {
+        background-color: lightgray;
+        height: 100%;
+        border-radius: 5px;
+        margin-bottom: 20px
+    }
+    .table-landing #row-describe #col-deco{
+        display: inline;
+    }
+    .table-landing  p.status  {
+        font-size: 20px;
+    }
+    .table-landing #row-footer {
+        height: 70px;
+        width: 50%;
+    
+    }
+
+    .table-landing p.links-footer a{
+        margin: 20px 20px auto;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%}
+    .col-4 {width: 33.33%}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%}
+    .col-7 {width: 58.33%}
+    .col-8 {width: 66.66%}
+    .col-9 {width: 75%}
+    .col-10 {width: 83.33%}
+    .col-11 {width: 91.66%}
+    .col-12 {width: 100%}
+    .wrapper {
+        margin-top: 15px;
+        overflow: hidden;
+    }
+    .main-content #welcome p {
+        font-size: 80px;
+    }
+    .aside {
+        visibility: visible;
+        display: inline-block;
+    }
+    .wrapper .signup-sidebar p {
+        font-size: 220%;
+        display: inline-block;
+    }
+    .menu-header {
+        visibility: visible;
+    }
+    .drop-menu {
+        visibility: hidden;
+    }
+    .aside #landing-sidebar {
+        visibility: visible;
+        display: block;
+    }
+    
+    .table-landing th {
+        height: 100px;   
+        font-size: 20px;
+    }
+    
+    .table-landing td p {
+        font-size: 20px;
+    }
+    
+    .table-landing #row-describe {
+        background-color: lightgray;
+        height: 250px;
+        border-radius: 5px;
+        margin-bottom: 20px
+    }
+    .table-landing #row-describe #col-deco{
+        display: inline;
+    }
+    .table-landing  p.status  {
+        font-size: 20px;
+    }
+    .table-landing #row-footer {
+        height: 70px;
+        width: 50%;
+    
+    }
+
+    .table-landing p.links-footer a{
+        margin: 20px 20px auto;
+    }
+
+}
+

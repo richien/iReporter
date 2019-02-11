@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>   
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>iReporter-signIn</title>
+        <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <head>
+    <body>
+        <header>
+            <div class="logo">
+                <span><a href="index.html">iReporter</a></span>
+            </div>
+            <div class="menu-header">
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="signup.html">Sign Up</a></li>
+                    <li><a href="signin.html">Sign In</a></li>
+                    <li><a href="index.html">Home</a></li>
+                </ul>
+            </div>
+            <div class="drop-menu">
+                <button class="drop-menu-btn">Menu</button>
+                    <div class="drop-menu-content">
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About</a>            
+                        <a href="signin.html">Sign In</a>
+                        <a href="signup.html">Sign Up</a>
+                    </div>
+            </div>
+        </header>
+        <div class="wrapper">
+            <div class="row">
+                <div class="col-5 col-s-12">
+                    <div class="aside">
+                        <aside class="login-sidebar">
+                            <div>
+                                <p>
+                                    With <strong>iReporter</strong> 
+                                </p>
+                                <p>
+                                    The power is in your hands!
+                                </p>
+                                <p>Click to find out <strong><a href="about.html">more</a></strong></p>
+                                
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+                <div class="col-7 col-s-9">
+                    <section class="main-content">
+                        <div id="login-form">
+                            <h2>Login</h2>
+                            <div id="flash-message"></div>
+                            <form method="POST" action="#" onsubmit="return signIn();">
+                                    <p><input id="email" name="email" type="email" value="" placeholder="Email" required></p>
+                                    <p><input id="password" name="password" type="password" value="" placeholder="Password" required></p>
+                                    <p id="signinBtn"><input id="btn-signin" type="submit" value="Sign In"> &nbsp;&nbsp; <span id="cancel-signin"><a href="signin.html">Cancel</a></span></span></p>
+                            </form>
+                            <p id="forgot-pwd"><a href="">Forgot password?</a></p>
+                        </div>
+                    </section>
+                </div>    
+            </div>
+        </div>
+        <footer>
+                <div class="footer-upper">
+                        <h4>iReporter</h4>
+                    </div>
+                    
+                    <div class="footer-lower">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="signin.html">Sign In</a></li>
+                            <li><a href="signup.html">Sign Up</a></li>
+                            <li><a href="about.html">About</a></li>
+                        </ul>
+                    </div>
+        </footer>
+        <script src="js/signin.js"></script>
+    </body>
+</html>
+
