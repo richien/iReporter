@@ -4,15 +4,18 @@ let interveneClicked = false;
 const message = document.getElementById("flash-message");
 const success = "green";
 const fail = "red";
-const url = 'http://localhost:5000/api/v1/red-flags';
+const urlRedflags = 'http://localhost:5000/api/v1/red-flags';
+const urlInterventions = 'http://localhost:5000/api/v1/interventions';
 
 function getAll_redflags() {
     if (typeof(Storage) !== "undefined") {
         let user = sessionStorage.getItem("user");
         let token = sessionStorage.getItem("token"); 
         if (redflagClicked !== true) {  
-            fetchAllRedFlags(token); 
+            document.getElementById("display-incidents").innerHTML = "";
+            fetchAllIncidents(token, urlRedflags); 
             redflagClicked = true;
+            interveneClicked = false;
         }
         else {
             return;
@@ -23,7 +26,26 @@ function getAll_redflags() {
     }
 }
 
-function fetchAllRedFlags(token){
+function getAll_interventions() {
+    if (typeof(Storage) !== "undefined") {
+        let user = sessionStorage.getItem("user");
+        let token = sessionStorage.getItem("token"); 
+        if (interveneClicked !== true) {  
+            document.getElementById("display-incidents").innerHTML = "";
+            fetchAllIncidents(token, urlInterventions); 
+            interveneClicked = true;
+            redflagClicked = false;
+        }
+        else {
+            return;
+        }
+    }                  
+    else {
+        displayText(fail, "Browser does not support Web Storage");
+    }
+}
+
+function fetchAllIncidents(token, url){
     fetch(url, {
         method: "GET",
         mode: "cors",
