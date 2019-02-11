@@ -59,8 +59,9 @@ function signUp() {
                 }
                 displayText(success, data["data"][0]["message"]);
                 if (typeof(Storage) !== "undefined") {
+                    sessionStorage.clear();
                     sessionStorage.setItem("user_id", data["data"][0]["id"]);
-                    sessionStorage.setItem("token", data["data"][0]["access-token"]);
+                    sessionStorage.setItem("token", data["data"][0]["access_token"]);
                     window.setTimeout( function() {
                         window.location.replace("landing.html")
                     }, 4000);

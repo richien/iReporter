@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>iReporter-landing</title>
         <link rel="stylesheet" type="text/css" href="./css/styles.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <head>
     <body>
         <header>
             <div class="logo">
-                <span><a href="index.html">iReporter</a></span>
+                <span><a href="landing.html">iReporter</a></span>
             </div>
             <div class="menu-header">
                 <ul>
@@ -35,78 +37,14 @@
         </header>
         <div class="wrapper">
             <section class="main-content">
-                <h1>Recently reported Incidents</h1>
-                <div class="row"> 
-                    <div class="col-12 col-s-12">
-                            <table class="table-landing">
-                                    <thead>
-                                        <tr>
-                                            <th>Road in a really poor condition. Urgent help needed.</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="row" id="row-describe">
-                                                    <div class="col-10 col-s-10">
-                                                        <p>The road between Ntinda and Kisaasi, 
-                                                            just after the branch off to Ndeere, is getting worse.
-                                                            Where are our leaders? Mutuyambe
-                                                        </p>
-                                                        <p class="status" id="posted"><b>Posted On:</b>&nbsp;12/Dec/2018</p>
-                                                        <p class="status"><b>Status:&nbsp;</b>Under Investigation</p>
-                                                    </div>
-                                                    <div class="col-2 col-s-2" id="col-deco">
-    
-                                                    </div>
-                                                </div>
-                                                <div class="row" id="row-footer">
-                                                    <div class="col-6 col-s-6">
-                                                        <li id="edit"><a href="incidentdetail.html"><img src="images/edit.png"></a></li>
-                                                    </div>
-                                                    <div class="col-6 col-s-6">
-                                                        <li id="delete"><a href=""><img src="images/delete.png"></a></li>    
-                                                    </div>
-                                                </div>
-                                            </td>  
-                                        </tr>                        
-                                    </tbody>                      
-                                </table>
-                                <table class="table-landing">
-                                        <thead>
-                                            <tr>
-                                                <th>Road in a really poor condition. Urgent help needed.</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="row" id="row-describe">
-                                                        <div class="col-10 col-s-10">
-                                                            <p>The road between Ntinda and Kisaasi, 
-                                                                just after the branch off to Ndeere, is getting worse.
-                                                                Where are our leaders? Mutuyambe
-                                                            </p>
-                                                            <p class="status" id="posted"><b>Posted On:</b>&nbsp;12/Dec/2018</p>
-                                                            <p class="status"><b>Status:&nbsp;</b>Under Investigation</p>
-                                                        </div>
-                                                        <div class="col-2 col-s-2" id="col-deco">
-        
-                                                        </div>
-                                                    </div>
-                                                <div class="row" id="row-footer">
-                                                    <div class="col-6 col-s-6">
-                                                        <li id="edit"><a href="incidentdetail.html"><img src="images/edit.png"></a></li>
-                                                    </div>
-                                                    <div class="col-6 col-s-6">
-                                                        <li id="delete"><a href=""><img src="images/delete.png"></a></li>    
-                                                    </div>
-                                                </div>
-                                           </td>  
-                                       </tr>                        
-                                   </tbody>                      
-                                </table>        
-                    </div> 
+                <div id="flash-message"></div>
+                <div class="row">
+                    <div class="col-2 col-s-2" id="display-sidebar">
+                        <p>View Incidents</p>
+                        <p><button class="btn-coral" onclick="getAll_redflags();">RED FLAGS</button></p>
+                        <p><button class="btn-coral" onclick="getAll_interventions();">INTERVENTIONS</button></p>
+                    </div>  
+                    <div class="col-10 col-s-10" id="display-incidents"></div> 
                 </div>  
             </section>
         </div>
@@ -123,5 +61,7 @@
                         </ul>
                     </div>
         </footer>
+        <!--<script src="js/main.js"></script>-->
+        <script src="js/landing.js"></script>
     </body>
 </html>

@@ -435,13 +435,21 @@ header {
     border-radius: 14px;
 }
 
+.table-landing tbody {
+    text-align: justify;
+}
+
 .table-landing th {
     background: rgb(238, 181, 181);
-    height: 70px;
+    height: 10px;
     width: 100%; 
     margin: 10px 110px;  
     font-size: 15px;
     text-align: center;
+}
+.table-landing th:hover {
+    cursor: pointer;
+    background-color: coral;
 }
 .table-landing td, th {
     padding: 6px;
@@ -454,15 +462,16 @@ header {
     margin: 0px;
 }
 
-.table-landing #row-describe {
+.table-landing .row-describe {
     background-color: lightgray;
-    height: 250px;
+    height: 100%;
     border-radius: 5px;
-    margin-bottom: 20px
+    margin-bottom: 20px;
+    display: none;
 }
-.table-landing #row-describe #col-deco{
+.table-landing .row-describe #col-deco{
     background-color: rgb(238, 181, 181);
-    height: 250px;
+    height: 100%;
     border-radius: 5px;
     margin-bottom: 0px;
     display: none;
@@ -478,14 +487,14 @@ header {
 }
 .table-landing  p#posted.status {  
     color: ghostwhite;
+    font-size: small;
 }
-.table-landing #row-footer {
-    height: 70px;
-    width: 100%;
+.table-landing .row-footer {
+    height: 50px;
+    width: 20%;
     background-color: lightcoral;
     float: right;
     border-radius: 5px;
-
 }
 .table-landing p.links-footer {
     margin: 10px;
@@ -504,27 +513,28 @@ header {
     color: antiquewhite;
 }
 
-.table-landing #row-footer li, p.links-footer a {
+.table-landing .row-footer li, p.links-footer a {
     height: 10px;
     display: block;
   }
 
-.table-landing #row-footer li#edit img{
-    width: 30px;
-    height: 30px;
+.table-landing .row-footer li#edit img{
+    width: 20px;
+    height: 22px;
 }
 
-.table-landing #row-footer li#delete img{
-    width: 30px;
-    height: 30px;
+.table-landing .row-footer li#delete img{
+    width: 20px;
+    height: 22px;
+    text-align: center;
 }
 
-.table-landing #row-footer li#edit img:hover{
+.table-landing .row-footer li#edit img:hover{
     border: 2px solid white;
     border-radius: 5px;
 }
 
-.table-landing #row-footer li#delete img:hover{
+.table-landing .row-footer li#delete img:hover{
     border: 2px solid white;
     border-radius: 5px;
 }
@@ -630,7 +640,7 @@ footer .footer-lower ul li a:hover{
         display: block;
     }
     .table-landing th {
-        height: 100px;   
+        height: 10px;   
         font-size: 20px;
     }
     
@@ -638,24 +648,18 @@ footer .footer-lower ul li a:hover{
         font-size: 20px;
     }
     
-    .table-landing #row-describe {
+    .table-landing .row-describe {
         background-color: lightgray;
         height: 100%;
         border-radius: 5px;
         margin-bottom: 20px
     }
-    .table-landing #row-describe #col-deco{
+    .table-landing .row-describe #col-deco{
         display: inline;
     }
     .table-landing  p.status  {
         font-size: 20px;
     }
-    .table-landing #row-footer {
-        height: 70px;
-        width: 50%;
-    
-    }
-
     .table-landing p.links-footer a{
         margin: 20px 20px auto;
     }
@@ -702,7 +706,7 @@ footer .footer-lower ul li a:hover{
     }
     
     .table-landing th {
-        height: 100px;   
+        height: 10px;   
         font-size: 20px;
     }
     
@@ -710,22 +714,17 @@ footer .footer-lower ul li a:hover{
         font-size: 20px;
     }
     
-    .table-landing #row-describe {
+    .table-landing .row-describe {
         background-color: lightgray;
-        height: 250px;
+        height: 100%;
         border-radius: 5px;
         margin-bottom: 20px
     }
-    .table-landing #row-describe #col-deco{
+    .table-landing .row-describe #col-deco{
         display: inline;
     }
     .table-landing  p.status  {
         font-size: 20px;
-    }
-    .table-landing #row-footer {
-        height: 70px;
-        width: 50%;
-    
     }
 
     .table-landing p.links-footer a{
