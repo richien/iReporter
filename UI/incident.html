@@ -36,14 +36,14 @@
                     <div class="col-12 col-s-12">
                         <h1 style="color:lightcoral;">Report Incident</h1>
                         <div id="flash-message"></div>
-                        <form>
+                        <form action="#" onsubmit="return createIncident();">
                             <div class="form-wrapper">
                                 <p>Redflag&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="type" value="red-flag" type="radio" id="redflag" checked></p>
                                 <p>Intervention&nbsp;<input name="type" value="intervention" type="radio" id="intervene"></p>
                                 <p><input id="title" value="" placeholder="Title" class="input-text" required></p>
                                 <p><input id="description" type="area" value="" placeholder="Enter Description here"  class="input-area" required></p>
                                 <p><input class="btn-green" name="upload-image-btn" type="image" src="images/photo.png" alt="submit" value=""><input class="btn-green" name="upload-video-btn" type="image" src="images/video.png" alt="submit" value=""></p>
-                                <p><input class="btn-green" id="save-btn" type="image" src="images/save.png" alt="submit" value="" onclick="return createIncident();"><a id="cancel-btn" href="landing.html"><img src="images/cancel.png"></a></p>
+                                <p><input class="btn-coral" id="save-btn" type="submit" value="REPORT" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="cancel-btn" href="landing.html">Cancel</a></p>
                             </div>
                         </form>
                         <div id="map-canvas">

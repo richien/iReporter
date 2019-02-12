@@ -78,8 +78,10 @@ function createIncident() {
             console.log(error.message)
         });
         return false; 
-    }
+}
+
     
+
 
 
 

@@ -106,7 +106,7 @@ function createTable(data) {
                     <div class="row row-describe"  id="${data.id}">
                         <div class="col-10 col-s-10">
                             <p id="comment">${data.text}&nbsp;&nbsp;&nbsp;
-                                <button id="more-link" onclick="showLess('${data.id}');"><b>LESS</b></button>
+                                <button class="btn-grey" id="more-link" onclick="showLess('${data.id}');"><b>LESS</b></button>
                             </p>
                             <p class="status"id="status">${data.type}</p>
                             <p class="status" id="posted"><b>Posted on: ${data.createdOn}</b></p>
