@@ -40,13 +40,26 @@ function signIn() {
                 sessionStorage.clear();
                 sessionStorage.setItem("user", JSON.stringify(data["data"][0]["user"]));
                 sessionStorage.setItem("token", data["data"][0]["access_token"]);
-                window.setTimeout( function() {
-                    window.location.replace("landing.html")
-                }, 2000);
-                        
+                sessionStorage.setItem("isLoggedIn", true);                               
             }
             else {
                 displayText(fail, "Browser does not support Web Storage");
+            }
+            if (JSON.parse(sessionStorage.getItem("user")).isAdmin) {
+                window.setTimeout( function() {
+                    window.location.replace("admin.html")
+                }, 1000);
+            }
+            else if (JSON.parse(sessionStorage.getItem("user")).isAdmin === false) {
+                window.setTimeout( function() {
+                    window.location.replace("landing.html")
+                }, 1000);
+            }
+            else {
+                window.setTimeout( function() {
+                    displayText(fail, "Login failed.  Please try again.");
+                    window.location.replace("signin.html")
+                }, 1000);
             }
         })
         .catch(function(error){

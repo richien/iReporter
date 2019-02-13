@@ -1,15 +1,20 @@
 let incident = document.getElementById("display-incidents");
+let welcome = document.getElementById("welcome");
 let redflagClicked = false;
 let interveneClicked = false;
+let response = null;
 const message = document.getElementById("flash-message");
 const success = "green";
 const fail = "red";
 const urlRedflags = 'http://localhost:5000/api/v1/red-flags';
 const urlInterventions = 'http://localhost:5000/api/v1/interventions';
 
+
+let user = JSON.parse(sessionStorage.getItem("user"));
+welcome.innerHTML = `<p>Welcome <b style="color: coral;">${user.username}</b> to iReporter</p>`;
+
 function getAll_redflags() {
     if (typeof(Storage) !== "undefined") {
-        let user = sessionStorage.getItem("user");
         let token = sessionStorage.getItem("token"); 
         if (redflagClicked !== true) {  
             displayText(success, "")
@@ -29,7 +34,6 @@ function getAll_redflags() {
 
 function getAll_interventions() {
     if (typeof(Storage) !== "undefined") {
-        let user = sessionStorage.getItem("user");
         let token = sessionStorage.getItem("token"); 
         if (interveneClicked !== true) {  
             displayText(success, "")
@@ -73,6 +77,7 @@ function fetchAllIncidents(token, url){
     })
     .catch(function(error){
         displayText(fail, error.message);
+        console.log(error);
         sessionStorage.clear();
         window.location.replace("signin.html");
     });
@@ -97,7 +102,12 @@ function createTable(data) {
     <table class="table-landing">
         <thead>
             <tr>
-                <th id="title" onclick="showMore('${data.id}');">${data.title}</th>
+                <th id="title" onclick="showMore('${data.id}');">
+                    <div>    
+                        <p> ${data.title} </p>
+                        <p style="font-size: 14px;">Posted By: ${data.createdBy}</p>
+                    </div>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -148,15 +158,16 @@ function storeResponse(data) {
         status =  data.data[i].status;
         createdOn = data.data[i].createdOn; 
         address = data.data[i].location;
+        createdBy = data.data[i].createdby;
         
-        response = new ResponseObj(id, title, type, text, status, createdOn, address);
+        response = new ResponseObj(id, title, type, text, status, createdOn, address, createdBy);
         results.push(response)
     }
     return results;
 }
 
 class ResponseObj {
-    constructor(id, title, type, text, status, createdOn, address) {
+    constructor(id, title, type, text, status, createdOn, address, createdBy) {
         this._id =  id; 
         this._title = title;
         this._type = type;
@@ -164,6 +175,7 @@ class ResponseObj {
         this._status = status;
         this._createdOn = createdOn;
         this._location = address;
+        this._createdBy = createdBy;
     }
     data() {
         let obj = {
@@ -173,7 +185,8 @@ class ResponseObj {
             text: this._text,
             status: this._status,
             createdOn: this._createdOn,
-            location: this._location
+            location: this._location,
+            createdBy: this._createdBy
         }
         return obj;
     }
@@ -187,5 +200,4 @@ function showLess(id) {
     document.getElementById(id).style.display = "none";
     message.scrollIntoView();
 }
-
 
