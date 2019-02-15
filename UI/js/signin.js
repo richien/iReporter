@@ -5,7 +5,7 @@ const message = document.getElementById("flash-message")
 const success = "green";
 const fail = "red";
 const successText = "Successfully Logged in";
-const signInText = "Please wait ..."
+const signInText = "Logging in..."
 
 
 function displayText(color, text) {
@@ -40,7 +40,7 @@ function signIn() {
                 sessionStorage.clear();
                 sessionStorage.setItem("user", JSON.stringify(data["data"][0]["user"]));
                 sessionStorage.setItem("token", data["data"][0]["access_token"]);
-                sessionStorage.setItem("isLoggedIn", true);                               
+                sessionStorage.setItem("isLoggedIn", true);
             }
             else {
                 displayText(fail, "Browser does not support Web Storage");

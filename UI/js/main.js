@@ -1,76 +1,167 @@
 let adminMenu = {
-    admin: document.getElementById("admin-menu"),
-    signout: document.getElementById("signout")
+    admin: document.getElementsByClassName("admin-menu"),
+    signout: document.getElementsByClassName("signout"),
+    showAdmin: function() { 
+       for (let i = 0; i < this.admin.length; i++) {
+           this.admin[i].style.display = "block";
+       }
+    },
+    hideAdmin: function() { 
+        for (let i = 0; i < this.admin.length; i++) {
+            this.admin[i].style.display = "none";
+        }
+    },
+    showSignout: function() { 
+        for (let i = 0; i < this.signout.length; i++) {
+            this.signout[i].style.display = "block";
+        }
+     },
+     hideSignout: function() { 
+         for (let i = 0; i < this.signout.length; i++) {
+             this.signout[i].style.display = "none";
+         }
+     }
 }
 let nonAdminMenu = {
-    incident: document.getElementById("incident-menu"),
-    profile: document.getElementById("profile-menu"),
-    landing: document.getElementById("landing-menu")
+    incident: document.getElementsByClassName("incident-menu"),
+    profile: document.getElementsByClassName("profile-menu"),
+    landing: document.getElementsByClassName("landing-menu"),
+    showIncident: function() {
+        for (let i = 0; i < this.incident.length; i++) {
+            this.incident[i].style.display = "block";
+        }
+    },
+    hideIncident: function() {
+        for (let i = 0; i < this.incident.length; i++) {
+            this.incident[i].style.display = "none";
+        }
+    },
+    showProfile: function() {
+        for (let i = 0; i < this.profile.length; i++) {
+            this.profile[i].style.display = "block";
+        }
+    },
+    hideProfile: function() {
+        for (let i = 0; i < this.profile.length; i++) {
+            this.profile[i].style.display = "none";
+        }
+    },
+    showLanding: function() {
+        for (let i = 0; i < this.landing.length; i++) {
+            this.landing[i].style.display = "block";
+        }
+    },
+    hideLanding: function() {
+        for (let i = 0; i < this.landing.length; i++) {
+            this.landing[i].style.display = "none";
+        }
+    }
 }
 
 let guestMenu = {
-    signin: document.getElementById("signin-menu"),
-    signup: document.getElementById("signup-menu"),
-    index: document.getElementById("index-menu"),
-    about: document.getElementById("about-menu") 
+    signin: document.getElementsByClassName("signin-menu"),
+    signup: document.getElementsByClassName("signup-menu"),
+    index: document.getElementsByClassName("index-menu"),
+    about: document.getElementsByClassName("about-menu"), 
+    showSignin: function() {
+        for (let i = 0; i < this.signin.length; i++) {
+            this.signin[i].style.display = "block";
+        }
+    },
+    hideSignin: function() {
+        for (let i = 0; i < this.signin.length; i++) {
+            this.signin[i].style.display = "none";
+        }
+    },
+    showSignup: function() {
+        for (let i = 0; i < this.signup.length; i++) {
+            this.signup[i].style.display = "block";
+        }
+    },
+    hideSignup: function() {
+        for (let i = 0; i < this.signup.length; i++) {
+            this.signup[i].style.display = "none";
+        }
+    },
+    showIndex: function() {
+        for (let i = 0; i < this.index.length; i++) {
+            this.index[i].style.display = "block";
+        }
+    },
+    hideIndex: function() {
+        for (let i = 0; i < this.index.length; i++) {
+            this.index[i].style.display = "none";
+        }
+    },
+    showAbout: function() {
+        for (let i = 0; i < this.about.length; i++) {
+            this.about[i].style.display = "block";
+        }
+    },
+    hideAbout: function() {
+        for (let i = 0; i < this.about.length; i++) {
+            this.about[i].style.display = "none";
+        }
+    }
 }
 
 
-window.onload = () => {
+window.onload = function() {
     if (sessionStorage.getItem("user") && sessionStorage.getItem("isLoggedIn")) {
         user = JSON.parse(sessionStorage.getItem("user"));
         if (user.isAdmin) {
             displayAdminMenu();
         }
         else {
+            if (/admin/.test(window.location.href)) {
+                window.stop();
+                window.location.replace("landing.html");
+                displayNonAdminMenu();
+            }          
             displayNonAdminMenu();
         }
     }
     else {
-        window.stop();
-        window.location.replace("signin.html");
+        // window.stop();
+        // window.location.replace("signin.html");
         displayGuestMenu();
     }
 }
 
-document.getElementById("signout").onclick = () => {
-    sessionStorage.clear();
-    window.stop();
-    window.location.replace("index.html");
-}
+
 
 function displayAdminMenu () {
-    adminMenu.admin.style.display = "block";
-    adminMenu.signout.style.display = "block";
-    nonAdminMenu.incident.style.display = "none";
-    nonAdminMenu.profile.style.display = "none";
-    nonAdminMenu.landing.style.display = "none";
-    nonAdmin.signin.style.display = "none";
-    nonAdmin.signup.style.display = "none";
-    nonAdmin.index.style.display = "none";
-    guestMenu.about.style.display = "none";
+    adminMenu.showAdmin();
+    adminMenu.showSignout();
+    nonAdminMenu.hideIncident();
+    nonAdminMenu.hideProfile();
+    nonAdminMenu.showLanding();
+    guestMenu.hideSignin();
+    guestMenu.hideSignup();
+    guestMenu.hideIndex();
+    guestMenu.hideAbout();
 }
 
 function displayNonAdminMenu () {
-    adminMenu.admin.style.display = "none";
-    adminMenu.signout.style.display = "block";
-    nonAdminMenu.incident.style.display = "block";
-    nonAdminMenu.profile.style.display = "block";
-    nonAdminMenu.landing.style.display = "block";
-    guestMenu.signin.style.display = "none";
-    guestMenu.signup.style.display = "none";
-    guestMenu.index.style.display = "none";
-    guestMenu.about.style.display = "none";
+    adminMenu.hideAdmin();
+    adminMenu.showSignout();
+    nonAdminMenu.showIncident();
+    nonAdminMenu.showProfile();
+    nonAdminMenu.showLanding();
+    guestMenu.hideSignin();
+    guestMenu.hideSignup();
+    guestMenu.hideIndex();
+    guestMenu.showAbout();
 }
 
 function displayGuestMenu () {
-    adminMenu.admin.style.display = "none";
-    adminMenu.signout.style.display = "none";
-    nonAdminMenu.incident.style.display = "none";
-    nonAdminMenu.profile.style.display = "none";
-    nonAdminMenu.landing.style.display = "none";
-    guestMenu.signin.style.display = "block";
-    guestMenu.signup.style.display = "block";
-    guestMenu.index.style.display = "block";
-    guestMenu.about.style.display = "block";
+    adminMenu.hideAdmin();
+    adminMenu.hideSignout();
+    nonAdminMenu.hideIncident();
+    nonAdminMenu.hideProfile();
+    nonAdminMenu.hideLanding();
+    guestMenu.showSignin();
+    guestMenu.showSignup();
+    guestMenu.showIndex();
+    guestMenu.showAbout();
 }

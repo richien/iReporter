@@ -25,7 +25,8 @@ function isMatching_password() {
 
 function displayText(color, text) {
     message.style.color = color;
-    message.innerHTML = "<p>" + text + "</p>"
+    // message.innerHTML = "<p>" + text + "</p>"
+    message.innerHTML = '<p><div class="loader"></div></p>';
     message.scrollIntoView();
 }
 
