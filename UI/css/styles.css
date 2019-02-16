@@ -70,6 +70,11 @@ header {
    text-decoration: none;
    color: rgb(85, 80, 80);
 }
+#incident-menu a {
+    color: coral;
+    font-weight: bolder;
+    font-size: 17px;
+}
 .menu-header ul li a:hover {
    text-decoration: underline;
 }
@@ -85,6 +90,9 @@ header {
 .drop-menu {
     margin: 20px;
     float: right;
+}
+.drop-menu li {
+    list-style: none;
 }
 .drop-menu-content {
     display: none;
@@ -111,7 +119,11 @@ header {
 .drop-menu-btn #profile-btn {
     background-color: lightgreen;
 }
-
+.incident-menu a#report {
+    color: coral;
+    font-weight: bolder;
+    font-size: 18px;
+}
 .aside {
     padding: 15px;
     text-align: center;
@@ -431,11 +443,46 @@ header {
    box-shadow: 0px 2px 0px #aaa;
    background-color: coral;
 }
-
+/*Profile page*/
+#view-incidents-btn {
+    background-color: bisque;
+    padding: 5px;
+}
+#personal-info {
+    text-align: justify;
+}
+#row-profile {
+    background-color: bisque;
+    padding: 5px;
+}
+div#tbl-rejected {
+    background-color: salmon;
+    padding: 2px;
+    color: wheat;
+}
+div#tbl-investigate {
+    background-color: peachpuff;
+    padding: 2px;
+    color: grey;
+}
+div#tbl-resolved {
+    background-color: greenyellow;
+    padding: 2px;
+    color: dodgerblue;
+}
+div#tbl-reported {
+    background-color: lavender;
+    padding: 2px;
+    color: cadetblue;
+}
+/* div#statistics {
+    padding: 0px;
+} */
+/*******************************/
 .table-landing {
-    width: 70%;
+    width: 100%;
     border-collapse: collapse;
-    margin: 5px auto;
+    margin-bottom: 5px auto;
     float: none;
     border-radius: 14px;
 }
@@ -493,11 +540,13 @@ header {
 }
 .table-landing  p#posted.status {  
     font-size: small;
+    width: 100%;
 }
 .table-landing  p#status.status {  
-    font-weight: bolder;
     font-size: small;
+    width: 100%;
 }
+
 .table-landing .row-footer {
     height: 50px;
     width: 20%;
@@ -582,7 +631,6 @@ footer .footer-upper {
     min-height: 100px;
 }
 footer .footer-lower {
-    text-align: left;
     background-color: rgb(233, 117, 117);
 }
 footer .footer-upper, .footer-lower{
@@ -594,9 +642,12 @@ footer .footer-lower {
     padding: 1px;
     bottom: 0;
 }
+footer div.footer-lower ul {
+    display: flex;
+}
 
 footer .footer-lower ul li {
-	display: inline-block;
+    display: inline-block;
 	text-decoration: none;
 	padding: 1px 10px 10px 10px;
 }
