@@ -540,11 +540,13 @@ div#tbl-reported {
 }
 .table-landing  p#posted.status {  
     font-size: small;
+    width: 100%;
 }
 .table-landing  p#status.status {  
-    font-weight: bolder;
     font-size: small;
+    width: 100%;
 }
+
 .table-landing .row-footer {
     height: 50px;
     width: 20%;
@@ -619,7 +621,6 @@ div#tbl-reported {
     height: 50px;
 }
 
-
 footer {
     color: antiquewhite;
 }
@@ -641,8 +642,8 @@ footer .footer-lower {
     padding: 1px;
     bottom: 0;
 }
-footer .footer-lower ul {
-    display: inline-flex;
+footer div.footer-lower ul {
+    display: flex;
 }
 
 footer .footer-lower ul li {

@@ -110,16 +110,15 @@ function createTable(data) {
             <tr>
                 <td>
                     <div class="row row-describe"  id="${data.id}">
-                        <div class="col-10 col-s-10">
+                        <div class="col-12 col-s-12">
                             <p id="comment">${data.text}&nbsp;&nbsp;&nbsp;
                                 <button class="btn-grey" id="more-link" onclick="showLess('${data.id}');"><b>LESS</b></button>
                             </p>
                             <p class="status"id="status">${data.type}</p>
-                            <p class="status" id="posted"><b>Posted on: ${data.createdOn}</b></p>
-                            <p class="status"id="status"><b>Status:</b> ${data.status}</b></p>
-                            <p class="status"id="status"><b>Location:</b> ${data.location}</b></p>
+                            <p class="status" id="posted">Posted on: ${data.createdOn}</p>
+                            <p class="status"id="status">status: ${data.status}</p>
+                            <p class="status"id="status">Location: ${data.location}</p>
                         </div>
-                        <div class="col-2 col-s-2" id="col-deco"></div>
                         <div class="row row-footer" id="update-${data.id}">
                                 
                         </div>
@@ -208,7 +207,7 @@ function displayFullName() {
     let fullname = capitalise(names);
     document.getElementById("fullname").innerHTML = fullname;
     document.getElementById("fullname").style.fontSize = "16px";
-    document.getElementById("fullname").style.fontWeight = "bolder";
+    document.getElementById("fullname").style.fontWeight = "bold";
     document.getElementById("fullname").style.color = "coral";
     document.getElementById("email").innerHTML = user.email;
 }

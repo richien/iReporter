@@ -105,8 +105,9 @@ let guestMenu = {
     }
 }
 
+window.addEventListener('DOMContentLoaded', displayMenu, false);
 
-window.onload = function() {
+function displayMenu() {
     if (sessionStorage.getItem("user") && sessionStorage.getItem("isLoggedIn")) {
         user = JSON.parse(sessionStorage.getItem("user"));
         if (user.isAdmin) {
