@@ -11,8 +11,8 @@ let interventions;
 let results = [];
 let user = JSON.parse(sessionStorage.getItem("user"));
 let token = sessionStorage.getItem("token");
-const urlRedflags = `http://localhost:5000/api/v1/red-flags/${user.id}/users`;
-const urlInterventions = `http://localhost:5000/api/v1/interventions/${user.id}/users`;
+const urlRedflags = `https://irepo-api.herokuapp.com/api/v1/red-flags/${user.id}/users`;
+const urlInterventions = `https://irepo-api.herokuapp.com/api/v1/interventions/${user.id}/users`;
 
 
 // redflags = fetch(urlRedflags, {
