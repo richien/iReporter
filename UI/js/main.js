@@ -117,14 +117,43 @@ function displayMenu() {
             if (/admin/.test(window.location.href)) {
                 window.stop();
                 window.location.replace("landing.html");
-                displayNonAdminMenu();
+            }
+            if (/index/.test(window.location.href)) {
+                window.stop();
+                window.location.replace("landing.html");
+            }
+            if (/signin/.test(window.location.href)) {
+                window.stop();
+                window.location.replace("landing.html");
+            }
+            if (/signup/.test(window.location.href)) {
+                window.stop();
+                window.location.replace("landing.html");
             }          
             displayNonAdminMenu();
         }
     }
     else {
-        // window.stop();
-        // window.location.replace("signin.html");
+        if (/admin/.test(window.location.href)) {
+            window.stop();
+            window.location.replace("index.html");
+        }
+        if (/incident/.test(window.location.href)) {
+            window.stop();
+            window.location.replace("index.html");
+        }
+        if (/landing/.test(window.location.href)) {
+            window.stop();
+            window.location.replace("index.html");
+        }
+        if (/profile/.test(window.location.href)) {
+            window.stop();
+            window.location.replace("index.html");
+        }
+        if (/incidentdedtail/.test(window.location.href)) {
+            window.stop();
+            window.location.replace("index.html");
+        }
         displayGuestMenu();
     }
 }

@@ -7,9 +7,6 @@ const message = document.getElementById("flash-message");
 const success = "green";
 const fail = "red";
 
-// let user = JSON.parse(sessionStorage.getItem("user"));
-// const urlRedflags = `http://localhost:5000/api/v1/red-flags/${user.id}/users`;
-// const urlInterventions = `http://localhost:5000/api/v1/interventions/${user.id}/users`;
 let names = `${user.firstname} ${user.lastname} ${user.othernames}`;
 
 window.onload = () => {
@@ -82,8 +79,8 @@ function fetchAllIncidents(token, url){
     .catch(function(error){
         displayText(fail, error.message);
         console.log(error);
-        // sessionStorage.clear();
-        // window.location.replace("signin.html");
+        sessionStorage.clear();
+        window.location.replace("signin.html");
     });
 }
 
