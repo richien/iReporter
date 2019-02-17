@@ -1,11 +1,11 @@
-let reportedrf;
-let underinvrf;
-let resolvedrf;
-let rejectedrf;
-let reportedin;
-let underinvin;
-let resolvedin;
-let rejectedin;
+let reportedrf = 0;
+let underinvrf = 0;
+let resolvedrf = 0;
+let rejectedrf = 0;
+let reportedin = 0;
+let underinvin = 0;
+let resolvedin = 0;
+let rejectedin = 0;
 let redflags;
 let interventions;
 let results = [];
@@ -31,8 +31,10 @@ function getUserRedFlags(){
     })
     .then(function(data) {
         if (data["status"] === 200) {
-            //results.push(data.data);
             userstats(data.data);
+            displayRedFlagStats();
+        }
+        else if (data["status"] === 404) {
             displayRedFlagStats();
         }
         else {
@@ -58,9 +60,11 @@ function getUserInterventions() {
     })
     .then(function(data) {
         if (data["status"] === 200) {
-            //results.push(data.data);
              userstats(data.data);
              displayInterventionStats();
+        }
+        else if (data["status"] === 404) {
+            displayRedFlagStats();
         }
         else {
             throw new Error(data["error"]);
