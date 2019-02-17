@@ -25,7 +25,6 @@ function doEditComment(id, type) {
 
     let comment = document.getElementById(`input-edit-comment-${id}`);
     let editForm = {comment: comment.value}
-    //displayText(success, signInText);
     fetch(url, {
         method: "PATCH",
         mode: "cors",

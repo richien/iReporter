@@ -79,8 +79,8 @@ function fetchAllIncidents(token, url){
     .catch(function(error){
         displayText(fail, error.message);
         console.log(error);
-        sessionStorage.clear();
-        window.location.replace("signin.html");
+        // sessionStorage.clear();
+        // window.location.replace("signin.html");
     });
 }
 
@@ -95,7 +95,7 @@ function createTable(data) {
     <table class="table-landing">
         <thead>
             <tr>
-                <th id="title" onclick="showMore('${data.id}');">
+                <th id="title-${data.id}" onclick="showMore('${data.id}');">
                     <div>    
                         <p> ${data.title} </p>
                         <p style="font-size: 14px;">Posted By: ${data.createdBy}</p>
@@ -132,6 +132,27 @@ function displayData(dataArray) {
         data = dataArray[i].data();
         let table = createTable(data);
         incident.innerHTML += table;
+        if (data.status === 'draft')
+        {
+            document.getElementById(`title-${data.id}`).style.background = "lavender";
+            document.getElementById(`${data.id}`).style.background = "lavender";
+        }
+        else if (data.status === 'resolved')
+        {
+            document.getElementById(`title-${data.id}`).style.background = "lightgreen";
+            document.getElementById(`${data.id}`).style.background = "lightgreen";
+        }
+        else if (data.status === 'under-investigation')
+        {
+            document.getElementById(`title-${data.id}`).style.background = "darkorange";
+            document.getElementById(`title-${data.id}`).style.color = "white";
+            document.getElementById(`${data.id}`).style.background = "lightorange";
+        }
+        else if (data.status === 'rejected')
+        {
+            document.getElementById(`title-${data.id}`).style.background = "orangered";
+            document.getElementById(`title-${data.id}`).style.background = "white";
+        }
     }    
 }
 
