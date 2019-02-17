@@ -1,6 +1,6 @@
 window.onload = () => {
     if (sessionStorage.getItem("user")) {
-        getAll_redflags()
+        return;
     }
     else {
         window.location.replace("signin.html")

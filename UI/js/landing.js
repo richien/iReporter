@@ -106,13 +106,12 @@ function createTable(data) {
                     <div class="row row-describe"  id="${data.id}">
                         <div class="col-10 col-s-10">
                             <p id="comment">${data.text}&nbsp;&nbsp;&nbsp;
-                                <button id="more-link" onclick="showLess('${data.id}');"><b>LESS</b></button>
+                                <button class="btn-grey" id="more-link" onclick="showLess('${data.id}');"><b>LESS</b></button>
                             </p>
-                            <p class="status"id="status">
-                                <img src="images/redflag1.jpg" height="20px" width="20px">
-                            </p>
+                            <p class="status"id="status">${data.type}</p>
                             <p class="status" id="posted"><b>Posted on: ${data.createdOn}</b></p>
                             <p class="status"id="status"><b>Status:</b> ${data.status}</b></p>
+                            <p class="status"id="status"><b>Location:</b> ${data.location}</b></p>
                         </div>
                         <div class="col-2 col-s-2" id="col-deco"></div>
                         <div class="row row-footer">
@@ -148,30 +147,33 @@ function storeResponse(data) {
         text = data.data[i].comment;
         status =  data.data[i].status;
         createdOn = data.data[i].createdOn; 
+        address = data.data[i].location;
         
-        response = new ResponseObj(id, title, type, text, status, createdOn);
+        response = new ResponseObj(id, title, type, text, status, createdOn, address);
         results.push(response)
     }
     return results;
 }
 
 class ResponseObj {
-    constructor(id, title, type, text, status, createdOn) {
+    constructor(id, title, type, text, status, createdOn, address) {
         this._id =  id; 
         this._title = title;
         this._type = type;
         this._text = text;
         this._status = status;
         this._createdOn = createdOn;
+        this._location = address;
     }
     data() {
         let obj = {
-            id : this._id,
-            title : this._title,
-            type : this._type,
-            text : this._text,
-            status : this._status,
-            createdOn : this._createdOn
+            id: this._id,
+            title: this._title,
+            type: this._type,
+            text: this._text,
+            status: this._status,
+            createdOn: this._createdOn,
+            location: this._location
         }
         return obj;
     }

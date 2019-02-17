@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>iReporter-incident</title>
         <link rel="stylesheet" type="text/css" href="./css/styles.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <head>
     <body>
         <header>
@@ -33,16 +35,25 @@
                 <div class="row">
                     <div class="col-12 col-s-12">
                         <h1 style="color:lightcoral;">Report Incident</h1>
-                        <form>
+                        <div id="flash-message"></div>
+                        <form action="#" onsubmit="return createIncident();">
                             <div class="form-wrapper">
-                                <p>Redflag&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="type" value="" type="radio" checked></p>
-                                <p>Intervention&nbsp;<input name="type" value="" type="radio"></p>
-                                <p><input name="title" value="" placeholder="Title" class="input-text" required></p>
-                                <p><input name="description" type="area" value="" placeholder="Enter Description here"  class="input-area" required></p>
-                                <p><input class="btn-green" name="location-btn" type="image" src="images/location.png" alt="submit" value=""><input class="btn-green" name="upload-image-btn" type="image" src="images/photo.png" alt="submit" value=""><input class="btn-green" name="upload-video-btn" type="image" src="images/video.png" alt="submit" value=""></p>
-                                <p><input class="btn-green" name="save-btn" type="image" src="images/save.png" alt="submit" value=""><a id="cancel-btn" href="landing.html"><img src="images/cancel.png"></a></p>
+                                <p>Redflag&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="type" value="red-flag" type="radio" id="redflag" checked></p>
+                                <p>Intervention&nbsp;<input name="type" value="intervention" type="radio" id="intervene"></p>
+                                <p><input id="title" value="" placeholder="Title" class="input-text" required></p>
+                                <p><input id="description" type="area" value="" placeholder="Enter Description here"  class="input-area" required></p>
+                                <p><input class="btn-green" name="upload-image-btn" type="image" src="images/photo.png" alt="submit" value=""><input class="btn-green" name="upload-video-btn" type="image" src="images/video.png" alt="submit" value=""></p>
+                                <p><input class="btn-coral" id="save-btn" type="submit" value="REPORT" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="cancel-btn" href="landing.html">Cancel</a></p>
                             </div>
                         </form>
+                        <div id="map-canvas">
+                            <h3>Where did this incident occur?</h3>
+                            <b>Current position</b>
+                            <div id="lat-lng"></div>
+                            <b>Closest matching address:</b>
+                            <div id="address"></div>
+                            <div id="googleMap" style="width:100%;height:400px;"></div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -60,6 +71,10 @@
                         </ul>
                     </div>
         </footer>
+        <script src="js/main.js"></script>
+        <script src="http://maps.google.com/maps/api/js?key=AIzaSyB9bjLjFKQOCBmrG4vBnDAmazEjDX8SVV0&sensor=false" type="text/javascript"></script>
+        <script src="js/location.js"></script>
+        <script src="js/incident.js"></script>
     </body>
 </html>
 

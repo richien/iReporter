@@ -382,11 +382,17 @@ header {
      margin: 0px 20px 5px 20px;
      display: inline-block;
  }
-
- .form-wrapper a#cancel-btn img {
-    width: 30px;
-    height: 30px;
+ .form-wrapper a#cancel-btn  {
+    width: 20px;
+    height: 20px;
     margin: 0px 20px 5px 20px;
+    font-size: 15px;
+ }
+.form-wrapper a#cancel-btn:hover {
+    border: 2px solid coral;
+    background-color: coral;
+    color: whitesmoke;
+    border-radius: 5px;
  }
 
  .btn-green:hover {
@@ -395,42 +401,41 @@ header {
     border-radius: 5px;
 }
 
-.form-wrapper a#cancel-btn img:hover {
-    border: 2px solid coral;
-    background-color: coral;
-    border-radius: 5px;
- }
-
 .btn-grey {
     background-color: rgb(147, 167, 147);
     padding: 5px;
     color: rgb(255, 255, 255);
     font-weight: bolder;
-    border-radius: 14px;
+    border: 1px none #aaa;
+    border-radius: 2px;
     text-decoration: none;
 }
 .btn-grey:hover {
    font-weight: normal;
    box-shadow: 0px 2px 0px #aaa;
+   background-color: chocolate;
 }
 .btn-coral {
     background-color: lightcoral;
     padding: 5px;
     color: rgb(255, 255, 255);
     font-weight: bolder;
-    border-radius: 14px;
+    font-size: 12px;
+    border: 1px none #aaa;
+    border-radius: 2px;
     width: 100px;
     text-decoration: none;
 }
 .btn-coral:hover {
    font-weight: normal;
    box-shadow: 0px 2px 0px #aaa;
+   background-color: coral;
 }
 
 .table-landing {
     width: 70%;
     border-collapse: collapse;
-    margin: 30px auto;
+    margin: 5px auto;
     float: none;
     border-radius: 14px;
 }
@@ -463,7 +468,7 @@ header {
 }
 
 .table-landing .row-describe {
-    background-color: lightgray;
+    background-color: bisque;
     height: 100%;
     border-radius: 5px;
     margin-bottom: 20px;
@@ -478,15 +483,19 @@ header {
 }
 .table-landing  p.status  {
     font-size: 15px;
-    padding: 5px;
+    padding: 1px;
     text-align: right;
-    margin: 0px;
+    margin: 2px;
     position: relative;
     right: 0px;
-    color: lightcoral;
+    color: chocolate;
+    width: 100%;
 }
 .table-landing  p#posted.status {  
-    color: ghostwhite;
+    font-size: small;
+}
+.table-landing  p#status.status {  
+    font-weight: bolder;
     font-size: small;
 }
 .table-landing .row-footer {
@@ -537,6 +546,12 @@ header {
 .table-landing .row-footer li#delete img:hover{
     border: 2px solid white;
     border-radius: 5px;
+}
+
+#map-canvas {
+    width: 100%;
+    height: 50%;
+    float: left;
 }
 
 #vertical-rule {
@@ -649,7 +664,6 @@ footer .footer-lower ul li a:hover{
     }
     
     .table-landing .row-describe {
-        background-color: lightgray;
         height: 100%;
         border-radius: 5px;
         margin-bottom: 20px
@@ -659,6 +673,7 @@ footer .footer-lower ul li a:hover{
     }
     .table-landing  p.status  {
         font-size: 20px;
+        width: 50%;
     }
     .table-landing p.links-footer a{
         margin: 20px 20px auto;
@@ -715,7 +730,6 @@ footer .footer-lower ul li a:hover{
     }
     
     .table-landing .row-describe {
-        background-color: lightgray;
         height: 100%;
         border-radius: 5px;
         margin-bottom: 20px
@@ -725,6 +739,7 @@ footer .footer-lower ul li a:hover{
     }
     .table-landing  p.status  {
         font-size: 20px;
+        width: 50%;
     }
 
     .table-landing p.links-footer a{
