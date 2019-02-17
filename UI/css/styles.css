@@ -475,9 +475,42 @@ div#tbl-reported {
     padding: 2px;
     color: cadetblue;
 }
-/* div#statistics {
-    padding: 0px;
-} */
+/* user statistics */
+ div#tbl-reported, 
+div#tbl-resolved, 
+div#tbl-investigate,
+div#tbl-rejected  {
+    border: 1px solid;
+}
+div#tbl-reported, 
+div#tbl-resolved, 
+div#tbl-investigate,
+div#tbl-rejected  h3{
+    text-decoration:  underline;
+}
+div#tbl-reported table, 
+div#tbl-resolved table, 
+div#tbl-investigate table,
+div#tbl-rejected table {
+    border: 1px solid;
+}
+div#tbl-reported, 
+div#tbl-resolved, 
+div#tbl-investigate,
+div#tbl-rejected thead {
+    text-decoration: underline;
+}
+div#tbl-reported table td#col-reported-rf, 
+div#tbl-reported table td#col-reported-in,
+div#tbl-resolved table td#col-resolved-rf, 
+div#tbl-resolved table td#col-resolved-in,
+div#tbl-investigate table td#col-underinv-rf,
+div#tbl-investigate table td#col-underinv-in,
+div#tbl-rejected table td#col-rejected-rf, 
+div#tbl-rejected table td#col-rejected-in {
+    border: 1px solid;
+}
+
 /*******************************/
 .table-landing {
     width: 100%;
@@ -596,41 +629,6 @@ div#tbl-reported {
     border: 2px solid white;
     border-radius: 5px;
 }
-div#tbl-reported, 
-div#tbl-resolved, 
-div#tbl-investigate,
-div#tbl-rejected  {
-    border: 1px solid;
-}
-div#tbl-reported, 
-div#tbl-resolved, 
-div#tbl-investigate,
-div#tbl-rejected  h3{
-    text-decoration:  underline;
-}
-div#tbl-reported, 
-div#tbl-resolved, 
-div#tbl-investigate,
-div#tbl-rejected table {
-    border: 1px solid;
-}
-div#tbl-reported, 
-div#tbl-resolved, 
-div#tbl-investigate,
-div#tbl-rejected thead {
-    text-decoration: underline;
-}
-div#tbl-reported table td#col-reported-rf, 
-div#tbl-reported table td#col-reported-in,
-div#tbl-resolved table td#col-resolved-rf, 
-div#tbl-resolved table td#col-resolved-in,
-div#tbl-investigate table td#col-underinv-rf,
-div#tbl-investigate table td#col-underinv-in,
-div#tbl-rejected table td#col-rejected-rf, 
-div#tbl-rejected table td#col-rejected-in {
-    border: 1px solid;
-}
-
 
 #map-canvas {
     width: 100%;
