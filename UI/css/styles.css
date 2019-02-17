@@ -608,8 +608,17 @@ div#tbl-rejected table td#col-rejected-in {
     height: 10px;
     display: block;
   }
+.row-footer .edit button {
+    border: none;
+    background: none
+}
+.row-footer .edit button:hover {
+    border: 1px solid white;
+    border-radius: 14px;
+    background-color: coral;
+}
 
-.table-landing .row-footer li#edit img{
+.table-landing .row-footer .edit img{
     width: 20px;
     height: 22px;
 }
@@ -629,11 +638,28 @@ div#tbl-rejected table td#col-rejected-in {
     border: 2px solid white;
     border-radius: 5px;
 }
-
-#map-canvas {
+form#form-edit-comment p textarea {
     width: 100%;
-    height: 50%;
-    float: left;
+    height: 120px;
+    scroll-behavior: auto;
+}
+form#form-edit-comment p .edit {
+    border: none;
+    background: none
+}
+form#form-edit-comment p .edit img{
+    width: 30px;
+}
+form#form-edit-comment p .edit img:hover{
+    border: 1px solid white;
+    border-radius: 15px;
+    background: coral;
+}
+#map-canvas {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    width: 100%;
 }
 
 #vertical-rule {

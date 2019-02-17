@@ -20,7 +20,7 @@ function displayText(color, text) {
 }
 
 function createIncident() {
-    if (coordinates.lat === "" || coordinates.lng == "") {
+    if (coordinates.lat === "" || coordinates.lng === "") {
         displayText(fail, "Drag marker to select a location on the map below")
         return false;
     }
