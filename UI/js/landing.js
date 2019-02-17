@@ -17,7 +17,7 @@ function getAll_redflags() {
     if (typeof(Storage) !== "undefined") {
         let token = sessionStorage.getItem("token"); 
         if (redflagClicked !== true) {  
-            displayText(success, "")
+            displayText(success, "Loading ....")
             document.getElementById("display-incidents").innerHTML = "";
             fetchAllIncidents(token, urlRedflags); 
             redflagClicked = true;
@@ -36,7 +36,7 @@ function getAll_interventions() {
     if (typeof(Storage) !== "undefined") {
         let token = sessionStorage.getItem("token"); 
         if (interveneClicked !== true) {  
-            displayText(success, "")
+            displayText(success, "Loading ....")
             document.getElementById("display-incidents").innerHTML = "";
             fetchAllIncidents(token, urlInterventions); 
             interveneClicked = true;
@@ -67,6 +67,7 @@ function fetchAllIncidents(token, url){
         if (data["status"] === 200) {
             let results = storeResponse(data);
             displayData(results);
+            displayText(success, "")
         }
         else if (data["status"] === 404) {
             displayText(success, data['data'][0]);

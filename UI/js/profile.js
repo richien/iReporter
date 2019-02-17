@@ -3,6 +3,7 @@ let redflagClicked = false;
 let interveneClicked = false;
 let response = null;
 let res = [];
+let edit = [];
 const message = document.getElementById("flash-message");
 const success = "green";
 const fail = "red";
@@ -13,6 +14,13 @@ window.onload = () => {
     displayFullName();
 }
 
+
+
+function setEditListeners() {
+    for(let i = 0; i < edit; i++) {
+        edit[i].addEventListener("click", editCommmentForm);
+    }
+}
 
 function getAll_redflags() {
     if (typeof(Storage) !== "undefined") {
@@ -79,8 +87,8 @@ function fetchAllIncidents(token, url){
     .catch(function(error){
         displayText(fail, error.message);
         console.log(error);
-        sessionStorage.clear();
-        window.location.replace("signin.html");
+        // sessionStorage.clear();
+        // window.location.replace("signin.html");
     });
 }
 
@@ -116,8 +124,15 @@ function createTable(data) {
                             <p class="status"id="status">status: ${data.status}</p>
                             <p class="status"id="status">Location: ${data.location}</p>
                         </div>
-                        <div class="row row-footer" id="update-${data.id}">
-                                
+                        <div class="row row-footer" id="update-${data.id}"></div>
+                        <div id="edit-comment-${data.id}" style="display: none;">
+                            <form method="POST" action="#"  id="form-edit-comment" onsubmit="return doEditComment(${data.id}, '${data.type}');">
+                                <p><textarea id="input-edit-comment-${data.id}" name="edit" required>${data.text}</textarea></p>
+                                <p>
+                                    <button class="edit" id="btn-edit-comment-${data.id}" type="submit" value=""><img src="images/edit.png"></button>&nbsp;&nbsp;
+                                    <span id="cancel-edit"><a onclick="return hideEditCommentForm(${data.id})">Cancel</a></span>
+                                </p>
+                            </form>                          
                         </div>
                     </div>
                 </td>  
@@ -135,16 +150,31 @@ function displayData(dataArray) {
         if(data.status === "draft") {
           let update =  `
             <div class="col-6 col-s-6">
-                <li id="edit"><a href="incidentdetail.html"><img src="images/edit.png"></a></li>
+                <li id="edit"><button class="edit" id="edit-${data.id}" onclick="return editCommmentForm(${data.id});"><img src="images/edit.png"></button></li>
             </div>
             <div class="col-6 col-s-6">
                 <li id="delete"><a href=""><img src="images/delete.png"></a></li>
             </div>
             `
             document.getElementById(`update-${data.id}`).innerHTML = update;
-
+            document.getElementById(`edit-comment-${data.id}`).style.display = "none";
+            document.getElementById(`edit-${data.id}`).style.background = "none";
+            document.getElementById(`edit-${data.id}`).style.border = "none";
         }
-    }    
+        let btnId = document.getElementById(`edit-${data.id}`);
+        edit.push(btnId);
+    }   
+}
+
+function editCommmentForm(id) {   
+    document.getElementById("edit").style.display = "none";
+    document.getElementById("delete").style.display = "none";
+    document.getElementById(`edit-comment-${id}`).style.display = "block";
+}
+function hideEditCommentForm(id) {  
+    document.getElementById("edit").style.display = "block";
+    document.getElementById("delete").style.display = "block";
+    document.getElementById(`edit-comment-${id}`).style.display = "none";
 }
 
 function storeResponse(data) {
