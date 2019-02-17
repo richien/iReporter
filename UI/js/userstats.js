@@ -64,7 +64,7 @@ function getUserInterventions() {
              displayInterventionStats();
         }
         else if (data["status"] === 404) {
-            displayRedFlagStats();
+            displayInterventionStats();
         }
         else {
             throw new Error(data["error"]);
