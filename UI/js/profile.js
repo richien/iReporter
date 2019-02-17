@@ -103,7 +103,7 @@ function createTable(data) {
     <table class="table-landing">
         <thead>
             <tr>
-                <th id="title" onclick="showMore('${data.id}');">
+                <th id="title-${data.id}" onclick="showMore('${data.id}');">
                     <div>    
                         <p> ${data.title} </p>
                         <span style="font-size: 14px;">Posted By ${capitalise(names)}</span>
@@ -156,10 +156,28 @@ function displayData(dataArray) {
                 <li id="delete"><a href=""><img src="images/delete.png"></a></li>
             </div>
             `
+            document.getElementById(`title-${data.id}`).style.background = "lavender";
+            document.getElementById(`${data.id}`).style.background = "lavender";
             document.getElementById(`update-${data.id}`).innerHTML = update;
             document.getElementById(`edit-comment-${data.id}`).style.display = "none";
             document.getElementById(`edit-${data.id}`).style.background = "none";
             document.getElementById(`edit-${data.id}`).style.border = "none";
+        }
+        else if (data.status === 'resolved')
+        {
+            document.getElementById(`title-${data.id}`).style.background = "lightgreen";
+            document.getElementById(`${data.id}`).style.background = "lightgreen";
+        }
+        else if (data.status === 'under-investigation')
+        {
+            document.getElementById(`title-${data.id}`).style.background = "darkorange";
+            document.getElementById(`title-${data.id}`).style.color = "white";
+            document.getElementById(`${data.id}`).style.background = "lightorange";
+        }
+        else if (data.status === 'rejected')
+        {
+            document.getElementById(`title-${data.id}`).style.background = "orangered";
+            document.getElementById(`title-${data.id}`).style.background = "white";
         }
         let btnId = document.getElementById(`edit-${data.id}`);
         edit.push(btnId);

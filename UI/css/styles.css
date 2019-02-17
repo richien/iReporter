@@ -456,14 +456,14 @@ header {
     padding: 5px;
 }
 div#tbl-rejected {
-    background-color: salmon;
+    background-color: orangered;
     padding: 2px;
     color: wheat;
 }
 div#tbl-investigate {
-    background-color: peachpuff;
+    background-color: darkorange;
     padding: 2px;
-    color: grey;
+    color: white;
 }
 div#tbl-resolved {
     background-color: greenyellow;
