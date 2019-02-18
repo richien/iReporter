@@ -72,6 +72,9 @@ function createIncident() {
             else {
                 displayText(fail, "Browser does not support Web Storage");
             }
+            window.setTimeout( function() {
+                window.location.reload();
+            }, 2000);
         })
         .catch(function(error){
             displayText(fail, error.message)

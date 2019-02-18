@@ -1,6 +1,7 @@
 
-const successText = "Comment Edited";
 const deletesuccessText = "Incident Deleted";
+const commentsuccessText = "Comment Edited";
+const statussuccessText = "Status Updated";
 
 
 function displayText(color, text) {
@@ -36,7 +37,43 @@ function doEditComment(id, type) {
             if (data["status"] !== 200) {
                 throw new Error(data["error"]);
             }
-            displayText(success, successText);
+            displayText(success, commentsuccessText);
+            window.location.reload();
+        })
+        .catch(function(error){
+            displayText(fail, error.message)
+        });
+        return false; 
+    }
+
+
+function doEditStatus(id, type, status) {
+    let url;
+    if(type === 'red-flag') {
+        url = `http://localhost:5000/api/v1/red-flags/${id}/status`;
+    }
+    else {
+        url = `http://localhost:5000/api/v1/interventions/${id}/status`;
+    }
+
+    let newstatus = {status: status}
+    fetch(url, {
+        method: "PATCH",
+        mode: "cors",
+        headers: {
+            "Content-Type" : "application/json",
+            "Authorization" :  `Bearer ${token}`
+            },    
+        body: JSON.stringify(newstatus)
+        })
+        .then(function(response) {
+             return response.json();
+        })
+        .then(function(data) {
+            if (data["status"] !== 200) {
+                throw new Error(data["error"]);
+            }
+            displayText(success, statussuccessText);
             window.location.reload();
         })
         .catch(function(error){
