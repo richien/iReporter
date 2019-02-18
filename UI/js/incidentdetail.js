@@ -14,17 +14,16 @@ function displayText(color, text) {
     message.scrollIntoView();
 }
 
-function doEditComment(id, type) {
+function doEditStatus(id, type, status) {
     let url;
     if(type === 'red-flag') {
-        url = `http://localhost:5000/api/v1/red-flags/${id}/comment`;
+        url = `http://localhost:5000/api/v1/red-flags/${id}/status`;
     }
     else {
-        url = `http://localhost:5000/api/v1/interventions/${id}/comment`;
+        url = `http://localhost:5000/api/v1/interventions/${id}/status`;
     }
 
-    let comment = document.getElementById(`input-edit-comment-${id}`);
-    let editForm = {comment: comment.value}
+    let newstatus = {status: status}
     fetch(url, {
         method: "PATCH",
         mode: "cors",
@@ -32,7 +31,7 @@ function doEditComment(id, type) {
             "Content-Type" : "application/json",
             "Authorization" :  `Bearer ${token}`
             },    
-        body: JSON.stringify(editForm)
+        body: JSON.stringify(newstatus)
         })
         .then(function(response) {
              return response.json();
