@@ -85,10 +85,10 @@ function doEditStatus(id, type, status) {
 function deleteIncident(id, type) {
     let url;
     if(type === 'red-flag') {
-        url = `http://localhost:5000/api/v1/red-flags/${id}`;
+        url = `https://irepo-api.herokuapp.com/api/v1/red-flags/${id}`;
     }
     else {
-        url = `http://localhost:5000/api/v1/interventions/${id}`;
+        url = `https://irepo-api.herokuapp.com/api/v1/interventions/${id}`;
     }
 
     fetch(url, {
