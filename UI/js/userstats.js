@@ -11,8 +11,16 @@ let interventions;
 let results = [];
 let user = JSON.parse(sessionStorage.getItem("user"));
 let token = sessionStorage.getItem("token");
-const urlRedflags = `http://localhost:5000/api/v1/red-flags`;
-const urlInterventions = `http://localhost:5000/api/v1/interventions`;
+let urlRedflags;
+let urlInterventions;
+if (user.isAdmin) {
+    urlRedflags = `http://localhost:5000/api/v1/red-flags`;
+    urlInterventions = `http://localhost:5000/api/v1/interventions`;
+}
+else {
+    urlRedflags = `http://localhost:5000/api/v1/red-flags/${user.id}/users`;
+    urlInterventions = `http://localhost:5000/api/v1/interventions/${user.id}/users`;
+}
 
 window.addEventListener("DOMContentLoaded", getUserRedFlags);
 window.addEventListener("load", getUserInterventions);
