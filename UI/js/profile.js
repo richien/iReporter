@@ -153,7 +153,7 @@ function displayData(dataArray) {
                 <li id="edit"><button class="edit" id="edit-${data.id}" onclick="return editCommmentForm(${data.id});"><img src="images/edit.png"></button></li>
             </div>
             <div class="col-6 col-s-6">
-                <li id="delete"><a href=""><img src="images/delete.png"></a></li>
+                <li id="delete"><button class="edit" id="delete-${data.id}" onclick="return deleteIncident(${data.id});"><img src="images/delete.png"></button></li>
             </div>
             `
             document.getElementById(`title-${data.id}`).style.background = "lavender";
@@ -162,6 +162,12 @@ function displayData(dataArray) {
             document.getElementById(`edit-comment-${data.id}`).style.display = "none";
             document.getElementById(`edit-${data.id}`).style.background = "none";
             document.getElementById(`edit-${data.id}`).style.border = "none";
+            document.getElementById(`delete-${data.id}`).style.background = "none";
+            document.getElementById(`delete-${data.id}`).style.border = "none";
+            // document.getElementById(`delete-${data.id}`).addEventListener('mouseover', function () {
+            //     document.getElementById(`delete-${data.id}`).style.display = "block";
+            //     document.getElementById(`delete-${data.id}`).style.color = "red";
+            // });
         }
         else if (data.status === 'resolved')
         {

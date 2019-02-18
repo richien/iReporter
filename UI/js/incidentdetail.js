@@ -1,3 +1,5 @@
+
+const deletesuccessText = "Incident Deleted";
 const commentsuccessText = "Comment Edited";
 const statussuccessText = "Status Updated";
 
@@ -78,8 +80,40 @@ function doEditStatus(id, type, status) {
             displayText(fail, error.message)
         });
         return false; 
+}
+
+function deleteIncident(id, type) {
+    let url;
+    if(type === 'red-flag') {
+        url = `http://localhost:5000/api/v1/red-flags/${id}`;
     }
-    
+    else {
+        url = `http://localhost:5000/api/v1/interventions/${id}`;
+    }
+
+    fetch(url, {
+        method: "DELETE",
+        mode: "cors",
+        headers: {
+            "Content-Type" : "application/json",
+            "Authorization" :  `Bearer ${token}`
+            }
+        })
+        .then(function(response) {
+             return response.json();
+        })
+        .then(function(data) {
+            if (data["status"] !== 200) {
+                throw new Error(data["error"]);
+            }
+            displayText(success, deletesuccessText);
+            window.location.reload();
+        })
+        .catch(function(error){
+            displayText(fail, error.message)
+        });
+        return false; 
+}
 
 
 
