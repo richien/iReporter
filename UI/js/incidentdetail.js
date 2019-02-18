@@ -11,10 +11,10 @@ function displayText(color, text) {
 function doEditComment(id, type) {
     let url;
     if(type === 'red-flag') {
-        url = `http://localhost:5000/api/v1/red-flags/${id}/comment`;
+        url = `https://irepo-api.herokuapp.com/api/v1/red-flags/${id}/comment`;
     }
     else {
-        url = `http://localhost:5000/api/v1/interventions/${id}/comment`;
+        url = `https://irepo-api.herokuapp.com/api/v1/interventions/${id}/comment`;
     }
 
     let comment = document.getElementById(`input-edit-comment-${id}`);
@@ -48,10 +48,10 @@ function doEditComment(id, type) {
 function doEditStatus(id, type, status) {
     let url;
     if(type === 'red-flag') {
-        url = `http://localhost:5000/api/v1/red-flags/${id}/status`;
+        url = `https://irepo-api.herokuapp.com/api/v1/red-flags/${id}/status`;
     }
     else {
-        url = `http://localhost:5000/api/v1/interventions/${id}/status`;
+        url = `https://irepo-api.herokuapp.com/api/v1/interventions/${id}/status`;
     }
 
     let newstatus = {status: status}

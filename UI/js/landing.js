@@ -79,8 +79,8 @@ function fetchAllIncidents(token, url){
     .catch(function(error){
         displayText(fail, error.message);
         console.log(error);
-        // sessionStorage.clear();
-        // window.location.replace("signin.html");
+        //sessionStorage.clear();
+        window.location.reload();
     });
 }
 

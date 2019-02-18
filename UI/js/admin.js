@@ -17,14 +17,6 @@ window.onload = () => {
     displayFullName();
 }
 
-
-
-// function setEditListeners() {
-//     for(let i = 0; i < edit; i++) {
-//         updatebtnlist[i].addEventListener("click", editCommmentForm);
-//     }
-// }
-
 function getAll_redflags() {
     if (typeof(Storage) !== "undefined") {
         let token = sessionStorage.getItem("token"); 
@@ -90,8 +82,8 @@ function fetchAllIncidents(token, url){
     .catch(function(error){
         displayText(fail, error.message);
         console.log(error);
-        // sessionStorage.clear();
-        // window.location.replace("signin.html");
+        //sessionStorage.clear();
+        window.location.reload();
     });
 }
 

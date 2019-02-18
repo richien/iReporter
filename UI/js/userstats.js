@@ -14,12 +14,12 @@ let token = sessionStorage.getItem("token");
 let urlRedflags;
 let urlInterventions;
 if (user.isAdmin) {
-    urlRedflags = `http://localhost:5000/api/v1/red-flags`;
-    urlInterventions = `http://localhost:5000/api/v1/interventions`;
+    urlRedflags = `https://irepo-api.herokuapp.com/api/v1/red-flags`;
+    urlInterventions = `https://irepo-api.herokuapp.com/api/v1/interventions`;
 }
 else {
-    urlRedflags = `http://localhost:5000/api/v1/red-flags/${user.id}/users`;
-    urlInterventions = `http://localhost:5000/api/v1/interventions/${user.id}/users`;
+    urlRedflags = `https://irepo-api.herokuapp.com/api/v1/red-flags/${user.id}/users`;
+    urlInterventions = `https://irepo-api.herokuapp.com/api/v1/interventions/${user.id}/users`;
 }
 
 window.addEventListener("DOMContentLoaded", getUserRedFlags);
