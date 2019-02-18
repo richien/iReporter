@@ -159,6 +159,7 @@ function displayData(dataArray) {
             document.getElementById(`title-${data.id}`).style.background = "lavender";
             document.getElementById(`${data.id}`).style.background = "lavender";
             document.getElementById(`update-${data.id}`).innerHTML = update;
+            document.getElementById(`update-${data.id}`).style.width = "40%";
             document.getElementById(`edit-comment-${data.id}`).style.display = "none";
             document.getElementById(`edit-${data.id}`).style.background = "none";
             document.getElementById(`edit-${data.id}`).style.border = "none";
