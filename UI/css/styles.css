@@ -167,6 +167,7 @@ header {
 }
 
 /*The welcome page(index) rules*/
+
 .main-content #welcome p {
     font-weight: bolder;
     font-size: 200%;
@@ -486,7 +487,12 @@ header {
 }
 #personal-info {
     text-align: justify;
+    background: lightcoral;
+    color: white;
 }
+/* #personal-info span{
+    text-decoration: underline;
+} */
 #row-profile {
     background-color: bisque;
     padding: 5px;
@@ -674,6 +680,9 @@ div#tbl-rejected table td#col-rejected-in {
     border: 2px solid white;
     border-radius: 5px;
 }
+#tbl-stats {
+    font-size: small;
+}
 form#form-edit-comment p textarea {
     width: 100%;
     height: 120px;
@@ -799,6 +808,9 @@ footer .footer-lower ul li a:hover{
     .aside #landing-sidebar {
         visibility: visible;
         display: block;
+    }
+    .main-content {
+        overflow: auto;
     }
     .table-landing th {
         height: 10px;   

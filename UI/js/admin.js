@@ -252,7 +252,6 @@ function displayFullName() {
     document.getElementById("fullname").innerHTML = fullname;
     document.getElementById("fullname").style.fontSize = "16px";
     document.getElementById("fullname").style.fontWeight = "bold";
-    document.getElementById("fullname").style.color = "coral";
     document.getElementById("email").innerHTML = user.email;
 }
 
