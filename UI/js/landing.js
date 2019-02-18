@@ -151,7 +151,7 @@ function displayData(dataArray) {
         else if (data.status === 'rejected')
         {
             document.getElementById(`title-${data.id}`).style.background = "orangered";
-            document.getElementById(`title-${data.id}`).style.background = "white";
+            document.getElementById(`title-${data.id}`).style.color = "white";
         }
     }    
 }
