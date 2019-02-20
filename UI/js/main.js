@@ -1,6 +1,7 @@
 let adminMenu = {
     admin: document.getElementsByClassName("admin-menu"),
     signout: document.getElementsByClassName("signout"),
+    landing: document.getElementsByClassName("landing-menu"),
     showAdmin: function() { 
        for (let i = 0; i < this.admin.length; i++) {
            this.admin[i].style.display = "block";
@@ -20,12 +21,21 @@ let adminMenu = {
          for (let i = 0; i < this.signout.length; i++) {
              this.signout[i].style.display = "none";
          }
-     }
+     },
+    showLanding: function() {
+        for (let i = 0; i < this.landing.length; i++) {
+            this.landing[i].style.display = "block";
+        }
+    },
+    hideLanding: function() {
+        for (let i = 0; i < this.landing.length; i++) {
+            this.landing[i].style.display = "none";
+        }
+    }
 }
 let nonAdminMenu = {
     incident: document.getElementsByClassName("incident-menu"),
     profile: document.getElementsByClassName("profile-menu"),
-    landing: document.getElementsByClassName("landing-menu"),
     showIncident: function() {
         for (let i = 0; i < this.incident.length; i++) {
             this.incident[i].style.display = "block";
@@ -44,16 +54,6 @@ let nonAdminMenu = {
     hideProfile: function() {
         for (let i = 0; i < this.profile.length; i++) {
             this.profile[i].style.display = "none";
-        }
-    },
-    showLanding: function() {
-        for (let i = 0; i < this.landing.length; i++) {
-            this.landing[i].style.display = "block";
-        }
-    },
-    hideLanding: function() {
-        for (let i = 0; i < this.landing.length; i++) {
-            this.landing[i].style.display = "none";
         }
     }
 }
@@ -116,19 +116,19 @@ function displayMenu() {
         else {
             if (/admin/.test(window.location.href)) {
                 window.stop();
-                window.location.replace("landing.html");
+                window.location.replace("profile.html");
             }
             if (/index/.test(window.location.href)) {
                 window.stop();
-                window.location.replace("landing.html");
+                window.location.replace("profile.html");
             }
             if (/signin/.test(window.location.href)) {
                 window.stop();
-                window.location.replace("landing.html");
+                window.location.replace("profile.html");
             }
             if (/signup/.test(window.location.href)) {
                 window.stop();
-                window.location.replace("landing.html");
+                window.location.replace("profile.html");
             }          
             displayNonAdminMenu();
         }
@@ -163,9 +163,9 @@ function displayMenu() {
 function displayAdminMenu () {
     adminMenu.showAdmin();
     adminMenu.showSignout();
+    adminMenu.showLanding();
     nonAdminMenu.hideIncident();
     nonAdminMenu.hideProfile();
-    nonAdminMenu.showLanding();
     guestMenu.hideSignin();
     guestMenu.hideSignup();
     guestMenu.hideIndex();
@@ -175,9 +175,9 @@ function displayAdminMenu () {
 function displayNonAdminMenu () {
     adminMenu.hideAdmin();
     adminMenu.showSignout();
+    adminMenu.hideLanding();
     nonAdminMenu.showIncident();
     nonAdminMenu.showProfile();
-    nonAdminMenu.showLanding();
     guestMenu.hideSignin();
     guestMenu.hideSignup();
     guestMenu.hideIndex();
@@ -187,9 +187,9 @@ function displayNonAdminMenu () {
 function displayGuestMenu () {
     adminMenu.hideAdmin();
     adminMenu.hideSignout();
+    adminMenu.hideLanding();
     nonAdminMenu.hideIncident();
     nonAdminMenu.hideProfile();
-    nonAdminMenu.hideLanding();
     guestMenu.showSignin();
     guestMenu.showSignup();
     guestMenu.showIndex();

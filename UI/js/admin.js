@@ -17,14 +17,6 @@ window.onload = () => {
     displayFullName();
 }
 
-
-
-// function setEditListeners() {
-//     for(let i = 0; i < edit; i++) {
-//         updatebtnlist[i].addEventListener("click", editCommmentForm);
-//     }
-// }
-
 function getAll_redflags() {
     if (typeof(Storage) !== "undefined") {
         let token = sessionStorage.getItem("token"); 
