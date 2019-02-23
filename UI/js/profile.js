@@ -9,12 +9,11 @@ const success = "green";
 const fail = "red";
 
 let names = `${user.firstname} ${user.lastname} ${user.othernames}`;
+welcome.innerHTML = `<span>Welcome <h3 style="color:dodgerblue;">${user.username}</h3> to iReporter</span>`;
 
 window.onload = () => {
     displayFullName();
 }
-
-
 
 function setEditListeners() {
     for(let i = 0; i < edit; i++) {
@@ -77,6 +76,10 @@ function fetchAllIncidents(token, url){
             res = storeResponse(data);
             displayData(res);
         }
+        else if (data["status"] === 401) {
+            sessionStorage.clear();
+            window.location.replace("signin.html");
+        }
         else if (data["status"] === 404) {
             displayText(success, data['data'][0]);
         }
@@ -105,8 +108,8 @@ function createTable(data) {
             <tr>
                 <th id="title-${data.id}" onclick="showMore('${data.id}');">
                     <div>    
-                        <p> ${data.title} </p>
-                        <span style="font-size: 14px;">Posted By ${capitalise(names)}</span>
+                        <p id="title-text-${data.id}"><span id="status-box-${data.id}"></span>  ${data.title} </p>
+                        <span id="createdby-text-${data.id}">Posted By ${capitalise(names)}</span>
                     </div>
                 </th>
             </tr>
@@ -116,7 +119,7 @@ function createTable(data) {
                 <td>
                     <div class="row row-describe"  id="${data.id}">
                         <div class="col-12 col-s-12">
-                            <p id="comment">${data.text}&nbsp;&nbsp;&nbsp;
+                            <p id="comment-${data.id}">${data.text}&nbsp;&nbsp;&nbsp;
                                 <button class="btn-grey" id="more-link" onclick="showLess('${data.id}');"><b>LESS</b></button>
                             </p>
                             <p class="status"id="status">${data.type}</p>
@@ -147,6 +150,13 @@ function displayData(dataArray) {
         data = dataArray[i].data();
         let table = createTable(data);
         incident.innerHTML += table;
+        document.getElementById(`title-${data.id}`).style.background = "aliceblue";
+        document.getElementById(`title-text-${data.id}`).style.margin = "0";
+        document.getElementById(`title-text-${data.id}`).style.textAlign = "left";
+        document.getElementById(`createdby-text-${data.id}`).style.margin = "0";
+        document.getElementById(`createdby-text-${data.id}`).style.fontWeight = "normal";
+        document.getElementById(`createdby-text-${data.id}`).style.fontSize = "14px";
+        document.getElementById(`comment-${data.id}`).style.fontSize = "17px";
         if(data.status === "draft") {
           let update =  `
             <div class="col-6 col-s-6">
@@ -155,9 +165,8 @@ function displayData(dataArray) {
             <div class="col-6 col-s-6">
                 <li id="delete"><button class="edit" id="delete-${data.id}" onclick="return deleteIncident(${data.id});"><img src="images/delete.png"></button></li>
             </div>
-            `
-            document.getElementById(`title-${data.id}`).style.background = "lavender";
-            document.getElementById(`${data.id}`).style.background = "lavender";
+            `;
+            document.getElementById(`${data.id}`).style.background = "aliceblue";
             document.getElementById(`update-${data.id}`).innerHTML = update;
             document.getElementById(`update-${data.id}`).style.width = "40%";
             document.getElementById(`edit-comment-${data.id}`).style.display = "none";
@@ -165,26 +174,34 @@ function displayData(dataArray) {
             document.getElementById(`edit-${data.id}`).style.border = "none";
             document.getElementById(`delete-${data.id}`).style.background = "none";
             document.getElementById(`delete-${data.id}`).style.border = "none";
-            // document.getElementById(`delete-${data.id}`).addEventListener('mouseover', function () {
-            //     document.getElementById(`delete-${data.id}`).style.display = "block";
-            //     document.getElementById(`delete-${data.id}`).style.color = "red";
-            // });
+            document.getElementById(`status-box-${data.id}`).style.border = "0 solid";
+            document.getElementById(`status-box-${data.id}`).style.padding = "0px 20px 0px 20px";
+            document.getElementById(`status-box-${data.id}`).style.background = "lavender";
+            document.getElementById(`status-box-${data.id}`).style.marginRight = "15px";
         }
         else if (data.status === 'resolved')
         {
-            document.getElementById(`title-${data.id}`).style.background = "lightgreen";
             document.getElementById(`${data.id}`).style.background = "lightgreen";
+            document.getElementById(`status-box-${data.id}`).style.border = "0 solid";
+            document.getElementById(`status-box-${data.id}`).style.padding = "0px 20px 0px 20px";
+            document.getElementById(`status-box-${data.id}`).style.background = "lightgreen";
+            document.getElementById(`status-box-${data.id}`).style.marginRight = "15px";
         }
         else if (data.status === 'under-investigation')
         {
-            document.getElementById(`title-${data.id}`).style.background = "darkorange";
-            document.getElementById(`title-${data.id}`).style.color = "white";
             document.getElementById(`${data.id}`).style.background = "lightorange";
+            document.getElementById(`status-box-${data.id}`).style.border = "0 solid";
+            document.getElementById(`status-box-${data.id}`).style.padding = "0px 20px 0px 20px";
+            document.getElementById(`status-box-${data.id}`).style.background = "darkorange";
+            document.getElementById(`status-box-${data.id}`).style.marginRight = "15px";
         }
         else if (data.status === 'rejected')
         {
-            document.getElementById(`title-${data.id}`).style.background = "orangered";
-            document.getElementById(`title-${data.id}`).style.color = "white";
+            document.getElementById(`${data.id}`).style.background = "mistyrose";
+            document.getElementById(`status-box-${data.id}`).style.border = "0 solid";
+            document.getElementById(`status-box-${data.id}`).style.padding = "0px 20px 0px 20px";
+            document.getElementById(`status-box-${data.id}`).style.background = "orangered";
+            document.getElementById(`status-box-${data.id}`).style.marginRight = "15px";
         }
         let btnId = document.getElementById(`edit-${data.id}`);
         edit.push(btnId);
@@ -192,13 +209,13 @@ function displayData(dataArray) {
 }
 
 function editCommmentForm(id) {   
-    document.getElementById("edit").style.display = "none";
-    document.getElementById("delete").style.display = "none";
+    document.getElementById(`edit-${id}`).style.display = "none";
+    document.getElementById(`delete-${id}`).style.display = "none";
     document.getElementById(`edit-comment-${id}`).style.display = "block";
 }
 function hideEditCommentForm(id) {  
-    document.getElementById("edit").style.display = "block";
-    document.getElementById("delete").style.display = "block";
+    document.getElementById(`edit-${id}`).style.display = "block";
+    document.getElementById(`delete-${id}`).style.display = "block";
     document.getElementById(`edit-comment-${id}`).style.display = "none";
 }
 

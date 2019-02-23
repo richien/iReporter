@@ -69,8 +69,8 @@ function position(pos) {
 
 function updateMarkerPosition(latLng) {
     document.getElementById('lat-lng').innerHTML = [
-        latLng.lat(),
-        latLng.lng()
+        "Latitude: " + latLng.lat(),
+        "Longitude: " + latLng.lng()
     ].join(', ');
 }
 

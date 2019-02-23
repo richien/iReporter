@@ -111,10 +111,30 @@ function displayMenu() {
     if (sessionStorage.getItem("user") && sessionStorage.getItem("isLoggedIn")) {
         user = JSON.parse(sessionStorage.getItem("user"));
         if (user.isAdmin) {
+            if (/incident/.test(window.location.href)) {
+                window.stop();
+                window.location.replace("landing.html");
+            }
+            if (/profile/.test(window.location.href)) {
+                window.stop();
+                window.location.replace("landing.html");
+            }
+            if (/incidentdedtail/.test(window.location.href)) {
+                window.stop();
+                window.location.replace("landing.html");
+            }
             displayAdminMenu();
         }
         else {
             if (/admin/.test(window.location.href)) {
+                window.stop();
+                window.location.replace("profile.html");
+            }
+            if (/landing/.test(window.location.href)) {
+                window.stop();
+                window.location.replace("profile.html");
+            }
+            if (/systemusers/.test(window.location.href)) {
                 window.stop();
                 window.location.replace("profile.html");
             }
@@ -135,6 +155,10 @@ function displayMenu() {
     }
     else {
         if (/admin/.test(window.location.href)) {
+            window.stop();
+            window.location.replace("index.html");
+        }
+        if (/systemusers/.test(window.location.href)) {
             window.stop();
             window.location.replace("index.html");
         }
@@ -163,7 +187,7 @@ function displayMenu() {
 function displayAdminMenu () {
     adminMenu.showAdmin();
     adminMenu.showSignout();
-    adminMenu.showLanding();
+    adminMenu.hideLanding();
     nonAdminMenu.hideIncident();
     nonAdminMenu.hideProfile();
     guestMenu.hideSignin();

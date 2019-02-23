@@ -1,5 +1,6 @@
 let incident = document.getElementById("display-incidents");
 let welcome = document.getElementById("welcome");
+let users = [];
 let redflagClicked = false;
 let interveneClicked = false;
 let response = null;
@@ -8,10 +9,14 @@ const success = "green";
 const fail = "red";
 const urlRedflags = 'http://localhost:5000/api/v1/red-flags';
 const urlInterventions = 'http://localhost:5000/api/v1/interventions';
+const usersurl = 'http://localhost:5000/api/v1/users';
 
 
 let user = JSON.parse(sessionStorage.getItem("user"));
-welcome.innerHTML = `<p>Welcome <b style="color: coral;">${user.username}</b> to iReporter</p>`;
+welcome.innerHTML = "<span>Welcome <h3>" + `${user.username}` + "</h3> <\span>";
+welcome.innerHTML += "<span>Select the incident type to view all incidents</span>";
+
+window.document.addEventListener('DOMContentLoaded', getUsers);
 
 function getAll_redflags() {
     if (typeof(Storage) !== "undefined") {
@@ -72,6 +77,10 @@ function fetchAllIncidents(token, url){
         else if (data["status"] === 404) {
             displayText(success, data['data'][0]);
         }
+        else if (data["status"] === 401) {
+            sessionStorage.clear();
+            window.location.replace("signin.html");
+        }
         else {
             throw new Error(data["error"]);
         }        
@@ -91,14 +100,20 @@ function displayText(color, text) {
 }
 
 function createTable(data) {
+    let fullname = "";
+    for(let i = 0; i < users.length; i++) {
+        if (data.createdBy === users[i]['id']){
+            fullname = `${users[i]['firstname']} ${users[i]['othernames']} ${users[i]['lastname']}`;
+        }
+    }
     let table = `   
     <table class="table-landing">
         <thead>
             <tr>
                 <th id="title-${data.id}" onclick="showMore('${data.id}');">
                     <div>    
-                        <p> ${data.title} </p>
-                        <p style="font-size: 14px;">Posted By: ${data.createdBy}</p>
+                        <p id="title-text-${data.id}"><span id="status-box-${data.id}"></span>  ${data.title} </p>
+                        <span id="createdby-text-${data.id}">Posted By ${capitalise(fullname)}</span>
                     </div>
                 </th>
             </tr>
@@ -108,7 +123,7 @@ function createTable(data) {
                 <td>
                     <div class="row row-describe"  id="${data.id}">
                         <div class="col-10 col-s-10">
-                            <p id="comment">${data.text}&nbsp;&nbsp;&nbsp;
+                            <p id="comment-${data.id}">${data.text}&nbsp;&nbsp;&nbsp;
                                 <button class="btn-grey" id="more-link" onclick="showLess('${data.id}');"><b>LESS</b></button>
                             </p>
                             <div id="status-box">
@@ -132,29 +147,89 @@ function displayData(dataArray) {
         data = dataArray[i].data();
         let table = createTable(data);
         incident.innerHTML += table;
-        if (data.status === 'draft')
-        {
-            document.getElementById(`title-${data.id}`).style.background = "lavender";
-            document.getElementById(`${data.id}`).style.background = "lavender";
+        document.getElementById(`title-${data.id}`).style.background = "aliceblue";
+        document.getElementById(`title-text-${data.id}`).style.margin = "0";
+        document.getElementById(`title-text-${data.id}`).style.textAlign = "left";
+        document.getElementById(`createdby-text-${data.id}`).style.margin = "0";
+        document.getElementById(`createdby-text-${data.id}`).style.fontWeight = "normal";
+        document.getElementById(`createdby-text-${data.id}`).style.fontSize = "14px";
+        document.getElementById(`comment-${data.id}`).style.fontSize = "17px";
+        if(data.status === "draft") {
+            document.getElementById(`${data.id}`).style.background = "aliceblue";
+            document.getElementById(`status-box-${data.id}`).style.border = "0 solid";
+            document.getElementById(`status-box-${data.id}`).style.padding = "0px 20px 0px 20px";
+            document.getElementById(`status-box-${data.id}`).style.background = "lavender";
+            document.getElementById(`status-box-${data.id}`).style.marginRight = "15px";
         }
         else if (data.status === 'resolved')
         {
-            document.getElementById(`title-${data.id}`).style.background = "lightgreen";
             document.getElementById(`${data.id}`).style.background = "lightgreen";
+            document.getElementById(`status-box-${data.id}`).style.border = "0 solid";
+            document.getElementById(`status-box-${data.id}`).style.padding = "0px 20px 0px 20px";
+            document.getElementById(`status-box-${data.id}`).style.background = "lightgreen";
+            document.getElementById(`status-box-${data.id}`).style.marginRight = "15px";
         }
         else if (data.status === 'under-investigation')
         {
-            document.getElementById(`title-${data.id}`).style.background = "darkorange";
-            document.getElementById(`title-${data.id}`).style.color = "white";
             document.getElementById(`${data.id}`).style.background = "lightorange";
+            document.getElementById(`status-box-${data.id}`).style.border = "0 solid";
+            document.getElementById(`status-box-${data.id}`).style.padding = "0px 20px 0px 20px";
+            document.getElementById(`status-box-${data.id}`).style.background = "darkorange";
+            document.getElementById(`status-box-${data.id}`).style.marginRight = "15px";
         }
         else if (data.status === 'rejected')
         {
-            document.getElementById(`title-${data.id}`).style.background = "orangered";
-            document.getElementById(`title-${data.id}`).style.color = "white";
+            document.getElementById(`${data.id}`).style.background = "mistyrose";
+            document.getElementById(`status-box-${data.id}`).style.border = "0 solid";
+            document.getElementById(`status-box-${data.id}`).style.padding = "0px 20px 0px 20px";
+            document.getElementById(`status-box-${data.id}`).style.background = "orangered";
+            document.getElementById(`status-box-${data.id}`).style.marginRight = "15px";
         }
     }    
 }
+
+function getUsers() {
+    if (typeof(Storage) !== "undefined") {
+        let token = sessionStorage.getItem("token"); 
+        fetchUsers(token, usersurl); 
+    }                  
+    else {
+        displayText(fail, "Browser does not support Web Storage");
+    }
+}
+
+function fetchUsers(token, url){
+    fetch(url, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+            "Content-Type" : "application/json",
+            "Authorization" :  `Bearer ${token}`
+        }
+    })
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        if (data["status"] === 200) {
+            users = data['data']
+        }
+        else if (data["status"] === 401) {
+            sessionStorage.clear();
+            window.location.replace("signin.html");
+        }
+        else {
+            throw new Error(data["error"]);
+        }      
+    })
+    .catch(function(error){
+        displayText(fail, error.message);
+        console.log(error);
+        // sessionStorage.clear();
+        // window.location.replace("signin.html");
+    });
+}
+
 
 function storeResponse(data) {
     let results = [];
