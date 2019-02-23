@@ -32,7 +32,13 @@ body {
 header {
     overflow: hidden;
 }
-
+/* h1, h2, h3 {
+    color:dodgerblue;
+}
+h3 {
+    font-size: 20px;
+    font-weight: normal;
+} */
 .logo {
     display: inline-block;
     float: left;
@@ -48,7 +54,7 @@ header {
 .logo a {
     text-decoration: none;
     font-size: 30px;
-    color: lightcoral;
+    color: dodgerblue;
 }
 .logo a:hover {
     font-weight: bolder;
@@ -71,7 +77,7 @@ header {
    color: rgb(85, 80, 80);
 }
 #incident-menu a {
-    color: coral;
+    color: dodgerblue;
     font-weight: bolder;
     font-size: 17px;
 }
@@ -80,12 +86,13 @@ header {
 }
 
 .drop-menu-btn {
-    background-color: lightcoral;
+    background-color: dodgerblue;
     color: azure;
     padding: 10px;
     font-size: 15px;
     border: none;
     cursor: pointer;
+    margin-right: 20px;
 }
 .drop-menu {
     margin: 20px;
@@ -97,7 +104,7 @@ header {
 .drop-menu-content {
     display: none;
     position: absolute;
-    background-color: rgb(251, 245, 245);
+    background-color: aliceblue;
     min-width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -110,6 +117,7 @@ header {
 }
 .drop-menu-content a:hover {
     text-decoration: underline;
+    background: white;
 }
 
 .drop-menu:hover .drop-menu-content {
@@ -120,7 +128,7 @@ header {
     background-color: lightgreen;
 }
 .incident-menu a#report {
-    color: coral;
+    color: dodgerblue;
     font-weight: bolder;
     font-size: 18px;
 }
@@ -162,9 +170,34 @@ header {
 }
 .aside #landing-sidebar .drop-menu #admin-btn.drop-menu-btn{
     width: 100%;
-    background-color: rgb(235, 137, 45);
+    background-color: dodgerblue;
     font-weight: bold;
 }
+/*The loader*/
+#loader {
+    border: 5px dotted dodgerblue;
+    border-radius: 50%;
+    border-top: 5px dotted dodgerblue;
+    width: 30px;
+    height: 30px;
+    -webkit-animation: spin 3s linear infinite; /* Safari */
+    animation: spin 3s linear infinite;
+    left: 0;
+    right: 0;
+    display: inline-flex;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
 
 /*The welcome page(index) rules*/
 
@@ -173,7 +206,7 @@ header {
     font-size: 200%;
 }
 .main-content #welcome p strong{
-    color: lightcoral;
+    color: dodgerblue;
 }
 
 .main-content .greeting {
@@ -181,12 +214,12 @@ header {
 }
 
 .main-content .greeting p strong{
-    color: lightcoral;
+    color: dodgerblue;
     font-size: 130%;
 }
 
 .main-content #intervene {
-    background-color: lightcoral;
+    background-color: dodgerblue;
     color: antiquewhite;
     padding: 10px;
     border-radius: 100px;
@@ -207,7 +240,7 @@ header {
 .main-content #signup-link p strong a{
    text-decoration: none;
    font-weight: bolder;
-   background-color: lightcoral;
+   background-color: dodgerblue;
    padding: 10px;
    border-radius: 3px;
    color: white;
@@ -220,7 +253,7 @@ header {
 .main-content #login-form {
     padding: 10px;
     box-shadow: 10px 10px 5px #aaa;
-    border: 1px solid lightcoral;
+    border: 1px solid dodgerblue;
 }
 .main-content #login-form input {
     width: 50%;
@@ -231,7 +264,7 @@ header {
 }
 
 .main-content  #signinBtn input{
-    background-color: darksalmon;
+    background-color: dodgerblue;
     padding: 5px;
     font-weight: bold;
     box-shadow: 5px 2px 5px #aaa;
@@ -249,7 +282,7 @@ header {
 }
 .main-content #login-form #cancel-signin a {
     text-decoration: none;
-    color: lightcoral;
+    color: dodgerblue;
 }
 .main-content #login-form #cancel-signin a:hover {
     color: brown;
@@ -259,7 +292,7 @@ header {
 }
 .main-content #login-form #forgot-pwd a {
     text-decoration: none;
-    color: lightcoral;
+    color: dodgerblue;
 }
 .main-content #login-form #forgot-pwd a:hover {
     color: brown;
@@ -273,7 +306,7 @@ header {
     margin: 10px;
     padding: 10px;
     box-shadow: 10px 10px 5px #aaa;
-    border: 1px solid lightcoral;
+    border: 1px solid dodgerblue;
 }
 .main-content #signup-form input{
     width: 50%;
@@ -284,7 +317,7 @@ header {
 }
 
 .main-content  #signupBtn input{
-    background-color: darksalmon;
+    background-color: dodgerblue;
     padding: 5px;
     font-weight: bold;
     box-shadow: 5px 2px 5px #aaa;
@@ -302,7 +335,7 @@ header {
 }
 .main-content #signup-form #cancel-signup a {
     text-decoration: none;
-    color: lightcoral;
+    color: dodgerblue;
 }
 .main-content #signup-form #cancel-signup a:hover {
     color: brown;
@@ -311,13 +344,17 @@ header {
     padding: 10px;
 }
 .main-content .row strong {
-    color: lightcoral;
+    color: dodgerblue;
 }
 /*The signup and signin page's sidebars*/
 .wrapper {
     min-height: 100vh;
-    overflow: auto;
+    overflow: -moz-scrollbars-none;
     margin-top: 1px;
+    -ms-overflow-style: none;
+}
+.wrapper::-webkit-scrollbar {
+    display: none;
 }
 .wrapper .signup-sidebar, .login-sidebar{
     padding: 20px;
@@ -327,14 +364,14 @@ header {
 }
 .wrapper .signup-sidebar p a{
     text-decoration: none;
-    color:  lightcoral;
+    color:  dodgerblue;
     font-size: 120%;
     display: inline-block;
     padding: 2px;
 }
 .wrapper .signup-sidebar p a:hover{
     box-shadow: 5px 5px 5px #aaa;
-    border: 1px solid lightcoral;
+    border: 1px solid dodgerblue;
     border-radius: 5px;
 }
 .wrapper .login-sidebar p{
@@ -342,13 +379,13 @@ header {
 }
 .wrapper .login-sidebar p a{
     text-decoration: none;
-    color:  lightcoral;
+    color:  dodgerblue;
     display: inline-block;
     padding: 2px;
 }
 .wrapper .login-sidebar p a:hover{
     box-shadow: 5px 5px 5px #aaa;
-    border: 1px solid lightcoral;
+    border: 1px solid dodgerblue;
     border-radius: 5px;
 }
 .wrapper .main-content {
@@ -366,7 +403,7 @@ header {
    color: rgb(85, 85, 83);  
 }
 .form-wrapper p a{
-    color: rgb(236, 104, 104);  
+    color: dodgerblue;  
     text-decoration: none;
     
  }
@@ -396,11 +433,14 @@ header {
     font-size: 15px;
  }
 .form-wrapper a#cancel-btn:hover {
-    border: 2px solid coral;
-    background-color: coral;
+    border: 2px solid dodgerblue;
+    background-color: dodgerblue;
     color: whitesmoke;
     border-radius: 5px;
  }
+ button:hover {
+    opacity: 0.8;
+  }
 .btn-green {
     background-color: greenyellow;
     padding: 5px;
@@ -415,9 +455,10 @@ header {
     font-weight: normal;
     box-shadow: 0px 2px 0px #aaa;
     background-color: darkgreen;
+    color: white;
 }
 .btn-red {
-    background-color: orangered;
+    background-color: rgb(243, 49, 0);
     padding: 5px;
     color: rgb(255, 255, 255);
     font-weight: bolder;
@@ -446,7 +487,8 @@ header {
 .btn-orange:hover {
    font-weight: normal;
    box-shadow: 0px 2px 0px #aaa;
-   background-color:coral;
+   background-color:orange;
+   color: white;
 }
 
 .btn-grey {
@@ -465,7 +507,7 @@ header {
    background-color: chocolate;
 }
 .btn-coral {
-    background-color: lightcoral;
+    background-color: dodgerblue;
     padding: 5px;
     color: rgb(255, 255, 255);
     font-weight: bolder;
@@ -478,42 +520,49 @@ header {
 .btn-coral:hover {
    font-weight: normal;
    box-shadow: 0px 2px 0px #aaa;
-   background-color: coral;
+   background-color: aliceblue;
+   color: dodgerblue;
 }
 /*Profile page*/
-#view-incidents-btn {
-    background-color: bisque;
+h3.header-text {
+    color: dodgerblue;
+    font-size: 17px;
+}
+div#view-incidents-btn {
+    background-color: aliceblue;
     padding: 5px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+.menu-admin-btns {
+    padding: 5px 50px;
 }
 #personal-info {
     text-align: justify;
-    background: lightcoral;
+    background: dodgerblue;
     color: white;
 }
-/* #personal-info span{
-    text-decoration: underline;
-} */
+.hint {
+    font-size: 15px;
+}
 #row-profile {
-    background-color: bisque;
+    background-color: aliceblue;
     padding: 5px;
 }
 div#tbl-rejected {
-    background-color: orangered;
     padding: 2px;
-    color: wheat;
+    color: red
 }
 div#tbl-investigate {
-    background-color: darkorange;
     padding: 2px;
-    color: white;
+    color: darkorange;
 }
 div#tbl-resolved {
-    background-color: greenyellow;
     padding: 2px;
-    color: dodgerblue;
+    color:  rgb(48, 204, 0);
 }
 div#tbl-reported {
-    background-color: lavender;
     padding: 2px;
     color: cadetblue;
 }
@@ -567,7 +616,7 @@ div#tbl-rejected table td#col-rejected-in {
 }
 
 .table-landing th {
-    background: rgb(238, 181, 181);
+    background: dodgerblue;
     height: 10px;
     width: 100%; 
     margin: 10px 110px;  
@@ -576,11 +625,11 @@ div#tbl-rejected table td#col-rejected-in {
 }
 .table-landing th:hover {
     cursor: pointer;
-    background-color: coral;
+    background-color: dodgerblue;
 }
 .table-landing td, th {
     padding: 6px;
-    border: 1px none lightcoral;
+    border: 1px none dodgerblue;
     border-radius: 5px;
     
 }
@@ -597,8 +646,7 @@ div#tbl-rejected table td#col-rejected-in {
     display: none;
 }
 .table-landing .row-describe #col-deco{
-    background-color: rgb(238, 181, 181);
-    height: 100%;
+    background-color: dodgerblue;
     border-radius: 5px;
     margin-bottom: 0px;
     display: none;
@@ -624,11 +672,11 @@ div#tbl-rejected table td#col-rejected-in {
 
 .table-landing .row-footer {
     height: 50px;
-    width: 20%;
-    background-color: lightcoral;
+    width: 100%;
     float: right;
     border-radius: 5px;
 }
+
 .table-landing p.links-footer {
     margin: 10px;
 }
@@ -650,6 +698,34 @@ div#tbl-rejected table td#col-rejected-in {
     height: 10px;
     display: block;
   }
+
+  /*system users*/
+  table#users-table {
+    width: 100%;
+  }
+  .theader {
+      padding: 10px 16px;
+      background: dodgerblue;
+      color: #f1f1f1;
+  }
+  .tbody-content {
+      padding: 16px;
+  } 
+  .sticky {
+      position: fixed;
+      top: 0;
+      width: 100%;
+  }
+
+  .sticky + .tbody-content {
+      padding-top: 110px;
+  }
+  /**********************************************/
+button:hover {
+    opacity: 0.4;
+    cursor: pointer;
+}
+
 .row-footer .edit button {
     border: none;
     background: none
@@ -657,7 +733,7 @@ div#tbl-rejected table td#col-rejected-in {
 .row-footer .edit button:hover {
     border: 1px solid white;
     border-radius: 14px;
-    background-color: coral;
+    background-color: dodgerblue;
 }
 
 .table-landing .row-footer .edit img{
@@ -698,7 +774,7 @@ form#form-edit-comment p .edit img{
 form#form-edit-comment p .edit img:hover{
     border: 1px solid white;
     border-radius: 15px;
-    background: coral;
+    background: dodgerblue;
 }
 #map-canvas {
     position: relative;
@@ -708,7 +784,7 @@ form#form-edit-comment p .edit img:hover{
 }
 
 #vertical-rule {
-    border-left:1px solid lightcoral;height:110px;
+    border-left:1px solid dodgerblue;height:110px;
 }
 
 .main-content .profile-pic {
@@ -718,7 +794,7 @@ form#form-edit-comment p .edit img:hover{
 }
 
 .main-content .display-list {
-    border: 1px dashed coral;
+    border: 1px dashed dodgerblue;
     background-color: bisque;
     padding: 5px;
     margin-bottom: 5px;
@@ -731,11 +807,11 @@ footer {
 
 footer .footer-upper {
     text-align: center;
-    background-color: lightcoral;
+    background-color: dodgerblue;
     min-height: 100px;
 }
 footer .footer-lower {
-    background-color: rgb(233, 117, 117);
+    background-color: dodgerblue;
 }
 footer .footer-upper, .footer-lower{
 	padding: 1px 1px 1px 50px;
@@ -809,6 +885,9 @@ footer .footer-lower ul li a:hover{
         visibility: visible;
         display: block;
     }
+    .sidenav {
+        visibility: visible;
+    }
     .main-content {
         overflow: auto;
     }
@@ -835,6 +914,9 @@ footer .footer-lower ul li a:hover{
     }
     .table-landing p.links-footer a{
         margin: 20px 20px auto;
+    }
+    div#view-incidents-btn {
+        flex-flow: row nowrap;
     }
 }
 
@@ -877,7 +959,9 @@ footer .footer-lower ul li a:hover{
         visibility: visible;
         display: block;
     }
-    
+    .sidenav {
+        visibility: visible;
+    }
     .table-landing th {
         height: 10px;   
         font-size: 20px;
@@ -903,6 +987,8 @@ footer .footer-lower ul li a:hover{
     .table-landing p.links-footer a{
         margin: 20px 20px auto;
     }
-
+    div#view-incidents-btn {
+        flex-flow: row nowrap;
+    }
 }
 

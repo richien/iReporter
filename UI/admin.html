@@ -42,17 +42,18 @@
         </header>
         <div class="wrapper">
             <section class="main-content">
-                    <div id="view-incidents-btn"> 
-                        <p>
-                            <button class="btn-coral" onclick="getAll_redflags();">RED FLAGS</button>&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;<button class="btn-coral" onclick="getAll_interventions();">INTERVENTIONS</button>
-                        </p>
-                    </div>
+                <div id="welcome"></div>
+                <div id="view-incidents-btn"> 
+                    <div class="menu-admin-btns"><button class="btn-coral" onclick="redirectToLanding();;">VIEW ALL</button></div>
+                    <div class="menu-admin-btns"><button class="btn-coral" onclick="redirectToUsers();">SYSTEM USERS</button></div>
+                    <div class="menu-admin-btns"><button class="btn-coral" onclick="getAll_redflags();">RED FLAGS</button></div>
+                    <div class="menu-admin-btns"><button class="btn-coral" onclick="getAll_interventions();"> INTERVENTIONS</button></div>
+                </div>
                 <div id="flash-message"></div>
                 <div class="row">   
                     <div class="col-3 col-s-12">
                          <div class="row" id="row-profile">
-                            <h3 style="color:lightcoral;margin: 0px;">Personal Information</h3> 
+                            <h3 style="margin: 0px;">Personal Information</h3> 
                             <div class="col-12 col-s-12">
                                 <div class="profile-pic">
                                     <!-- <span>Picture goes here</span> -->

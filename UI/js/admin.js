@@ -1,8 +1,11 @@
 let incident = document.getElementById("display-list-wrapper");
+let welcome = document.getElementById("welcome");
+const usersurl = 'https://irepo-api.herokuapp.com/api/v1/users';
 let redflagClicked = false;
 let interveneClicked = false;
 let response = null;
 let res = [];
+let users = [];
 let updatebtnlist = [];
 const message = document.getElementById("flash-message");
 const success = "green";
@@ -12,9 +15,19 @@ const statusres = "resolved";
 const statusrej = "rejected";
 
 let names = `${user.firstname} ${user.lastname} ${user.othernames}`;
-
+welcome.innerHTML = "<span>Welcome <h3>" + `${user.username}` + "</h3> </span>";
+welcome.innerHTML += "<span>Here you can VIEW ALL incidents and SYSTEM USERS</span>";
+welcome.innerHTML += "<span> as well as Update REDFLAG or INTERVENTION incidents</span>"
 window.onload = () => {
     displayFullName();
+}
+window.document.addEventListener('DOMContentLoaded', getUsers);
+
+function redirectToUsers() {
+    window.location.replace("systemusers.html");
+}
+function redirectToLanding() {
+    window.location.replace("landing.html");
 }
 
 function getAll_redflags() {
@@ -75,6 +88,10 @@ function fetchAllIncidents(token, url){
         else if (data["status"] === 404) {
             displayText(success, data['data'][0]);
         }
+        else if (data["status"] === 401) {
+            sessionStorage.clear();
+            window.location.replace("signin.html");
+        }
         else {
             throw new Error(data["error"]);
         }        
@@ -94,40 +111,46 @@ function displayText(color, text) {
 }
 
 function createTable(data) {
+    let fullname = "";
+    for(let i = 0; i < users.length; i++) {
+        if (data.createdBy === users[i]['id']){
+            fullname = `${users[i]['firstname']} ${users[i]['othernames']} ${users[i]['lastname']}`;
+        }
+    }
     let table = `   
-    <table class="table-landing">
-        <thead>
-            <tr>
-                <th id="title-${data.id}" onclick="showMore('${data.id}');">
-                    <div>    
-                        <p> ${data.title} </p>
-                        <span style="font-size: 14px;">Posted By ${data.createdBy}</span>
-                    </div>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <div class="row row-describe"  id="${data.id}">
-                        <div class="col-12 col-s-12">
-                            <p id="comment">${data.text}&nbsp;&nbsp;&nbsp;
-                                <button class="btn-grey" id="more-link" onclick="showLess('${data.id}');"><b>LESS</b></button>
-                            </p>
-                            <p class="status"id="status"><b>${data.type}</b></p>
-                            <p class="status" id="posted"><b>Created</b> ${data.createdOn}</p>
-                            <p class="status"id="status"><b>status</b> ${data.status}</p>
-                            <p class="status"id="status"><b>Location[lat, lng]</b> [${data.location}]</p>
-                        </div>
-                        <div class="row row-footer" id="update-${data.id}" style="width: 70%; background: white;"></div>
-                        <div id="edit-comment-${data.id}" style="display: none;">
-                                                      
-                        </div>
-                    </div>
-                </td>  
-            </tr>
-        </tbody>                      
-    </table> `
+            <table class="table-landing">
+                <thead>
+                    <tr>
+                        <th id="title-${data.id}" onclick="showMore('${data.id}');">
+                            <div>
+                                <p id="title-text-${data.id}"><span id="status-box-${data.id}"></span>  ${data.title} </p>
+                                <span id="createdby-text-${data.id}">Posted By ${capitalise(fullname)}</span>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="row row-describe"  id="${data.id}">
+                                <div class="col-12 col-s-12">
+                                    <p id="comment-${data.id}">${data.text}&nbsp;&nbsp;&nbsp;
+                                        <button class="btn-grey" id="more-link" onclick="showLess('${data.id}');"><b>LESS</b></button>
+                                    </p>
+                                    <p class="status"id="status"><b>${data.type}</b></p>
+                                    <p class="status" id="posted"><b>Created</b> ${data.createdOn}</p>
+                                    <p class="status"id="status"><b>status</b> ${data.status}</p>
+                                    <p class="status"id="status"><b>Location[lat, lng]</b> [${data.location}]</p>
+                                </div>
+                                <div class="row row-footer" id="update-${data.id}" style="width: 70%; background: white;"></div>
+                                <div id="edit-comment-${data.id}" style="display: none;">
+                                                            
+                                </div>
+                            </div>
+                        </td>  
+                    </tr>
+                </tbody>                      
+            </table> `
     return table;
 }
 
@@ -148,33 +171,51 @@ function displayData(dataArray) {
             </div>
             `
             document.getElementById(`update-${data.id}`).innerHTML = update;
+            document.getElementById(`title-${data.id}`).style.background = "aliceblue";
+            document.getElementById(`title-text-${data.id}`).style.margin = "0";
+            document.getElementById(`title-text-${data.id}`).style.textAlign = "left";
+            document.getElementById(`createdby-text-${data.id}`).style.margin = "0";
+            document.getElementById(`createdby-text-${data.id}`).style.fontWeight = "normal";
+            document.getElementById(`createdby-text-${data.id}`).style.fontSize = "14px";
+            document.getElementById(`comment-${data.id}`).style.fontSize = "17px";
         if(data.status === "draft") {
-            document.getElementById(`title-${data.id}`).style.background = "lavender";
-            document.getElementById(`${data.id}`).style.background = "lavender";
+            document.getElementById(`${data.id}`).style.background = "aliceblue";
             document.getElementById(`resolve-${data.id}`).style.display = "none";
+            document.getElementById(`status-box-${data.id}`).style.border = "0 solid";
+            document.getElementById(`status-box-${data.id}`).style.padding = "0px 20px 0px 20px";
+            document.getElementById(`status-box-${data.id}`).style.background = "lavender";
+            document.getElementById(`status-box-${data.id}`).style.marginRight = "15px";
         }
         else if (data.status === 'resolved')
         {
-            document.getElementById(`title-${data.id}`).style.background = "lightgreen";
             document.getElementById(`${data.id}`).style.background = "lightgreen";
             document.getElementById(`underinv-${data.id}`).style.display = "none";
             document.getElementById(`reject-${data.id}`).style.display = "none";
             document.getElementById(`resolve-${data.id}`).style.display = "none";
+            document.getElementById(`status-box-${data.id}`).style.border = "0 solid";
+            document.getElementById(`status-box-${data.id}`).style.padding = "0px 20px 0px 20px";
+            document.getElementById(`status-box-${data.id}`).style.background = "lightgreen";
+            document.getElementById(`status-box-${data.id}`).style.marginRight = "15px";
         }
         else if (data.status === 'under-investigation')
         {
-            document.getElementById(`title-${data.id}`).style.background = "darkorange";
-            document.getElementById(`title-${data.id}`).style.color = "white";
             document.getElementById(`${data.id}`).style.background = "lightorange";
             document.getElementById(`underinv-${data.id}`).style.display = "none";
+            document.getElementById(`status-box-${data.id}`).style.border = "0 solid";
+            document.getElementById(`status-box-${data.id}`).style.padding = "0px 20px 0px 20px";
+            document.getElementById(`status-box-${data.id}`).style.background = "darkorange";
+            document.getElementById(`status-box-${data.id}`).style.marginRight = "15px";
         }
         else if (data.status === 'rejected')
         {
-            document.getElementById(`title-${data.id}`).style.background = "orangered";
-            document.getElementById(`title-${data.id}`).style.color = "white";
+            document.getElementById(`${data.id}`).style.background = "mistyrose";
             document.getElementById(`underinv-${data.id}`).style.display = "none";
             document.getElementById(`reject-${data.id}`).style.display = "none";
             document.getElementById(`resolve-${data.id}`).style.display = "none";
+            document.getElementById(`status-box-${data.id}`).style.border = "0 solid";
+            document.getElementById(`status-box-${data.id}`).style.padding = "0px 20px 0px 20px";
+            document.getElementById(`status-box-${data.id}`).style.background = "orangered";
+            document.getElementById(`status-box-${data.id}`).style.marginRight = "15px";
         }
         let btnId = document.getElementById(`edit-${data.id}`);
         updatebtnlist.push(`resolve-${data.id}`);
@@ -183,16 +224,47 @@ function displayData(dataArray) {
     }   
 }
 
-// function editCommmentForm(id) {   
-//     document.getElementById("edit").style.display = "none";
-//     document.getElementById("delete").style.display = "none";
-//     document.getElementById(`edit-comment-${id}`).style.display = "block";
-// }
-// function hideEditCommentForm(id) {  
-//     document.getElementById("edit").style.display = "block";
-//     document.getElementById("delete").style.display = "block";
-//     document.getElementById(`edit-comment-${id}`).style.display = "none";
-// }
+function getUsers() {
+    if (typeof(Storage) !== "undefined") {
+        let token = sessionStorage.getItem("token"); 
+        fetchUsers(token, usersurl); 
+    }                  
+    else {
+        displayText(fail, "Browser does not support Web Storage");
+    }
+}
+
+function fetchUsers(token, url){
+    fetch(url, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+            "Content-Type" : "application/json",
+            "Authorization" :  `Bearer ${token}`
+        }
+    })
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        if (data["status"] === 200) {
+            users = data['data']
+        }
+        else if (data["status"] === 401) {
+            sessionStorage.clear();
+            window.location.replace("signin.html");
+        }
+        else {
+            throw new Error(data["error"]);
+        }      
+    })
+    .catch(function(error){
+        displayText(fail, error.message);
+        console.log(error);
+        // sessionStorage.clear();
+        // window.location.replace("signin.html");
+    });
+}
 
 function storeResponse(data) {
     let results = [];
