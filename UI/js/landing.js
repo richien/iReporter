@@ -130,10 +130,10 @@ function createTable(data) {
                                 <p class="status"id="status">${data.type}</p>
                                 <p class="status" id="posted"><b>Posted on: ${data.createdOn}</b></p>
                                 <p class="status"id="status"><b>Status:</b> ${data.status}</b></p>
-                                <p class="status"id="status"><b>Location:</b> ${data.location}</b></p>
+                                <p class="status"id="status"><b>Location[lat, lng]</b> [${data.location}]</p>
                             </div>
                         </div>
-                        <div class="col-2 col-s-2" id="col-deco"></div>
+                        <div class="col-2 col-s-2" id="col-deco-${data.id}"></div>
                     </div>
                 </td>  
             </tr>
@@ -142,11 +142,71 @@ function createTable(data) {
     return table;
 }
 
+function createModal(data) {
+    let html = `
+    <div class="modal-content>
+        <!-- <span class="close" id="close-${data.id}">&times;</span> -->
+        <!-- <button type="button" class="close" id="close-${data.id}" data-dismiss="location-modal-${data.id}" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button> -->
+        <div id="googleMap-${data.id}" style="width:100%;height:400px;"></div>
+        <!-- <div id="mapboxMap" style="width:100%;height:400px;"></div> -->
+    </div>
+    `;
+
+    window.addEventListener('click', function(event) {
+        event.preventDefault();
+        let modal = document.getElementById(`location-modal-${data.id}`);
+        modal.innerHTML = html;
+        let btn = document.getElementById(`btn-location-${data.id}`);
+        let close = document.getElementById(`close-${data.id}`);
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+        else if (event.target === btn) {
+            modal.style.display = "block";
+            mapView(data.location, data.id);
+        }
+        else if (event.target === close) {
+            modal.style.display = "none";
+        }
+    });
+}
+
+function createLocationButton(data){
+    let btn = document.createElement("BUTTON");
+    let btnid = document.createAttribute("id");
+    let btnclass = document.createAttribute("class");
+    btn.innerHTML = "<img src='images/location-icon.png' style='width: 30px; height: 32px;'>";
+    btn.style.border = "none";
+    btn.style.background = "none";
+    btn.style.width = "100%";
+    btnid.value = `btn-location-${data.id}`;  
+    btn.setAttributeNode(btnid);
+    btn.setAttributeNode(btnclass);
+    let wrapper = document.createElement("div");
+    let wrapperid = document.createAttribute("id");
+    let modal = document.createElement("div");
+    let modalid = document.createAttribute("id");
+    let modalclass = document.createAttribute("class");
+    wrapperid.value = `modal-wrapper-${data.id}`;
+    modalid.value = `location-modal-${data.id}`;
+    modalclass.value = "modal";
+    wrapper.setAttributeNode(wrapperid);
+    modal.setAttributeNode(modalid);
+    modal.setAttributeNode(modalclass);
+    wrapper.appendChild(btn);
+    wrapper.appendChild(modal);
+    document.getElementById(`col-deco-${data.id}`).appendChild(wrapper);
+    btn.addEventListener('click', createModal(data));
+}
+
 function displayData(dataArray) {
     for(let i = 0; i < dataArray.length; i++) {
         data = dataArray[i].data();
         let table = createTable(data);
         incident.innerHTML += table;
+        createLocationButton(data);
         document.getElementById(`title-${data.id}`).style.background = "aliceblue";
         document.getElementById(`title-text-${data.id}`).style.margin = "0";
         document.getElementById(`title-text-${data.id}`).style.textAlign = "left";
@@ -154,6 +214,7 @@ function displayData(dataArray) {
         document.getElementById(`createdby-text-${data.id}`).style.fontWeight = "normal";
         document.getElementById(`createdby-text-${data.id}`).style.fontSize = "14px";
         document.getElementById(`comment-${data.id}`).style.fontSize = "17px";
+
         if(data.status === "draft") {
             document.getElementById(`${data.id}`).style.background = "aliceblue";
             document.getElementById(`status-box-${data.id}`).style.border = "0 solid";

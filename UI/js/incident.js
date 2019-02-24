@@ -73,7 +73,7 @@ function createIncident() {
                 displayText(fail, "Browser does not support Web Storage");
             }
             window.setTimeout( function() {
-                window.location.reload();
+                window.location.replace('profile.html');
             }, 2000);
         })
         .catch(function(error){

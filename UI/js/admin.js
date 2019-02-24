@@ -19,7 +19,8 @@ welcome.innerHTML = "<span>Welcome <h3>" + `${user.username}` + "</h3> <\span>";
 welcome.innerHTML += "<span>Here you can VIEW ALL incidents and SYSTEM USERS</span>";
 welcome.innerHTML += "<span> as well as Update REDFLAG or INTERVENTION incidents</span>"
 window.onload = () => {
-    displayFullName();
+    //displayFullName();
+    displayProfile();
 }
 window.document.addEventListener('DOMContentLoaded', getUsers);
 
@@ -121,7 +122,7 @@ function createTable(data) {
             <table class="table-landing">
                 <thead>
                     <tr>
-                        <th id="title-${data.id}" onclick="showMore('${data.id}');">
+                        <th class="title-box" id="title-${data.id}" onclick="showMore('${data.id}');">
                             <div>
                                 <p id="title-text-${data.id}"><span id="status-box-${data.id}"></span>  ${data.title} </p>
                                 <span id="createdby-text-${data.id}">Posted By ${capitalise(fullname)}</span>
@@ -217,7 +218,6 @@ function displayData(dataArray) {
             document.getElementById(`status-box-${data.id}`).style.background = "orangered";
             document.getElementById(`status-box-${data.id}`).style.marginRight = "15px";
         }
-        let btnId = document.getElementById(`edit-${data.id}`);
         updatebtnlist.push(`resolve-${data.id}`);
         updatebtnlist.push(`underinv-${data.id}`);
         updatebtnlist.push(`reject-${data.id}`);   
@@ -327,3 +327,12 @@ function displayFullName() {
     document.getElementById("email").innerHTML = user.email;
 }
 
+function displayProfile() {
+    let card = document.getElementById("profile-card");
+    card.innerHTML = `
+    <img src="images/profile/avatar.png" alt="${capitalise(names)}" style="width: 100%">
+    <h1>${capitalise(names)}</h1>
+    <p>${user.email}</p>
+    <p>Phone number ${user.phonenumber}</p>
+    `;
+}
