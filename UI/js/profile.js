@@ -12,7 +12,7 @@ let names = `${user.firstname} ${user.lastname} ${user.othernames}`;
 welcome.innerHTML = `<span>Welcome <h3 style="color:dodgerblue;">${user.username}</h3> to iReporter</span>`;
 
 window.onload = () => {
-    displayFullName();
+    displayProfile();
 }
 
 function setEditListeners() {
@@ -280,3 +280,12 @@ function displayFullName() {
     document.getElementById("email").innerHTML = user.email;
 }
 
+function displayProfile() {
+    let card = document.getElementById("profile-card");
+    card.innerHTML = `
+    <img src="images/profile/avatar.png" alt="${capitalise(names)}" style="width: 100%">
+    <h1>${capitalise(names)}</h1>
+    <p>${user.email}</p>
+    <p>Phone number ${user.phonenumber}</p>
+    `;
+}
