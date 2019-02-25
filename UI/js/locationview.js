@@ -1,4 +1,4 @@
-//let address = "";
+
 function mapView(location, mapid) {
     let lat = location.split(",")[0].trim().slice(2);
     let lng = location.split(",")[1].trim();

@@ -89,7 +89,6 @@ function fetchAllIncidents(token, url){
     .catch(function(error){
         displayText(fail, error.message);
         console.log(error);
-        //sessionStorage.clear();
         window.location.reload();
     });
 }
@@ -109,7 +108,6 @@ function createTable(data) {
         }
     }
     
-    // this.addEventListener('load', getAddress(data.location));
     let table = `   
     <table class="table-landing">
         <thead>
