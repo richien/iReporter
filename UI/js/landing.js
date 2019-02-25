@@ -4,6 +4,7 @@ let users = [];
 let redflagClicked = false;
 let interveneClicked = false;
 let response = null;
+// let address = "";
 const message = document.getElementById("flash-message");
 const success = "green";
 const fail = "red";
@@ -100,12 +101,15 @@ function displayText(color, text) {
 }
 
 function createTable(data) {
+    
     let fullname = "";
     for(let i = 0; i < users.length; i++) {
         if (data.createdBy === users[i]['id']){
             fullname = `${users[i]['firstname']} ${users[i]['othernames']} ${users[i]['lastname']}`;
         }
     }
+    
+    // this.addEventListener('load', getAddress(data.location));
     let table = `   
     <table class="table-landing">
         <thead>
@@ -127,10 +131,11 @@ function createTable(data) {
                                 <button class="btn-grey" id="more-link" onclick="showLess('${data.id}');"><b>LESS</b></button>
                             </p>
                             <div id="status-box">
-                                <p class="status"id="status">${data.type}</p>
+                                <p class="status" id="status">${data.type}</p>
                                 <p class="status" id="posted"><b>Posted on: ${data.createdOn}</b></p>
-                                <p class="status"id="status"><b>Status:</b> ${data.status}</b></p>
-                                <p class="status"id="status"><b>Location[lat, lng]</b> [${data.location}]</p>
+                                <p class="status" id="status"><b>Status:</b> ${data.status}</b></p>
+                                <p class="status" id="status"><b>Location[lat, lng]</b> [${data.location}]</p>
+                                <!--<p class="status" id="status"><b>Approximate Address</b> ${address}</p>-->
                             </div>
                         </div>
                         <div class="col-2 col-s-2" id="col-deco-${data.id}"></div>
@@ -146,16 +151,12 @@ function createModal(data) {
     let html = `
     <div class="modal-content>
         <!-- <span class="close" id="close-${data.id}">&times;</span> -->
-        <!-- <button type="button" class="close" id="close-${data.id}" data-dismiss="location-modal-${data.id}" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button> -->
-        <div id="googleMap-${data.id}" style="width:100%;height:400px;"></div>
-        <!-- <div id="mapboxMap" style="width:100%;height:400px;"></div> -->
+        <!--<button type="button" class="close" id="close-${data.id}">&times;</span></button>-->
+        <div id="mapboxMap-${data.id}" style="width:100%;height:400px;"></div> 
     </div>
     `;
 
     window.addEventListener('click', function(event) {
-        event.preventDefault();
         let modal = document.getElementById(`location-modal-${data.id}`);
         modal.innerHTML = html;
         let btn = document.getElementById(`btn-location-${data.id}`);
@@ -345,3 +346,33 @@ function showLess(id) {
     message.scrollIntoView();
 }
 
+function getAddress(location) {
+    let lat = location.split(",")[0].trim().slice(2);
+    let lng = location.split(",")[1].trim();
+
+    let coordinates =  {
+        lat: parseFloat(lat),
+        lng: parseFloat(lng)
+    }
+    let url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${coordinates.lng},${coordinates.lat}.json?access_token=pk.eyJ1IjoiZ2VvZmZ3aWxsaXMiLCJhIjoiY2pzOGd3ZHExMTdjbzQ0bzVqdmEyNGhyNCJ9.W7-VDuBTuVX9BtZ4LI-VBw`;
+    
+    fetch(url, {
+        method: "GET",
+        mode: "cors"
+    })
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        if (data["type"] === "FeatureCollection") {
+            address = data['features'][0]['place_name'];
+        }
+        else {
+            throw new Error(data["error"]);
+        }        
+    })
+    .catch(function(error){
+        displayText(fail, error.message);
+        console.log(error);
+    });
+}

@@ -1,4 +1,4 @@
-
+//let address = "";
 function mapView(location, mapid) {
     let lat = location.split(",")[0].trim().slice(2);
     let lng = location.split(",")[1].trim();
@@ -8,33 +8,19 @@ function mapView(location, mapid) {
         lng: parseFloat(lng)
     }
 
-    let geocoder = new google.maps.Geocoder();
-    //mapboxgl.access_token = 'pk.eyJ1IjoiZ2VvZmZ3aWxsaXMiLCJhIjoiY2pzODhsYjhrMTUxMzQ0bnU1dWJsNzhzdiJ9.6P-brlq0kRkDMevJQor4QQ';
-    let latLng = new google.maps.LatLng(coordinates.lat, coordinates.lng);
-    //let latLng = new google.maps.LatLng(0.31710034093916306, 32.594857999924216);
-    //let lnglat = [32.594857999924216,0.31710034093916306]; // Kibuli, Kampala, Uganda
-    
-    let map = new google.maps.Map(document.getElementById(`googleMap-${mapid}`), {
-        center: latLng,
-        zoom: 18
-    });
-    // let map = new mapboxgl.Map ({
-    //     container: 'mapboxMap',
-    //     center: lnglat,
-    //     style: 'mapbox://styles/mapbox/streets-v11',
-    //     zoom: 11
-    // });
-    let marker = new google.maps.Marker ({
-        position: latLng,
-        title: 'It happen here.',
-        map: map,
-        draggable: false
+    mapboxgl.access_token = 'pk.eyJ1IjoiZ2VvZmZ3aWxsaXMiLCJhIjoiY2pzODhsYjhrMTUxMzQ0bnU1dWJsNzhzdiJ9.6P-brlq0kRkDMevJQor4QQ';
+    let lnglat = [coordinates.lng, coordinates.lat]; 
+    let map = new mapboxgl.Map ({
+        container: `mapboxMap-${mapid}`,
+        center: lnglat,
+        style: 'mapbox://styles/mapbox/streets-v11',
+        zoom: 16
     });
     
-    // let marker = new mapboxgl.Marker()
-    //     .setLngLat([32.594857999924216, 0.31710034093916306])
-    //     .addTo(map);
-
+    let marker = new mapboxgl.Marker()
+        .setLngLat([coordinates.lng, coordinates.lat])
+        .addTo(map);
+    
     // let geocoder = new MapboxGeocoder({
     //     accessToken: 'pk.eyJ1IjoiZ2VvZmZ3aWxsaXMiLCJhIjoiY2pzOGd3ZHExMTdjbzQ0bzVqdmEyNGhyNCJ9.W7-VDuBTuVX9BtZ4LI-VBw'
     // })
@@ -64,6 +50,38 @@ function mapView(location, mapid) {
     // });
     
 }
+
+// function getAddress(location) {
+//     let lat = location.split(",")[0].trim().slice(2);
+//     let lng = location.split(",")[1].trim();
+
+//     let coordinates =  {
+//         lat: parseFloat(lat),
+//         lng: parseFloat(lng)
+//     }
+//     let url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${coordinates.lng},${coordinates.lat}.json?access_token=pk.eyJ1IjoiZ2VvZmZ3aWxsaXMiLCJhIjoiY2pzOGd3ZHExMTdjbzQ0bzVqdmEyNGhyNCJ9.W7-VDuBTuVX9BtZ4LI-VBw`;
+    
+//     fetch(url, {
+//         method: "GET",
+//         mode: "cors"
+//     })
+//     .then(function(response) {
+//         return response.json();
+//     })
+//     .then(function(data) {
+//         if (data["type"] === "FeatureCollection") {
+//             let address = data['features'][0]['place_name'];
+//             return address;
+//         }
+//         else {
+//             throw new Error(data["error"]);
+//         }        
+//     })
+//     .catch(function(error){
+//         displayText(fail, error.message);
+//         console.log(error);
+//     });
+// }
 
 
 
