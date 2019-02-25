@@ -5,7 +5,7 @@ let surname =  document.getElementById('surname');
 let otherNames = document.getElementById('other-names');
 let username = document.getElementById('username');
 let email = document.getElementById('email');
-const url = 'https://irepo-api.herokuapp.com/api/v1/auth/signup';
+const url = 'http://localhost:5000/api/v1/auth/signup';
 const message = document.getElementById("flash-message")
 const success = "green";
 const fail = "red";
@@ -25,7 +25,8 @@ function isMatching_password() {
 
 function displayText(color, text) {
     message.style.color = color;
-    message.innerHTML = "<p>" + text + "</p>"
+    // message.innerHTML = "<p>" + text + "</p>"
+    message.innerHTML = '<p><div class="loader"></div></p>';
     message.scrollIntoView();
 }
 
@@ -64,7 +65,7 @@ function signUp() {
                     sessionStorage.setItem("token", data["data"][0]["access_token"]);
                     window.setTimeout( function() {
                         window.location.replace("landing.html")
-                    }, 4000);
+                    }, 1000);
                         
                 }
                 else {

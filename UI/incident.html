@@ -10,23 +10,33 @@
     <body>
         <header>
             <div class="logo">
-                <span><a href="index.html">iReporter</a></span>
+                <span><a href="landing.html">iReporter</a></span>
             </div>
             <div class="menu-header">
                 <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="profile.html">Profile</a></li>
-                    <li><a href="#">Signout</a></li>
-                    <li><a href="landing.html">Home</a></li>
+                    <li class="about-menu"><a href="about.html">About</a></li>
+                    <li class="signout"><a href="signout.html">Signout</a></li>
+                    <li class="signup-menu"><a href="signup.html">Signup</a></li>
+                    <li class="signin-menu"><a href="signin.html">Signin</a></li>
+                    <li class="admin-menu"><a href="admin.html">Admin</a></li>
+                    <li class="profile-menu"><a href="profile.html">Profile</a></li>
+                    <li class="incident-menu"><a id="report" href="incident.html">Report</a></li>
+                    <li class="landing-menu"><a href="landing.html">Home</a></li>
+                    <li class="index-menu"><a href="index.html">Home</a></li>
                 </ul>
             </div>
             <div class="drop-menu">
                 <button class="drop-menu-btn">Menu</button>
                     <div class="drop-menu-content">
-                        <a href="landing.html">Home</a>
-                        <a href="about.html">About</a>  
-                        <a href="profile.html">Profile</a>         
-                        <a href="#">Signout</a>
+                        <li class="index-menu"><a href="index.html">Home</a></li>
+                        <li class="landing-menu"><a href="landing.html">Home</a></li>
+                        <li class="incident-menu"><a id="report" href="incident.html">Report</a></li>  
+                        <li class="admin-menu"><a href="admin.html">Admin</a></li> 
+                        <li class="profile-menu"><a href="profile.html">Profile</a></li>
+                        <li class="signin-menu"><a href="signin.html">Signin</a></li>
+                        <li class="signup-menu"><a href="signup.html">Signup</a></li>
+                        <li class="signout"><a href="signout.html">Signout</a></li>
+                        <li class="about-menu"><a href="about.html">About</a></li>
                     </div>
             </div>
         </header>
@@ -40,9 +50,10 @@
                             <div class="form-wrapper">
                                 <p>Redflag&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="type" value="red-flag" type="radio" id="redflag" checked></p>
                                 <p>Intervention&nbsp;<input name="type" value="intervention" type="radio" id="intervene"></p>
-                                <p><input id="title" value="" placeholder="Title" class="input-text" required></p>
-                                <p><input id="description" type="area" value="" placeholder="Enter Description here"  class="input-area" required></p>
-                                <p><input class="btn-green" name="upload-image-btn" type="image" src="images/photo.png" alt="submit" value=""><input class="btn-green" name="upload-video-btn" type="image" src="images/video.png" alt="submit" value=""></p>
+                                <p><input title="Enter a title" id="title" value="" placeholder="What is this about?" class="input-text" required></p>
+                                <p><input title="What did you witness?" id="description" type="area" value="" placeholder="Describe what you saw."  class="input-area" required></p>
+                                <p><input class="btn-green" name="upload-image-btn" type="image" src="images/photo.png" alt="submit" value="">
+                                    <input class="btn-green" name="upload-video-btn" type="image" src="images/video.png" alt="submit" value=""></p>
                                 <p><input class="btn-coral" id="save-btn" type="submit" value="REPORT" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="cancel-btn" href="landing.html">Cancel</a></p>
                             </div>
                         </form>
@@ -65,9 +76,15 @@
                     
                     <div class="footer-lower">
                         <ul>
-                            <li><a href="landing.html">Home</a></li>
-                            <li><a href="#">Signout</a></li>
-                            <li><a href="about.html">About</a></li>
+                            <li class="index-menu"><a href="index.html">Home</a></li>
+                            <li class="landing-menu"><a href="landing.html">Home</a></li>
+                            <li class="incident-menu"><a href="incident.html">Report</a></li>  
+                            <li class="admin-menu"><a href="admin.html">Admin</a></li> 
+                            <li class="profile-menu"><a href="profile.html">Profile</a></li>
+                            <li class="signin-menu"><a href="signin.html">Signin</a></li>
+                            <li class="signup-menu"><a href="signup.html">Signup</a></li>
+                            <li class="signout"><a href="signout.html">Signout</a></li>
+                            <li class="about-menu"><a href="about.html">About</a></li>
                         </ul>
                     </div>
         </footer>
