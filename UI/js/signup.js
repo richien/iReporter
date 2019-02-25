@@ -63,8 +63,9 @@ function signUp() {
                     sessionStorage.clear();
                     sessionStorage.setItem("user_id", data["data"][0]["id"]);
                     sessionStorage.setItem("token", data["data"][0]["access_token"]);
+                    sessionStorage.setItem("isLoggedIn", true);
                     window.setTimeout( function() {
-                        window.location.replace("landing.html")
+                        window.location.replace("profile.html")
                     }, 1000);
                         
                 }

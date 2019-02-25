@@ -11,7 +11,7 @@
     float: left;
     padding: 15px;
 }
-input[type=text], select {
+input[type=text], input[type=password], input[type=email] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -32,13 +32,7 @@ body {
 header {
     overflow: hidden;
 }
-/* h1, h2, h3 {
-    color:dodgerblue;
-}
-h3 {
-    font-size: 20px;
-    font-weight: normal;
-} */
+
 .logo {
     display: inline-block;
     float: left;
@@ -260,7 +254,6 @@ h3 {
     padding: 1px;
     height: 50px;
     border: 1px solid #aaa;
-    text-align: center;
 }
 
 .main-content  #signinBtn input{
@@ -309,11 +302,9 @@ h3 {
     border: 1px solid dodgerblue;
 }
 .main-content #signup-form input{
-    width: 50%;
     height: 50px;
     padding: 1px;
     border: 1px solid #aaa;
-    text-align: center;
 }
 
 .main-content  #signupBtn input{
@@ -518,10 +509,10 @@ h3 {
     text-decoration: none;
 }
 .btn-coral:hover {
-   font-weight: normal;
+   font-weight: bolder;
    box-shadow: 0px 2px 0px #aaa;
    background-color: aliceblue;
-   color: dodgerblue;
+   color: rgb(4, 80, 156);
 }
 /*Profile page*/
 h3.header-text {
@@ -545,6 +536,43 @@ div#view-incidents-btn {
 }
 .hint {
     font-size: 15px;
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: aliceblue;
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    background-color: aliceblue;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #aaa;
+    width: 80%;
+}
+.close {
+    color: #aaa;
+    float: left;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    text-decoration: none;
+    cursor: pointer;
 }
 #row-profile {
     background-color: aliceblue;
@@ -782,6 +810,10 @@ form#form-edit-comment p .edit img:hover{
     bottom: 0;
     width: 100%;
 }
+#map-canvas::after{
+    display: block;
+    pointer-events: none;
+}
 
 #vertical-rule {
     border-left:1px solid dodgerblue;height:110px;
@@ -888,9 +920,9 @@ footer .footer-lower ul li a:hover{
     .sidenav {
         visibility: visible;
     }
-    .main-content {
+    /* .main-content {
         overflow: auto;
-    }
+    } */
     .table-landing th {
         height: 10px;   
         font-size: 20px;

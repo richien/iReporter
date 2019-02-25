@@ -72,6 +72,8 @@ function updateMarkerPosition(latLng) {
         "Latitude: " + latLng.lat(),
         "Longitude: " + latLng.lng()
     ].join(', ');
+    coordinates.lat = latLng.lat();
+    coordinates.lng = latLng.lng();
 }
 
 function updateMarkerAddress(str) {
@@ -84,8 +86,8 @@ google.maps.event.addListener(marker, 'dragstart', () => {
 });
 google.maps.event.addListener(marker, 'drag', () => {
     updateMarkerPosition(marker.getPosition());
-    coordinates.lat = latLng.lat();
-    coordinates.lng = latLng.lng();
+    // coordinates.lat = latLng.lat();
+    // coordinates.lng = latLng.lng();
     position(latLng); 
 });
 google.maps.event.addListener(marker, 'dragend', () => {
