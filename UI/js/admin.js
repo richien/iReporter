@@ -1,31 +1,54 @@
-let incident = document.getElementById("display-incidents");
+let incident = document.getElementById("display-list-wrapper");
 let welcome = document.getElementById("welcome");
-let users = [];
+const usersurl = 'http://localhost:5000/api/v1/users';
 let redflagClicked = false;
 let interveneClicked = false;
 let response = null;
-let loader = document.getElementById("loader");
-// let address = "";
+let res = [];
+let users = [];
+let updatebtnlist = [];
+let adminMenuLinks = document.getElementById('view-incidents-btn');
+let sticky = adminMenuLinks.offsetTop;
 const message = document.getElementById("flash-message");
 const success = "green";
 const fail = "red";
-const urlRedflags = 'http://localhost:5000/api/v1/red-flags';
-const urlInterventions = 'http://localhost:5000/api/v1/interventions';
-const usersurl = 'http://localhost:5000/api/v1/users';
+const statusui = "under-investigation";
+const statusres = "resolved";
+const statusrej = "rejected";
 
-
-let user = JSON.parse(sessionStorage.getItem("user"));
-welcome.innerHTML = "<span>Welcome <h3>" + `${user.username}` + "</h3> <\span>";
-welcome.innerHTML += "<span>Select the incident type to view all incidents</span>";
+let names = `${user.firstname} ${user.lastname} ${user.othernames}`;
+welcome.innerHTML = `Welcome  <b>${capitalise(user.username)}</b>  `;
+// welcome.innerHTML += "<span>Here you can VIEW ALL incidents and SYSTEM USERS</span>";
+// welcome.innerHTML += "<span> as well as Update REDFLAG or INTERVENTION incidents</span>"
+window.onload = () => {
+    displayProfile();
+}
+window.onscroll = function() {stickyHeader();}
 
 window.document.addEventListener('DOMContentLoaded', getUsers);
+
+function redirectToUsers() {
+    window.location.replace("systemusers.html");
+}
+function redirectToLanding() {
+    window.location.replace("landing.html");
+}
+
+function stickyHeader() {
+    if (window.pageYOffset > sticky) {
+        adminMenuLinks.classList.add("sticky");
+    }
+    else {
+        adminMenuLinks.classList.remove("sticky");
+    }
+}
 
 function getAll_redflags() {
     if (typeof(Storage) !== "undefined") {
         let token = sessionStorage.getItem("token"); 
         if (redflagClicked !== true) {  
-            displayText(success, "Loading ....")
-            document.getElementById("display-incidents").innerHTML = "";
+            displayText(success, "")
+            incident.innerHTML = "";
             fetchAllIncidents(token, urlRedflags); 
             redflagClicked = true;
             interveneClicked = false;
@@ -43,8 +66,8 @@ function getAll_interventions() {
     if (typeof(Storage) !== "undefined") {
         let token = sessionStorage.getItem("token"); 
         if (interveneClicked !== true) {  
-            displayText(success, "Loading ....")
-            document.getElementById("display-incidents").innerHTML = "";
+            displayText(success, "")
+            incident.innerHTML = "";
             fetchAllIncidents(token, urlInterventions); 
             interveneClicked = true;
             redflagClicked = false;
@@ -72,9 +95,8 @@ function fetchAllIncidents(token, url){
     })
     .then(function(data) {
         if (data["status"] === 200) {
-            let results = storeResponse(data);
-            displayData(results);
-            displayText(success, "")
+            res = storeResponse(data);
+            displayData(res);
         }
         else if (data["status"] === 404) {
             displayText(success, data['data'][0]);
@@ -100,53 +122,6 @@ function displayText(color, text) {
     message.innerHTML = "<p>" + text + "</p>"
     message.scrollIntoView();
 }
-
-function createTable(data) {
-    
-    let fullname = "";
-    for(let i = 0; i < users.length; i++) {
-        if (data.createdBy === users[i]['id']){
-            fullname = `${users[i]['firstname']} ${users[i]['othernames']} ${users[i]['lastname']}`;
-        }
-    }
-    
-    // this.addEventListener('load', getAddress(data.location));
-    let table = `   
-    <table class="table-landing">
-        <thead>
-            <tr>
-                <th id="title-${data.id}" onclick="showMore('${data.id}');">
-                    <div>    
-                        <p id="title-text-${data.id}"><span id="status-box-${data.id}"></span>  ${data.title} </p>
-                        <span id="createdby-text-${data.id}">Posted By ${capitalise(fullname)}</span>
-                    </div>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <div class="row row-describe"  id="${data.id}">
-                        <div class="col-10 col-s-10">
-                            <p id="comment-${data.id}">${data.text}&nbsp;&nbsp;&nbsp;
-                                <button class="btn-grey" id="more-link" onclick="showLess('${data.id}');"><b>LESS</b></button>
-                            </p>
-                            <div id="status-box">
-                                <p class="status" id="status">${data.type}</p>
-                                <p class="status" id="posted"><b>Posted on:</b> ${formatDate(data.createdOn)}</p>
-                                <p class="status" id="status"><b>Status:</b> ${data.status}</b></p>
-                                <!--<p class="status" id="status"><b>Approximate Address</b> ${address}</p>-->
-                            </div>
-                        </div>
-                        <div class="col-2 col-s-2" id="col-deco-${data.id}"></div>
-                    </div>
-                </td>  
-            </tr>
-        </tbody>                      
-    </table> `
-    return table;
-}
-
 function createModal(data) {
     let html = `
     <div class="modal-content>
@@ -181,7 +156,7 @@ function createLocationButton(data){
     btn.innerHTML = "<img src='images/location-icon.png' style='width: 30px; height: 32px;'>";
     btn.style.border = "none";
     btn.style.background = "none";
-    //btn.style.width = "100%";
+    // btn.style.width = "100%";
     btnid.value = `btn-location-${data.id}`;  
     btn.setAttributeNode(btnid);
     btn.setAttributeNode(btnclass);
@@ -198,10 +173,52 @@ function createLocationButton(data){
     modal.setAttributeNode(modalclass);
     wrapper.appendChild(btn);
     wrapper.appendChild(modal);
-    wrapper.style.textAlign = "center";
-    modal.style.textAlign = "left";
-    document.getElementById(`col-deco-${data.id}`).appendChild(wrapper);
+    document.getElementById(`location-${data.id}`).appendChild(wrapper);
     btn.addEventListener('click', createModal(data));
+}
+function createTable(data) {
+    let fullname = "";
+    for(let i = 0; i < users.length; i++) {
+        if (data.createdBy === users[i]['id']){
+            fullname = `${users[i]['firstname']} ${users[i]['othernames']} ${users[i]['lastname']}`;
+        }
+    }
+    let table = `   
+            <table class="table-landing">
+                <thead>
+                    <tr>
+                        <th class="title-box" id="title-${data.id}" onclick="showMore('${data.id}');">
+                            <div>
+                                <p id="title-text-${data.id}"><span id="status-box-${data.id}"></span>  ${data.title} </p>
+                                <span id="createdby-text-${data.id}">Posted By ${capitalise(fullname)}</span>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="row row-describe"  id="${data.id}">
+                                <div class="col-12 col-s-12">
+                                    <p id="comment-${data.id}">${data.text}&nbsp;&nbsp;&nbsp;
+                                        <button class="btn-grey" id="more-link" onclick="showLess('${data.id}');"><b>LESS</b></button>
+                                    </p>
+                                    <p class="status"id="status"><b>${data.type}</b></p>
+                                    <p class="status" id="posted"><b>Created</b> ${formatDate(data.createdOn)}</p>
+                                    <p class="status"id="status"><b>status</b> ${data.status}</p>
+                                    <p class="status"id="status"><b>Location[lat, lng]</b> [${data.location}]</p>
+                                    <div id="location-${data.id}"></div>
+                                </div>
+                                <div class="row row-footer" id="update-${data.id}" style="width: 100%; background: white;"></div>
+                                <div id="edit-comment-${data.id}" style="display: none;">
+                                                            
+                                </div>
+                            </div>
+                        </td>  
+                    </tr>
+                </tbody>                      
+            </table> `
+    return table;
 }
 
 function displayData(dataArray) {
@@ -210,16 +227,28 @@ function displayData(dataArray) {
         let table = createTable(data);
         incident.innerHTML += table;
         createLocationButton(data);
-        document.getElementById(`title-${data.id}`).style.background = "aliceblue";
-        document.getElementById(`title-text-${data.id}`).style.margin = "0";
-        document.getElementById(`title-text-${data.id}`).style.textAlign = "left";
-        document.getElementById(`createdby-text-${data.id}`).style.margin = "0";
-        document.getElementById(`createdby-text-${data.id}`).style.fontWeight = "normal";
-        document.getElementById(`createdby-text-${data.id}`).style.fontSize = "14px";
-        document.getElementById(`comment-${data.id}`).style.fontSize = "17px";
-
+        let update =  `
+            <div class="col-4 col-s-4">
+                <li id="underinv"><button class="btn-orange" id="underinv-${data.id}" onclick="return doEditStatus(${data.id}, '${data.type}', '${statusui}');">Investigate</button></li>
+            </div>
+            <div class="col-4 col-s-4">
+                <li id="resolve"><button class="btn-green" id="resolve-${data.id}" onclick="return doEditStatus(${data.id}, '${data.type}', '${statusres}');">Resolve</button></li>
+            </div>
+            <div class="col-4 col-s-4">
+                <li id="reject"><button class="btn-red" id="reject-${data.id}" onclick="return doEditStatus(${data.id}, '${data.type}', '${statusrej}');">Reject</button></li>
+            </div>
+            `
+            document.getElementById(`update-${data.id}`).innerHTML = update;
+            document.getElementById(`title-${data.id}`).style.background = "aliceblue";
+            document.getElementById(`title-text-${data.id}`).style.margin = "0";
+            document.getElementById(`title-text-${data.id}`).style.textAlign = "left";
+            document.getElementById(`createdby-text-${data.id}`).style.margin = "0";
+            document.getElementById(`createdby-text-${data.id}`).style.fontWeight = "normal";
+            document.getElementById(`createdby-text-${data.id}`).style.fontSize = "14px";
+            document.getElementById(`comment-${data.id}`).style.fontSize = "17px";
         if(data.status === "draft") {
             document.getElementById(`${data.id}`).style.background = "aliceblue";
+            document.getElementById(`resolve-${data.id}`).style.display = "none";
             document.getElementById(`status-box-${data.id}`).style.border = "0 solid";
             document.getElementById(`status-box-${data.id}`).style.padding = "0px 20px 0px 20px";
             document.getElementById(`status-box-${data.id}`).style.background = "lavender";
@@ -228,6 +257,9 @@ function displayData(dataArray) {
         else if (data.status === 'resolved')
         {
             document.getElementById(`${data.id}`).style.background = "lightgreen";
+            document.getElementById(`underinv-${data.id}`).style.display = "none";
+            document.getElementById(`reject-${data.id}`).style.display = "none";
+            document.getElementById(`resolve-${data.id}`).style.display = "none";
             document.getElementById(`status-box-${data.id}`).style.border = "0 solid";
             document.getElementById(`status-box-${data.id}`).style.padding = "0px 20px 0px 20px";
             document.getElementById(`status-box-${data.id}`).style.background = "lightgreen";
@@ -236,6 +268,7 @@ function displayData(dataArray) {
         else if (data.status === 'under-investigation')
         {
             document.getElementById(`${data.id}`).style.background = "lightorange";
+            document.getElementById(`underinv-${data.id}`).style.display = "none";
             document.getElementById(`status-box-${data.id}`).style.border = "0 solid";
             document.getElementById(`status-box-${data.id}`).style.padding = "0px 20px 0px 20px";
             document.getElementById(`status-box-${data.id}`).style.background = "darkorange";
@@ -244,12 +277,18 @@ function displayData(dataArray) {
         else if (data.status === 'rejected')
         {
             document.getElementById(`${data.id}`).style.background = "mistyrose";
+            document.getElementById(`underinv-${data.id}`).style.display = "none";
+            document.getElementById(`reject-${data.id}`).style.display = "none";
+            document.getElementById(`resolve-${data.id}`).style.display = "none";
             document.getElementById(`status-box-${data.id}`).style.border = "0 solid";
             document.getElementById(`status-box-${data.id}`).style.padding = "0px 20px 0px 20px";
             document.getElementById(`status-box-${data.id}`).style.background = "orangered";
             document.getElementById(`status-box-${data.id}`).style.marginRight = "15px";
         }
-    }    
+        updatebtnlist.push(`resolve-${data.id}`);
+        updatebtnlist.push(`underinv-${data.id}`);
+        updatebtnlist.push(`reject-${data.id}`);   
+    }   
 }
 
 function getUsers() {
@@ -293,7 +332,6 @@ function fetchUsers(token, url){
         // window.location.replace("signin.html");
     });
 }
-
 
 function storeResponse(data) {
     let results = [];
@@ -348,33 +386,20 @@ function showLess(id) {
     message.scrollIntoView();
 }
 
-function getAddress(location) {
-    let lat = location.split(",")[0].trim().slice(2);
-    let lng = location.split(",")[1].trim();
+function displayFullName() {
+    let fullname = capitalise(names);
+    document.getElementById("fullname").innerHTML = fullname;
+    document.getElementById("fullname").style.fontSize = "16px";
+    document.getElementById("fullname").style.fontWeight = "bold";
+    document.getElementById("email").innerHTML = user.email;
+}
 
-    let coordinates =  {
-        lat: parseFloat(lat),
-        lng: parseFloat(lng)
-    }
-    let url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${coordinates.lng},${coordinates.lat}.json?access_token=pk.eyJ1IjoiZ2VvZmZ3aWxsaXMiLCJhIjoiY2pzOGd3ZHExMTdjbzQ0bzVqdmEyNGhyNCJ9.W7-VDuBTuVX9BtZ4LI-VBw`;
-    
-    fetch(url, {
-        method: "GET",
-        mode: "cors"
-    })
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(data) {
-        if (data["type"] === "FeatureCollection") {
-            address = data['features'][0]['place_name'];
-        }
-        else {
-            throw new Error(data["error"]);
-        }        
-    })
-    .catch(function(error){
-        displayText(fail, error.message);
-        console.log(error);
-    });
+function displayProfile() {
+    let card = document.getElementById("profile-card");
+    card.innerHTML = `
+    <img src="images/profile/avatar.png" alt="${capitalise(names)}" style="width: 100%">
+    <h1>${capitalise(names)}</h1>
+    <p>${user.email}</p>
+    <p>Phone number ${user.phonenumber}</p>
+    `;
 }

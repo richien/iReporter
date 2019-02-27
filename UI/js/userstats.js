@@ -1,18 +1,26 @@
-let reportedrf;
-let underinvrf;
-let resolvedrf;
-let rejectedrf;
-let reportedin;
-let underinvin;
-let resolvedin;
-let rejectedin;
+let reportedrf = 0;
+let underinvrf = 0;
+let resolvedrf = 0;
+let rejectedrf = 0;
+let reportedin = 0;
+let underinvin = 0;
+let resolvedin = 0;
+let rejectedin = 0;
 let redflags;
 let interventions;
 let results = [];
 let user = JSON.parse(sessionStorage.getItem("user"));
 let token = sessionStorage.getItem("token");
-const urlRedflags = `http://localhost:5000/api/v1/red-flags/${user.id}/users`;
-const urlInterventions = `http://localhost:5000/api/v1/interventions/${user.id}/users`;
+let urlRedflags;
+let urlInterventions;
+if (user.isAdmin) {
+    urlRedflags = `http://localhost:5000/api/v1/red-flags`;
+    urlInterventions = `http://localhost:5000/api/v1/interventions`;
+}
+else {
+    urlRedflags = `http://localhost:5000/api/v1/red-flags/${user.id}/users`;
+    urlInterventions = `http://localhost:5000/api/v1/interventions/${user.id}/users`;
+}
 
 window.addEventListener("DOMContentLoaded", getUserRedFlags);
 window.addEventListener("load", getUserInterventions);
@@ -31,8 +39,10 @@ function getUserRedFlags(){
     })
     .then(function(data) {
         if (data["status"] === 200) {
-            //results.push(data.data);
             userstats(data.data);
+            displayRedFlagStats();
+        }
+        else if (data["status"] === 404) {
             displayRedFlagStats();
         }
         else {
@@ -58,9 +68,11 @@ function getUserInterventions() {
     })
     .then(function(data) {
         if (data["status"] === 200) {
-            //results.push(data.data);
              userstats(data.data);
              displayInterventionStats();
+        }
+        else if (data["status"] === 404) {
+            displayInterventionStats();
         }
         else {
             throw new Error(data["error"]);

@@ -11,7 +11,7 @@
     float: left;
     padding: 15px;
 }
-input[type=text], select {
+input[type=text], input[type=password], input[type=email] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -48,7 +48,7 @@ header {
 .logo a {
     text-decoration: none;
     font-size: 30px;
-    color: lightcoral;
+    color: dodgerblue;
 }
 .logo a:hover {
     font-weight: bolder;
@@ -71,7 +71,7 @@ header {
    color: rgb(85, 80, 80);
 }
 #incident-menu a {
-    color: coral;
+    color: dodgerblue;
     font-weight: bolder;
     font-size: 17px;
 }
@@ -80,12 +80,13 @@ header {
 }
 
 .drop-menu-btn {
-    background-color: lightcoral;
+    background-color: dodgerblue;
     color: azure;
     padding: 10px;
     font-size: 15px;
     border: none;
     cursor: pointer;
+    margin-right: 20px;
 }
 .drop-menu {
     margin: 20px;
@@ -97,7 +98,7 @@ header {
 .drop-menu-content {
     display: none;
     position: absolute;
-    background-color: rgb(251, 245, 245);
+    background-color: aliceblue;
     min-width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -110,6 +111,7 @@ header {
 }
 .drop-menu-content a:hover {
     text-decoration: underline;
+    background: white;
 }
 
 .drop-menu:hover .drop-menu-content {
@@ -120,7 +122,7 @@ header {
     background-color: lightgreen;
 }
 .incident-menu a#report {
-    color: coral;
+    color: dodgerblue;
     font-weight: bolder;
     font-size: 18px;
 }
@@ -162,17 +164,43 @@ header {
 }
 .aside #landing-sidebar .drop-menu #admin-btn.drop-menu-btn{
     width: 100%;
-    background-color: rgb(235, 137, 45);
+    background-color: dodgerblue;
     font-weight: bold;
 }
+/*The loader*/
+#loader {
+    border: 5px dotted dodgerblue;
+    border-radius: 50%;
+    border-top: 5px dotted dodgerblue;
+    width: 30px;
+    height: 30px;
+    -webkit-animation: spin 3s linear infinite; /* Safari */
+    animation: spin 3s linear infinite;
+    left: 0;
+    right: 0;
+    display: inline-flex;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
 
 /*The welcome page(index) rules*/
+
 .main-content #welcome p {
     font-weight: bolder;
     font-size: 200%;
 }
 .main-content #welcome p strong{
-    color: lightcoral;
+    color: dodgerblue;
 }
 
 .main-content .greeting {
@@ -180,12 +208,12 @@ header {
 }
 
 .main-content .greeting p strong{
-    color: lightcoral;
+    color: dodgerblue;
     font-size: 130%;
 }
 
 .main-content #intervene {
-    background-color: lightcoral;
+    background-color: dodgerblue;
     color: antiquewhite;
     padding: 10px;
     border-radius: 100px;
@@ -206,7 +234,7 @@ header {
 .main-content #signup-link p strong a{
    text-decoration: none;
    font-weight: bolder;
-   background-color: lightcoral;
+   background-color: dodgerblue;
    padding: 10px;
    border-radius: 3px;
    color: white;
@@ -219,18 +247,17 @@ header {
 .main-content #login-form {
     padding: 10px;
     box-shadow: 10px 10px 5px #aaa;
-    border: 1px solid lightcoral;
+    border: 1px solid dodgerblue;
 }
 .main-content #login-form input {
     width: 50%;
     padding: 1px;
     height: 50px;
     border: 1px solid #aaa;
-    text-align: center;
 }
 
 .main-content  #signinBtn input{
-    background-color: darksalmon;
+    background-color: dodgerblue;
     padding: 5px;
     font-weight: bold;
     box-shadow: 5px 2px 5px #aaa;
@@ -248,7 +275,7 @@ header {
 }
 .main-content #login-form #cancel-signin a {
     text-decoration: none;
-    color: lightcoral;
+    color: dodgerblue;
 }
 .main-content #login-form #cancel-signin a:hover {
     color: brown;
@@ -258,7 +285,7 @@ header {
 }
 .main-content #login-form #forgot-pwd a {
     text-decoration: none;
-    color: lightcoral;
+    color: dodgerblue;
 }
 .main-content #login-form #forgot-pwd a:hover {
     color: brown;
@@ -272,18 +299,16 @@ header {
     margin: 10px;
     padding: 10px;
     box-shadow: 10px 10px 5px #aaa;
-    border: 1px solid lightcoral;
+    border: 1px solid dodgerblue;
 }
 .main-content #signup-form input{
-    width: 50%;
     height: 50px;
     padding: 1px;
     border: 1px solid #aaa;
-    text-align: center;
 }
 
 .main-content  #signupBtn input{
-    background-color: darksalmon;
+    background-color: dodgerblue;
     padding: 5px;
     font-weight: bold;
     box-shadow: 5px 2px 5px #aaa;
@@ -301,7 +326,7 @@ header {
 }
 .main-content #signup-form #cancel-signup a {
     text-decoration: none;
-    color: lightcoral;
+    color: dodgerblue;
 }
 .main-content #signup-form #cancel-signup a:hover {
     color: brown;
@@ -310,13 +335,17 @@ header {
     padding: 10px;
 }
 .main-content .row strong {
-    color: lightcoral;
+    color: dodgerblue;
 }
 /*The signup and signin page's sidebars*/
 .wrapper {
     min-height: 100vh;
-    overflow: auto;
+    overflow: -moz-scrollbars-none;
     margin-top: 1px;
+    -ms-overflow-style: none;
+}
+.wrapper::-webkit-scrollbar {
+    display: none;
 }
 .wrapper .signup-sidebar, .login-sidebar{
     padding: 20px;
@@ -326,14 +355,14 @@ header {
 }
 .wrapper .signup-sidebar p a{
     text-decoration: none;
-    color:  lightcoral;
+    color:  dodgerblue;
     font-size: 120%;
     display: inline-block;
     padding: 2px;
 }
 .wrapper .signup-sidebar p a:hover{
     box-shadow: 5px 5px 5px #aaa;
-    border: 1px solid lightcoral;
+    border: 1px solid dodgerblue;
     border-radius: 5px;
 }
 .wrapper .login-sidebar p{
@@ -341,13 +370,13 @@ header {
 }
 .wrapper .login-sidebar p a{
     text-decoration: none;
-    color:  lightcoral;
+    color:  dodgerblue;
     display: inline-block;
     padding: 2px;
 }
 .wrapper .login-sidebar p a:hover{
     box-shadow: 5px 5px 5px #aaa;
-    border: 1px solid lightcoral;
+    border: 1px solid dodgerblue;
     border-radius: 5px;
 }
 .wrapper .main-content {
@@ -365,7 +394,7 @@ header {
    color: rgb(85, 85, 83);  
 }
 .form-wrapper p a{
-    color: rgb(236, 104, 104);  
+    color: dodgerblue;  
     text-decoration: none;
     
  }
@@ -388,12 +417,6 @@ header {
     border: 1px solid #aaa;
     text-align: center;
  }
- .btn-green {
-     width: 30px;
-     height: 30px;
-     margin: 0px 20px 5px 20px;
-     display: inline-block;
- }
  .form-wrapper a#cancel-btn  {
     width: 20px;
     height: 20px;
@@ -401,16 +424,62 @@ header {
     font-size: 15px;
  }
 .form-wrapper a#cancel-btn:hover {
-    border: 2px solid coral;
-    background-color: coral;
+    border: 2px solid dodgerblue;
+    background-color: dodgerblue;
     color: whitesmoke;
     border-radius: 5px;
  }
-
+ button:hover {
+    opacity: 0.8;
+  }
+.btn-green {
+    background-color: greenyellow;
+    padding: 5px;
+    font-weight: bolder;
+    border: 1px none #aaa;
+    border-radius: 2px;
+    text-decoration: none;
+    display: inline-flex;
+    width: 100%;
+}
  .btn-green:hover {
-    border: 2px solid coral;
-    background-color: coral;
-    border-radius: 5px;
+    font-weight: normal;
+    box-shadow: 0px 2px 0px #aaa;
+    background-color: darkgreen;
+    color: white;
+}
+.btn-red {
+    background-color: rgb(243, 49, 0);
+    padding: 5px;
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+    border: 1px none #aaa;
+    border-radius: 2px;
+    text-decoration: none;
+    display: inline-flex;
+    width: 100%;
+}
+ .btn-red:hover {
+    font-weight: normal;
+    box-shadow: 0px 2px 0px #aaa;
+    background-color: darkred;
+}
+.btn-orange {
+    background-color: darkorange;
+    padding: 5px;
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+    border: 1px none #aaa;
+    border-radius: 2px;
+    text-decoration: none;
+    display: inline-flex;
+    width: 100%;
+}
+.btn-orange:hover {
+   font-weight: normal;
+   box-shadow: 0px 2px 0px #aaa;
+   background-color:orange;
+   color: white;
 }
 
 .btn-grey {
@@ -421,6 +490,7 @@ header {
     border: 1px none #aaa;
     border-radius: 2px;
     text-decoration: none;
+    display: inline-flex;
 }
 .btn-grey:hover {
    font-weight: normal;
@@ -428,7 +498,7 @@ header {
    background-color: chocolate;
 }
 .btn-coral {
-    background-color: lightcoral;
+    background-color: dodgerblue;
     padding: 5px;
     color: rgb(255, 255, 255);
     font-weight: bolder;
@@ -439,39 +509,131 @@ header {
     text-decoration: none;
 }
 .btn-coral:hover {
-   font-weight: normal;
+   font-weight: bolder;
    box-shadow: 0px 2px 0px #aaa;
-   background-color: coral;
+   background-color: aliceblue;
+   color: rgb(4, 80, 156);
+}
+.btn-clear {
+    background: none;
+    color: dodgerblue;
+    /* border: 1px solid; */
+    text-transform: capitalize;
+    font-size: 15px;
+    width: 100%;
+    font-weight: normal;
+}
+.btn-clear:hover {
+    text-decoration: underline;
+    font-size: 15px;
+    box-shadow: none;
+    font-weight: normal;
+    opacity: 1;
+}
+.btn-clear:focus {
+    color: chocolate;
 }
 /*Profile page*/
-#view-incidents-btn {
-    background-color: bisque;
+h3.header-text {
+    color: dodgerblue;
+    font-size: 17px;
+}
+div#view-incidents-btn {
+    background-color: aliceblue;
     padding: 5px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: left;
+    width: 100%;
+}
+.menu-admin-btns {
+    padding: 5px 5px;
 }
 #personal-info {
     text-align: justify;
+    background: dodgerblue;
+    color: white;
+}
+#profile-card {
+    display: none;
+} 
+.hint {
+    font-size: 15px;
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: aliceblue;
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    background-color: aliceblue;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #aaa;
+    width: 80%;
+}
+.loader-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: aliceblue;
+    background-color: rgba(0,0,0,0.4);
+}
+body.loading .loader-modal {
+    overflow: hidden;
+}
+body.loading .loader-modal {
+    display: block;
+}
+
+.close {
+    color: #aaa;
+    float: left;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    text-decoration: none;
+    cursor: pointer;
 }
 #row-profile {
-    background-color: bisque;
+    background-color: aliceblue;
     padding: 5px;
 }
 div#tbl-rejected {
-    background-color: salmon;
     padding: 2px;
-    color: wheat;
+    color: red
 }
 div#tbl-investigate {
-    background-color: peachpuff;
     padding: 2px;
-    color: grey;
+    color: darkorange;
 }
 div#tbl-resolved {
-    background-color: greenyellow;
     padding: 2px;
-    color: dodgerblue;
+    color:  rgb(48, 204, 0);
 }
 div#tbl-reported {
-    background-color: lavender;
     padding: 2px;
     color: cadetblue;
 }
@@ -525,7 +687,7 @@ div#tbl-rejected table td#col-rejected-in {
 }
 
 .table-landing th {
-    background: rgb(238, 181, 181);
+    background: dodgerblue;
     height: 10px;
     width: 100%; 
     margin: 10px 110px;  
@@ -534,11 +696,11 @@ div#tbl-rejected table td#col-rejected-in {
 }
 .table-landing th:hover {
     cursor: pointer;
-    background-color: coral;
+    background-color: dodgerblue;
 }
 .table-landing td, th {
     padding: 6px;
-    border: 1px none lightcoral;
+    border: 1px none dodgerblue;
     border-radius: 5px;
     
 }
@@ -555,8 +717,7 @@ div#tbl-rejected table td#col-rejected-in {
     display: none;
 }
 .table-landing .row-describe #col-deco{
-    background-color: rgb(238, 181, 181);
-    height: 100%;
+    background-color: dodgerblue;
     border-radius: 5px;
     margin-bottom: 0px;
     display: none;
@@ -582,11 +743,11 @@ div#tbl-rejected table td#col-rejected-in {
 
 .table-landing .row-footer {
     height: 50px;
-    width: 20%;
-    background-color: lightcoral;
+    width: 100%;
     float: right;
     border-radius: 5px;
 }
+
 .table-landing p.links-footer {
     margin: 10px;
 }
@@ -609,7 +770,51 @@ div#tbl-rejected table td#col-rejected-in {
     display: block;
   }
 
-.table-landing .row-footer li#edit img{
+  /*system users*/
+  table#users-table {
+    width: 100%;
+  }
+  table#users-table tr:nth-child(even) {
+    background-color: aliceblue;
+  }
+  .theader {
+      padding: 10px 16px;
+      background: dodgerblue;
+      color: #f1f1f1;
+  }
+  .tbody-content {
+      padding: 16px;
+  } 
+  .sticky {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+  }
+
+  .sticky + .tbody-content {
+      padding-top: 110px;
+  }
+  .sticky + div#flash-message {
+    padding-top: 100px;
+  }
+  /**********************************************/
+button:hover {
+    opacity: 0.4;
+    cursor: pointer;
+}
+
+.row-footer .edit button {
+    border: none;
+    background: none
+}
+.row-footer .edit button:hover {
+    border: 1px solid white;
+    border-radius: 14px;
+    background-color: dodgerblue;
+}
+
+.table-landing .row-footer .edit img{
     width: 20px;
     height: 22px;
 }
@@ -629,15 +834,39 @@ div#tbl-rejected table td#col-rejected-in {
     border: 2px solid white;
     border-radius: 5px;
 }
-
-#map-canvas {
+#tbl-stats {
+    font-size: small;
+}
+form#form-edit-comment p textarea {
     width: 100%;
-    height: 50%;
-    float: left;
+    height: 120px;
+    scroll-behavior: auto;
+}
+form#form-edit-comment p .edit {
+    border: none;
+    background: none
+}
+form#form-edit-comment p .edit img{
+    width: 30px;
+}
+form#form-edit-comment p .edit img:hover{
+    border: 1px solid white;
+    border-radius: 15px;
+    background: dodgerblue;
+}
+#map-canvas {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+#map-canvas::after{
+    display: block;
+    pointer-events: none;
 }
 
 #vertical-rule {
-    border-left:1px solid lightcoral;height:110px;
+    border-left:1px solid dodgerblue;height:110px;
 }
 
 .main-content .profile-pic {
@@ -647,7 +876,7 @@ div#tbl-rejected table td#col-rejected-in {
 }
 
 .main-content .display-list {
-    border: 1px dashed coral;
+    border: 1px dashed dodgerblue;
     background-color: bisque;
     padding: 5px;
     margin-bottom: 5px;
@@ -660,11 +889,11 @@ footer {
 
 footer .footer-upper {
     text-align: center;
-    background-color: lightcoral;
+    background-color: dodgerblue;
     min-height: 100px;
 }
 footer .footer-lower {
-    background-color: rgb(233, 117, 117);
+    background-color: dodgerblue;
 }
 footer .footer-upper, .footer-lower{
 	padding: 1px 1px 1px 50px;
@@ -691,6 +920,9 @@ footer .footer-lower ul li a{
 }	
 footer .footer-lower ul li a:hover{
 	text-decoration: underline;
+}
+.footermobile {
+    width: 50%;
 }
 /* For mobile phones: */
 [class*="col-"]{
@@ -738,6 +970,12 @@ footer .footer-lower ul li a:hover{
         visibility: visible;
         display: block;
     }
+    .sidenav {
+        visibility: visible;
+    }
+    #profile-card {
+        display: block;
+    } 
     .table-landing th {
         height: 10px;   
         font-size: 20px;
@@ -761,6 +999,9 @@ footer .footer-lower ul li a:hover{
     }
     .table-landing p.links-footer a{
         margin: 20px 20px auto;
+    }
+    div#view-incidents-btn {
+        flex-flow: row nowrap;
     }
 }
 
@@ -803,7 +1044,12 @@ footer .footer-lower ul li a:hover{
         visibility: visible;
         display: block;
     }
-    
+    .sidenav {
+        visibility: visible;
+    }
+    #profile-card {
+        display: block;
+    } 
     .table-landing th {
         height: 10px;   
         font-size: 20px;
@@ -829,6 +1075,8 @@ footer .footer-lower ul li a:hover{
     .table-landing p.links-footer a{
         margin: 20px 20px auto;
     }
-
+    div#view-incidents-btn {
+        flex-flow: row nowrap;
+    }
 }
 
