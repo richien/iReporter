@@ -6,3 +6,10 @@ function capitalise(s) {
     }
     return tmp
 }
+
+function formatDate(s) {
+    let arr = s.split(" ")
+    let tmp = arr.slice(0, 4)
+    s = tmp.join("  ")
+    return s;
+}

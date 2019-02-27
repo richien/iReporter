@@ -6,6 +6,10 @@
         <meta name="viewport" top="width=device-width, initial-scale=1.0">
         <title>iReporter-profile</title>
         <link rel="stylesheet" type="text/css" href="./css/styles.css">
+        <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+        <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.0/mapbox-gl-geocoder.min.js'></script>
+        <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.0/mapbox-gl-geocoder.css' type='text/css' />
     <head>
     <body>
         <header>
@@ -39,16 +43,14 @@
                         <li class="about-menu"><a href="about.html">About</a></li>
                     </div>
             </div>
+            <div class="menu-admin" id="view-incidents-btn">
+                <div class="menu-admin-btns"><button class="btn-coral btn-clear" onclick="getAll_redflags();">Red Flags</button></div>
+                <div class="menu-admin-btns"><button class="btn-coral btn-clear" onclick="getAll_interventions();"> Interventions</button></div>
+            </div>
         </header>
         <div class="wrapper">
             <section class="main-content">
                     <div id="welcome"></div>
-                    <div id="view-incidents-btn"> 
-                        <p>
-                            <button class="btn-coral" onclick="getAll_redflags();">RED FLAGS</button>&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;<button class="btn-coral" onclick="getAll_interventions();">INTERVENTIONS</button>
-                        </p>
-                    </div>
                 <div id="flash-message"></div>
                 <div class="row">   
                     <div class="col-3 col-s-12">
@@ -159,5 +161,9 @@
         <script src="js/userstats.js"></script>
         <script src="js/profile.js"></script>    
         <script src="js/incidentdetail.js"></script>
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoiZ2VvZmZ3aWxsaXMiLCJhIjoiY2pzOGd3ZHExMTdjbzQ0bzVqdmEyNGhyNCJ9.W7-VDuBTuVX9BtZ4LI-VBw';
+        </script>
+        <script src="js/locationview.js"></script>
     </body>
 </html>

@@ -4,6 +4,8 @@ let interveneClicked = false;
 let response = null;
 let res = [];
 let edit = [];
+let profileMenuLinks = document.getElementById('view-incidents-btn');
+let sticky = profileMenuLinks.offsetTop;
 const message = document.getElementById("flash-message");
 const success = "green";
 const fail = "red";
@@ -13,6 +15,17 @@ welcome.innerHTML = `<span>Welcome <h3 style="color:dodgerblue;">${user.username
 
 window.onload = () => {
     displayProfile();
+}
+
+window.onscroll = function() {stickyHeader();}
+
+function stickyHeader() {
+    if (window.pageYOffset > sticky) {
+        profileMenuLinks.classList.add("sticky");
+    }
+    else {
+        profileMenuLinks.classList.remove("sticky");
+    }
 }
 
 function setEditListeners() {
@@ -122,10 +135,10 @@ function createTable(data) {
                             <p id="comment-${data.id}">${data.text}&nbsp;&nbsp;&nbsp;
                                 <button class="btn-grey" id="more-link" onclick="showLess('${data.id}');"><b>LESS</b></button>
                             </p>
-                            <p class="status"id="status">${data.type}</p>
-                            <p class="status" id="posted">Posted on: ${data.createdOn}</p>
-                            <p class="status"id="status">status: ${data.status}</p>
-                            <p class="status"id="status">Location: ${data.location}</p>
+                            <p class="status"id="status"><b>${data.type}</b></p>
+                            <p class="status" id="posted"><b>Posted on:</b> ${formatDate(data.createdOn)}</p>
+                            <p class="status"id="status"><b>status:</b> ${data.status}</p>
+                            <div id="location-${data.id}"></div>
                         </div>
                         <div class="row row-footer" id="update-${data.id}"></div>
                         <div id="edit-comment-${data.id}" style="display: none;">
@@ -150,6 +163,7 @@ function displayData(dataArray) {
         data = dataArray[i].data();
         let table = createTable(data);
         incident.innerHTML += table;
+        createLocationButton(data);
         document.getElementById(`title-${data.id}`).style.background = "aliceblue";
         document.getElementById(`title-text-${data.id}`).style.margin = "0";
         document.getElementById(`title-text-${data.id}`).style.textAlign = "left";
@@ -217,6 +231,61 @@ function hideEditCommentForm(id) {
     document.getElementById(`edit-${id}`).style.display = "block";
     document.getElementById(`delete-${id}`).style.display = "block";
     document.getElementById(`edit-comment-${id}`).style.display = "none";
+}
+
+function createModal(data) {
+    let html = `
+    <div class="modal-content>
+        <!-- <span class="close" id="close-${data.id}">&times;</span> -->
+        <!--<button type="button" class="close" id="close-${data.id}">&times;</span></button>-->
+        <div id="mapboxMap-${data.id}" style="width:100%;height:400px;"></div> 
+    </div>
+    `;
+
+    window.addEventListener('click', function(event) {
+        let modal = document.getElementById(`location-modal-${data.id}`);
+        modal.innerHTML = html;
+        let btn = document.getElementById(`btn-location-${data.id}`);
+        let close = document.getElementById(`close-${data.id}`);
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+        else if (event.target === btn) {
+            modal.style.display = "block";
+            mapView(data.location, data.id);
+        }
+        else if (event.target === close) {
+            modal.style.display = "none";
+        }
+    });
+}
+
+function createLocationButton(data){
+    let btn = document.createElement("BUTTON");
+    let btnid = document.createAttribute("id");
+    let btnclass = document.createAttribute("class");
+    btn.innerHTML = "<img src='images/location-icon.png' style='width: 30px; height: 32px;'>";
+    btn.style.border = "none";
+    btn.style.background = "none";
+    // btn.style.width = "100%";
+    btnid.value = `btn-location-${data.id}`;  
+    btn.setAttributeNode(btnid);
+    btn.setAttributeNode(btnclass);
+    let wrapper = document.createElement("div");
+    let wrapperid = document.createAttribute("id");
+    let modal = document.createElement("div");
+    let modalid = document.createAttribute("id");
+    let modalclass = document.createAttribute("class");
+    wrapperid.value = `modal-wrapper-${data.id}`;
+    modalid.value = `location-modal-${data.id}`;
+    modalclass.value = "modal";
+    wrapper.setAttributeNode(wrapperid);
+    modal.setAttributeNode(modalid);
+    modal.setAttributeNode(modalclass);
+    wrapper.appendChild(btn);
+    wrapper.appendChild(modal);
+    document.getElementById(`location-${data.id}`).appendChild(wrapper);
+    btn.addEventListener('click', createModal(data));
 }
 
 function storeResponse(data) {

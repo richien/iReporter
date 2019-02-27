@@ -7,6 +7,8 @@ let response = null;
 let res = [];
 let users = [];
 let updatebtnlist = [];
+let adminMenuLinks = document.getElementById('view-incidents-btn');
+let sticky = adminMenuLinks.offsetTop;
 const message = document.getElementById("flash-message");
 const success = "green";
 const fail = "red";
@@ -15,13 +17,12 @@ const statusres = "resolved";
 const statusrej = "rejected";
 
 let names = `${user.firstname} ${user.lastname} ${user.othernames}`;
-welcome.innerHTML = "<span>Welcome <h3>" + `${user.username}` + "</h3> </span>";
-welcome.innerHTML += "<span>Here you can VIEW ALL incidents and SYSTEM USERS</span>";
-welcome.innerHTML += "<span> as well as Update REDFLAG or INTERVENTION incidents</span>"
+welcome.innerHTML = `Welcome  <b>${capitalise(user.username)}</b>  `;
 window.onload = () => {
-    //displayFullName();
     displayProfile();
 }
+window.onscroll = function() {stickyHeader();}
+
 window.document.addEventListener('DOMContentLoaded', getUsers);
 
 function redirectToUsers() {
@@ -29,6 +30,15 @@ function redirectToUsers() {
 }
 function redirectToLanding() {
     window.location.replace("landing.html");
+}
+
+function stickyHeader() {
+    if (window.pageYOffset > sticky) {
+        adminMenuLinks.classList.add("sticky");
+    }
+    else {
+        adminMenuLinks.classList.remove("sticky");
+    }
 }
 
 function getAll_redflags() {
@@ -110,7 +120,60 @@ function displayText(color, text) {
     message.innerHTML = "<p>" + text + "</p>"
     message.scrollIntoView();
 }
+function createModal(data) {
+    let html = `
+    <div class="modal-content>
+        <!-- <span class="close" id="close-${data.id}">&times;</span> -->
+        <!--<button type="button" class="close" id="close-${data.id}">&times;</span></button>-->
+        <div id="mapboxMap-${data.id}" style="width:100%;height:400px;"></div> 
+    </div>
+    `;
 
+    window.addEventListener('click', function(event) {
+        let modal = document.getElementById(`location-modal-${data.id}`);
+        modal.innerHTML = html;
+        let btn = document.getElementById(`btn-location-${data.id}`);
+        let close = document.getElementById(`close-${data.id}`);
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+        else if (event.target === btn) {
+            modal.style.display = "block";
+            mapView(data.location, data.id);
+        }
+        else if (event.target === close) {
+            modal.style.display = "none";
+        }
+    });
+}
+
+function createLocationButton(data){
+    let btn = document.createElement("BUTTON");
+    let btnid = document.createAttribute("id");
+    let btnclass = document.createAttribute("class");
+    btn.innerHTML = "<img src='images/location-icon.png' style='width: 30px; height: 32px;'>";
+    btn.style.border = "none";
+    btn.style.background = "none";
+    // btn.style.width = "100%";
+    btnid.value = `btn-location-${data.id}`;  
+    btn.setAttributeNode(btnid);
+    btn.setAttributeNode(btnclass);
+    let wrapper = document.createElement("div");
+    let wrapperid = document.createAttribute("id");
+    let modal = document.createElement("div");
+    let modalid = document.createAttribute("id");
+    let modalclass = document.createAttribute("class");
+    wrapperid.value = `modal-wrapper-${data.id}`;
+    modalid.value = `location-modal-${data.id}`;
+    modalclass.value = "modal";
+    wrapper.setAttributeNode(wrapperid);
+    modal.setAttributeNode(modalid);
+    modal.setAttributeNode(modalclass);
+    wrapper.appendChild(btn);
+    wrapper.appendChild(modal);
+    document.getElementById(`location-${data.id}`).appendChild(wrapper);
+    btn.addEventListener('click', createModal(data));
+}
 function createTable(data) {
     let fullname = "";
     for(let i = 0; i < users.length; i++) {
@@ -139,11 +202,12 @@ function createTable(data) {
                                         <button class="btn-grey" id="more-link" onclick="showLess('${data.id}');"><b>LESS</b></button>
                                     </p>
                                     <p class="status"id="status"><b>${data.type}</b></p>
-                                    <p class="status" id="posted"><b>Created</b> ${data.createdOn}</p>
+                                    <p class="status" id="posted"><b>Created</b> ${formatDate(data.createdOn)}</p>
                                     <p class="status"id="status"><b>status</b> ${data.status}</p>
                                     <p class="status"id="status"><b>Location[lat, lng]</b> [${data.location}]</p>
+                                    <div id="location-${data.id}"></div>
                                 </div>
-                                <div class="row row-footer" id="update-${data.id}" style="width: 70%; background: white;"></div>
+                                <div class="row row-footer" id="update-${data.id}" style="width: 100%; background: white;"></div>
                                 <div id="edit-comment-${data.id}" style="display: none;">
                                                             
                                 </div>
@@ -160,6 +224,7 @@ function displayData(dataArray) {
         data = dataArray[i].data();
         let table = createTable(data);
         incident.innerHTML += table;
+        createLocationButton(data);
         let update =  `
             <div class="col-4 col-s-4">
                 <li id="underinv"><button class="btn-orange" id="underinv-${data.id}" onclick="return doEditStatus(${data.id}, '${data.type}', '${statusui}');">Investigate</button></li>
