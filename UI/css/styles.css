@@ -514,6 +514,25 @@ header {
    background-color: aliceblue;
    color: rgb(4, 80, 156);
 }
+.btn-clear {
+    background: none;
+    color: dodgerblue;
+    /* border: 1px solid; */
+    text-transform: capitalize;
+    font-size: 15px;
+    width: 100%;
+    font-weight: normal;
+}
+.btn-clear:hover {
+    text-decoration: underline;
+    font-size: 15px;
+    box-shadow: none;
+    font-weight: normal;
+    opacity: 1;
+}
+.btn-clear:focus {
+    color: chocolate;
+}
 /*Profile page*/
 h3.header-text {
     color: dodgerblue;
@@ -524,16 +543,20 @@ div#view-incidents-btn {
     padding: 5px;
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
+    justify-content: left;
+    width: 100%;
 }
 .menu-admin-btns {
-    padding: 5px 50px;
+    padding: 5px 5px;
 }
 #personal-info {
     text-align: justify;
     background: dodgerblue;
     color: white;
 }
+#profile-card {
+    display: none;
+} 
 .hint {
     font-size: 15px;
 }
@@ -563,6 +586,26 @@ div#view-incidents-btn {
     border: 1px solid #aaa;
     width: 80%;
 }
+.loader-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: aliceblue;
+    background-color: rgba(0,0,0,0.4);
+}
+body.loading .loader-modal {
+    overflow: hidden;
+}
+body.loading .loader-modal {
+    display: block;
+}
+
 .close {
     color: #aaa;
     float: left;
@@ -731,6 +774,9 @@ div#tbl-rejected table td#col-rejected-in {
   table#users-table {
     width: 100%;
   }
+  table#users-table tr:nth-child(even) {
+    background-color: aliceblue;
+  }
   .theader {
       padding: 10px 16px;
       background: dodgerblue;
@@ -743,10 +789,14 @@ div#tbl-rejected table td#col-rejected-in {
       position: fixed;
       top: 0;
       width: 100%;
+      z-index: 1;
   }
 
   .sticky + .tbody-content {
       padding-top: 110px;
+  }
+  .sticky + div#flash-message {
+    padding-top: 100px;
   }
   /**********************************************/
 button:hover {
@@ -871,6 +921,9 @@ footer .footer-lower ul li a{
 footer .footer-lower ul li a:hover{
 	text-decoration: underline;
 }
+.footermobile {
+    width: 50%;
+}
 /* For mobile phones: */
 [class*="col-"]{
     width: 100%;
@@ -920,9 +973,9 @@ footer .footer-lower ul li a:hover{
     .sidenav {
         visibility: visible;
     }
-    /* .main-content {
-        overflow: auto;
-    } */
+    #profile-card {
+        display: block;
+    } 
     .table-landing th {
         height: 10px;   
         font-size: 20px;
@@ -994,6 +1047,9 @@ footer .footer-lower ul li a:hover{
     .sidenav {
         visibility: visible;
     }
+    #profile-card {
+        display: block;
+    } 
     .table-landing th {
         height: 10px;   
         font-size: 20px;

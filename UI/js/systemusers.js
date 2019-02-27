@@ -23,6 +23,7 @@ function stickyHeader() {
 function getUsers() {
     if (typeof(Storage) !== "undefined") {
         let token = sessionStorage.getItem("token"); 
+        loader.style.display = "block";
         fetchUsers(token, url); 
         loader.style.display = "none"; 
     }                  
@@ -77,6 +78,7 @@ function createTableHeader() {
     <th>Email</th>
     <th>Role</th>
     <th>Phone number</th>
+    <th>Registered</th>
     <th></th>
     `;
     return thead;
@@ -92,6 +94,7 @@ function createTableRow(data) {
         <td>${data.email}</td>
         <td>${data.role}</td>
         <td>${data.phonenumber}</td>
+        <td>${formatDate(data.registered)}</td>
         <td>
             <button class="btn-green" id="make-admin-${data.id}">Make Admin</button>
         </td>
@@ -110,7 +113,6 @@ function displayData(dataArray) {
         }
     }
 }
-
 
 function displayText(color, text) {
     message.style.color = color;

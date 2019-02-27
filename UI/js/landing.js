@@ -4,6 +4,7 @@ let users = [];
 let redflagClicked = false;
 let interveneClicked = false;
 let response = null;
+let loader = document.getElementById("loader");
 // let address = "";
 const message = document.getElementById("flash-message");
 const success = "green";
@@ -132,9 +133,8 @@ function createTable(data) {
                             </p>
                             <div id="status-box">
                                 <p class="status" id="status">${data.type}</p>
-                                <p class="status" id="posted"><b>Posted on: ${data.createdOn}</b></p>
+                                <p class="status" id="posted"><b>Posted on:</b> ${formatDate(data.createdOn)}</p>
                                 <p class="status" id="status"><b>Status:</b> ${data.status}</b></p>
-                                <p class="status" id="status"><b>Location[lat, lng]</b> [${data.location}]</p>
                                 <!--<p class="status" id="status"><b>Approximate Address</b> ${address}</p>-->
                             </div>
                         </div>
@@ -181,7 +181,7 @@ function createLocationButton(data){
     btn.innerHTML = "<img src='images/location-icon.png' style='width: 30px; height: 32px;'>";
     btn.style.border = "none";
     btn.style.background = "none";
-    btn.style.width = "100%";
+    //btn.style.width = "100%";
     btnid.value = `btn-location-${data.id}`;  
     btn.setAttributeNode(btnid);
     btn.setAttributeNode(btnclass);
@@ -198,6 +198,8 @@ function createLocationButton(data){
     modal.setAttributeNode(modalclass);
     wrapper.appendChild(btn);
     wrapper.appendChild(modal);
+    wrapper.style.textAlign = "center";
+    modal.style.textAlign = "left";
     document.getElementById(`col-deco-${data.id}`).appendChild(wrapper);
     btn.addEventListener('click', createModal(data));
 }
