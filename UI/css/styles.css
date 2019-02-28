@@ -202,7 +202,11 @@ header {
 .main-content #welcome p strong{
     color: dodgerblue;
 }
-
+.welcome-text {
+    position: absolute;
+    right: 0;
+    margin-right: 5px;
+}
 .main-content .greeting {
     font-size: 110%;
 }
