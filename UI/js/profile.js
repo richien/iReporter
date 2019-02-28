@@ -9,9 +9,8 @@ let sticky = profileMenuLinks.offsetTop;
 const message = document.getElementById("flash-message");
 const success = "green";
 const fail = "red";
-
 let names = `${user.firstname} ${user.lastname} ${user.othernames}`;
-welcome.innerHTML = `<span>Welcome <h3 style="color:dodgerblue;">${user.username}</h3> to iReporter</span>`;
+welcome.innerHTML = `<p>Welcome <b style="color: dodgerblue;">${user.username}</b></p>`;
 
 window.onload = () => {
     displayProfile();
@@ -173,10 +172,13 @@ function displayData(dataArray) {
         document.getElementById(`comment-${data.id}`).style.fontSize = "17px";
         if(data.status === "draft") {
           let update =  `
-            <div class="col-6 col-s-6">
+            <div class="col-4 col-s-4">
                 <li id="edit"><button class="edit" id="edit-${data.id}" onclick="return editCommmentForm(${data.id});"><img src="images/edit.png"></button></li>
             </div>
-            <div class="col-6 col-s-6">
+            <div class="col-4 col-s-4">
+            <li id="locate"><button class="edit" id="edit-location-${data.id}" onclick="return editLocationForm(${data.id});"><img src="images/location.png"></button></li>
+        </div>
+            <div class="col-4 col-s-4">
                 <li id="delete"><button class="edit" id="delete-${data.id}" onclick="return deleteIncident(${data.id});"><img src="images/delete.png"></button></li>
             </div>
             `;
@@ -186,6 +188,8 @@ function displayData(dataArray) {
             document.getElementById(`edit-comment-${data.id}`).style.display = "none";
             document.getElementById(`edit-${data.id}`).style.background = "none";
             document.getElementById(`edit-${data.id}`).style.border = "none";
+            document.getElementById(`edit-location-${data.id}`).style.background = "none";
+            document.getElementById(`edit-location-${data.id}`).style.border = "none";
             document.getElementById(`delete-${data.id}`).style.background = "none";
             document.getElementById(`delete-${data.id}`).style.border = "none";
             document.getElementById(`status-box-${data.id}`).style.border = "0 solid";
@@ -267,7 +271,6 @@ function createLocationButton(data){
     btn.innerHTML = "<img src='images/location-icon.png' style='width: 30px; height: 32px;'>";
     btn.style.border = "none";
     btn.style.background = "none";
-    // btn.style.width = "100%";
     btnid.value = `btn-location-${data.id}`;  
     btn.setAttributeNode(btnid);
     btn.setAttributeNode(btnclass);
