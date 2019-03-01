@@ -52,7 +52,7 @@ function signIn() {
             }
             else if (JSON.parse(sessionStorage.getItem("user")).isAdmin === false) {
                 window.setTimeout( function() {
-                    window.location.replace("landing.html")
+                    window.location.replace("profile.html")
                 }, 1000);
             }
             else {

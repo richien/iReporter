@@ -3,14 +3,19 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1,user-scalable=no">
         <title>iReporter-incident</title>
         <link rel="stylesheet" type="text/css" href="./css/styles.css">
+        <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+        <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.0/mapbox-gl-geocoder.min.js'></script>
+        <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.0/mapbox-gl-geocoder.css' type='text/css' />
+        
     <head>
     <body>
         <header>
             <div class="logo">
-                <span><a href="landing.html">iReporter</a></span>
+                <span><a href="profile.html">iReporter</a></span>
             </div>
             <div class="menu-header">
                 <ul>
@@ -44,27 +49,37 @@
             <section class="main-content">
                 <div class="row">
                     <div class="col-12 col-s-12">
-                        <h1 style="color:lightcoral;">Report Incident</h1>
+                        <h1>Report Incident</h1>
                         <div id="flash-message"></div>
-                        <form action="#" onsubmit="return createIncident();">
+                        <form action="#" onsubmit="return createIncident();" id="incident-form">
                             <div class="form-wrapper">
-                                <p>Redflag&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="type" value="red-flag" type="radio" id="redflag" checked></p>
-                                <p>Intervention&nbsp;<input name="type" value="intervention" type="radio" id="intervene"></p>
+                                <h3 class="header-text">Select Incident Type</h3>
+                                <p>Redflag &nbsp;<input name="type" value="red-flag" type="radio" id="redflag" checked>&nbsp;&nbsp;
+                                Intervention&nbsp;<input name="type" value="intervention" type="radio" id="intervene"></p>
+                                <h3 class="header-text">What is this about?</h3>
                                 <p><input title="Enter a title" id="title" value="" placeholder="What is this about?" class="input-text" required></p>
-                                <p><input title="What did you witness?" id="description" type="area" value="" placeholder="Describe what you saw."  class="input-area" required></p>
-                                <p><input class="btn-green" name="upload-image-btn" type="image" src="images/photo.png" alt="submit" value="">
-                                    <input class="btn-green" name="upload-video-btn" type="image" src="images/video.png" alt="submit" value=""></p>
-                                <p><input class="btn-coral" id="save-btn" type="submit" value="REPORT" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="cancel-btn" href="landing.html">Cancel</a></p>
-                            </div>
+                                <!-- <p><input title="What did you witness?" id="description" type="area" value="" placeholder="Describe what you saw."  class="input-area" required></p> -->
+                                <!-- <p><input class="btn-green" name="upload-image-btn" type="image" src="images/photo.png" alt="submit" value="">
+                                    <input class="btn-green" name="upload-video-btn" type="image" src="images/video.png" alt="submit" value=""></p> -->
+                                <h3 class="header-text">Describe what happened.</h3>
+                                <span><textarea rows="10" cols="80" form="incident-form" id="description" placeholder="Describe what happened" required> </textarea></span>       
+                                <div id="map-canvas">
+                                    <h3 class="header-text">Where did this incident occur?</h3>
+                                    <p class="hint">[Drag the marker to the location on the map below.]</p>
+                                    <h3 class="header-text">Current position</h3>
+                                    <div class="hint" id="lat-lng"></div>
+                                        <h3 class="header-text"> Closest matching address </h3>
+                                    <div class="hint" id="address"></div>
+                                    <div id="googleMap" style="width:100%;height:400px;"></div>
+                                    <div class="row">
+                                        <div class="col-12 col-s-12">
+                                            <!-- <div id="mapboxMap" style="width:100%;height:400px;"></div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <p><input class="btn-coral" id="save-btn" type="submit" value="REPORT" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="cancel-btn" href="profile.html">Cancel</a></p>
+                                    </div>
                         </form>
-                        <div id="map-canvas">
-                            <h3>Where did this incident occur?</h3>
-                            <b>Current position</b>
-                            <div id="lat-lng"></div>
-                            <b>Closest matching address:</b>
-                            <div id="address"></div>
-                            <div id="googleMap" style="width:100%;height:400px;"></div>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -89,7 +104,10 @@
                     </div>
         </footer>
         <script src="js/main.js"></script>
-        <script src="http://maps.google.com/maps/api/js?key=AIzaSyB9bjLjFKQOCBmrG4vBnDAmazEjDX8SVV0&sensor=false" type="text/javascript"></script>
+        <!-- <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoiZ2VvZmZ3aWxsaXMiLCJhIjoiY2pzOGd3ZHExMTdjbzQ0bzVqdmEyNGhyNCJ9.W7-VDuBTuVX9BtZ4LI-VBw';
+        </script> -->
+        <script src="https://maps.google.com/maps/api/js?key=AIzaSyB9bjLjFKQOCBmrG4vBnDAmazEjDX8SVV0&sensor=false" type="text/javascript"></script>
         <script src="js/location.js"></script>
         <script src="js/incident.js"></script>
     </body>

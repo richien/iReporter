@@ -3,19 +3,19 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>iReporter-landing</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1,user-scalable=no">
+        <title>iReporter-incident</title>
         <link rel="stylesheet" type="text/css" href="./css/styles.css">
         <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
         <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
         <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.0/mapbox-gl-geocoder.min.js'></script>
         <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.0/mapbox-gl-geocoder.css' type='text/css' />
-
+        
     <head>
     <body>
         <header>
             <div class="logo">
-                <span><a href="landing.html">iReporter</a></span>
+                <span><a href="profile.html">iReporter</a></span>
             </div>
             <div class="menu-header">
                 <ul>
@@ -47,16 +47,34 @@
         </header>
         <div class="wrapper">
             <section class="main-content">
-                <div id="welcome"></div>
-                <div id="flash-message"></div>
                 <div class="row">
-                    <div class="col-2 col-s-2" id="display-sidebar">
-                        <p>Select Incidents</p>
-                        <p><button class="btn-coral" onclick="getAll_redflags();">Red Flags</button></p>
-                        <p><button class="btn-coral" onclick="getAll_interventions();">Interventions</button></p>
-                    </div>  
-                    <div class="col-10 col-s-10" id="display-incidents"></div> 
-                </div>  
+                    <div class="col-12 col-s-12">
+                        <h1>Update location</h1>
+                        <div id="flash-message"></div>
+                        <form action="#" onsubmit="return updateLocation();" id="update-location-form">
+                            <div class="form-wrapper">      
+                                <div id="map-canvas">
+                                    <h3 class="header-text">Title</h3>
+                                    <p id="title-text"></p>
+                                    <input id="incident-id" type="hidden">
+                                    <h3 class="header-text">Where did this incident occur?</h3>
+                                    <p class="hint">[Drag the marker to the location on the map below.]</p>
+                                    <h3 class="header-text">Current position</h3>
+                                    <div class="hint" id="lat-lng"></div>
+                                        <h3 class="header-text"> Closest matching address </h3>
+                                    <div class="hint" id="address"></div>
+                                    <div id="googleMap" style="width:100%;height:400px;"></div>
+                                    <div class="row">
+                                        <div class="col-12 col-s-12">
+                                            <!-- <div id="mapboxMap" style="width:100%;height:400px;"></div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <p><input class="btn-coral" id="save-btn" type="submit" value="UPDATE" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="cancel-btn" href="profile.html">Cancel</a></p>
+                                    </div>
+                        </form>
+                    </div>
+                </div>
             </section>
         </div>
         <footer>
@@ -79,16 +97,12 @@
                     </div>
         </footer>
         <script src="js/main.js"></script>
-        <script src="js/utilities.js"></script>
-        <script>
-            mapboxgl.accessToken = 'pk.eyJ1IjoiZ2VvZmZ3aWxsaXMiLCJhIjoiY2pzOGd3ZHExMTdjbzQ0bzVqdmEyNGhyNCJ9.W7-VDuBTuVX9BtZ4LI-VBw';
-        </script>
-        <script src="js/locationview.js"></script>
-        <script src="js/landing.js"></script>
-        <!-- <script src="http://maps.google.com/maps/api/js?key=AIzaSyB9bjLjFKQOCBmrG4vBnDAmazEjDX8SVV0&sensor=false" type="text/javascript"></script> -->
         <!-- <script>
             mapboxgl.accessToken = 'pk.eyJ1IjoiZ2VvZmZ3aWxsaXMiLCJhIjoiY2pzOGd3ZHExMTdjbzQ0bzVqdmEyNGhyNCJ9.W7-VDuBTuVX9BtZ4LI-VBw';
-        </script>
-        <script src="js/locationview.js"></script> -->
+        </script> -->
+        <script src="https://maps.google.com/maps/api/js?key=AIzaSyB9bjLjFKQOCBmrG4vBnDAmazEjDX8SVV0&sensor=false" type="text/javascript"></script>
+        <script src="js/location.js"></script>
+        <script src="js/incident.js"></script>
     </body>
 </html>
+

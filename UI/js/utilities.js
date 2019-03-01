@@ -6,3 +6,21 @@ function capitalise(s) {
     }
     return tmp
 }
+
+function formatDate(s) {
+    let arr = s.split(" ")
+    let tmp = arr.slice(0, 4)
+    s = tmp.join("  ")
+    return s;
+}
+
+function coordsFromString(s) {
+    tmp =  s.split(',');
+    let lat = tmp[0];
+    let lng = tmp[1];
+    let coord = {
+        lat: parseFloat(lat),
+        lng: parseFloat(lng)
+    }
+    return coord;
+}

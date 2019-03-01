@@ -20,7 +20,7 @@ function displayText(color, text) {
 }
 
 function createIncident() {
-    if (coordinates.lat === "" || coordinates.lng == "") {
+    if (coordinates.lat === "" || coordinates.lng === "") {
         displayText(fail, "Drag marker to select a location on the map below")
         return false;
     }
@@ -72,6 +72,9 @@ function createIncident() {
             else {
                 displayText(fail, "Browser does not support Web Storage");
             }
+            window.setTimeout( function() {
+                window.location.replace('profile.html');
+            }, 2000);
         })
         .catch(function(error){
             displayText(fail, error.message)
