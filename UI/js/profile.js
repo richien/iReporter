@@ -4,6 +4,7 @@ let interveneClicked = false;
 let response = null;
 let res = [];
 let edit = [];
+let updateLocationBtns = [];
 let profileMenuLinks = document.getElementById('view-incidents-btn');
 let sticky = profileMenuLinks.offsetTop;
 const message = document.getElementById("flash-message");
@@ -27,11 +28,11 @@ function stickyHeader() {
     }
 }
 
-function setEditListeners() {
-    for(let i = 0; i < edit; i++) {
-        edit[i].addEventListener("click", editCommmentForm);
-    }
-}
+// function setEditListeners() {
+//     for(let i = 0; i < edit; i++) {
+//         edit[i].addEventListener("click", editCommmentForm);
+//     }
+// }
 
 function getAll_redflags() {
     if (typeof(Storage) !== "undefined") {
@@ -176,8 +177,8 @@ function displayData(dataArray) {
                 <li id="edit"><button class="edit" id="edit-${data.id}" onclick="return editCommmentForm(${data.id});"><img src="images/edit.png"></button></li>
             </div>
             <div class="col-4 col-s-4">
-            <li id="locate"><button class="edit" id="edit-location-${data.id}" onclick="return editLocationForm(${data.id});"><img src="images/location.png"></button></li>
-        </div>
+                <li id="locate"><button class="edit" id="edit-location-${data.id}" onclick="callEditLocation(${data.id});"><img src="images/location.png"></button></li>
+            </div>
             <div class="col-4 col-s-4">
                 <li id="delete"><button class="edit" id="delete-${data.id}" onclick="return deleteIncident(${data.id});"><img src="images/delete.png"></button></li>
             </div>
@@ -190,6 +191,7 @@ function displayData(dataArray) {
             document.getElementById(`edit-${data.id}`).style.border = "none";
             document.getElementById(`edit-location-${data.id}`).style.background = "none";
             document.getElementById(`edit-location-${data.id}`).style.border = "none";
+            //document.getElementById(`edit-location-${data.id}`).addEventListener('click', editLocation.bind(this, data.id, data.title, data.type, data.location));
             document.getElementById(`delete-${data.id}`).style.background = "none";
             document.getElementById(`delete-${data.id}`).style.border = "none";
             document.getElementById(`status-box-${data.id}`).style.border = "0 solid";
@@ -221,8 +223,10 @@ function displayData(dataArray) {
             document.getElementById(`status-box-${data.id}`).style.background = "orangered";
             document.getElementById(`status-box-${data.id}`).style.marginRight = "15px";
         }
-        let btnId = document.getElementById(`edit-${data.id}`);
-        edit.push(btnId);
+        //let btnId = document.getElementById(`edit-${data.id}`);
+        // let locBtnId = document.getElementById(`edit-location-${data.id}`);
+        //edit.push(btnId);
+        // updateLocationBtns.push(locBtnId);
     }   
 }
 
@@ -235,6 +239,20 @@ function hideEditCommentForm(id) {
     document.getElementById(`edit-${id}`).style.display = "block";
     document.getElementById(`delete-${id}`).style.display = "block";
     document.getElementById(`edit-comment-${id}`).style.display = "none";
+}
+
+function callEditLocation(id) {
+    let title = "";
+    let type = "";
+    let location = "";
+    for (let i = 0; i < res.length; i++) {
+        if (res[i]._id === id) {
+            title = res[i]._title;
+            type = res[i]._type;
+            location = res[i]._location;
+        }
+    }
+    editLocation(id, title, type, location);
 }
 
 function createModal(data) {
@@ -300,7 +318,7 @@ function storeResponse(data) {
         text = data.data[i].comment;
         status =  data.data[i].status;
         createdOn = data.data[i].createdOn; 
-        address = data.data[i].location;
+        address = JSON.parse(data.data[i].location);
         createdBy = data.data[i].createdby;
         
         response = new ResponseObj(id, title, type, text, status, createdOn, address, createdBy);
@@ -355,7 +373,6 @@ function displayFullName() {
 function displayProfile() {
     let card = document.getElementById("profile-card");
     card.innerHTML = `
-    <img src="images/profile/avatar.png" alt="${capitalise(names)}" style="width: 100%">
     <h1>${capitalise(names)}</h1>
     <p>${user.email}</p>
     <p>Phone number ${user.phonenumber}</p>

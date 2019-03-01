@@ -1,6 +1,6 @@
 let incident = document.getElementById("display-list-wrapper");
 let welcome = document.getElementById("welcome");
-const usersurl = 'https://irepo-api.herokuapp.com/api/v1/users';
+const usersurl = 'http://localhost:5000/api/v1/users';
 let redflagClicked = false;
 let interveneClicked = false;
 let response = null;
@@ -154,7 +154,6 @@ function createLocationButton(data){
     btn.innerHTML = "<img src='images/location-icon.png' style='width: 30px; height: 32px;'>";
     btn.style.border = "none";
     btn.style.background = "none";
-    // btn.style.width = "100%";
     btnid.value = `btn-location-${data.id}`;  
     btn.setAttributeNode(btnid);
     btn.setAttributeNode(btnclass);
@@ -340,7 +339,7 @@ function storeResponse(data) {
         text = data.data[i].comment;
         status =  data.data[i].status;
         createdOn = data.data[i].createdOn; 
-        address = data.data[i].location;
+        address = JSON.parse(data.data[i].location);
         createdBy = data.data[i].createdby;
         
         response = new ResponseObj(id, title, type, text, status, createdOn, address, createdBy);
@@ -395,7 +394,6 @@ function displayFullName() {
 function displayProfile() {
     let card = document.getElementById("profile-card");
     card.innerHTML = `
-    <img src="images/profile/avatar.png" alt="${capitalise(names)}" style="width: 100%">
     <h1>${capitalise(names)}</h1>
     <p>${user.email}</p>
     <p>Phone number ${user.phonenumber}</p>

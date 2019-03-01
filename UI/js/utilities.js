@@ -13,3 +13,14 @@ function formatDate(s) {
     s = tmp.join("  ")
     return s;
 }
+
+function coordsFromString(s) {
+    tmp =  s.split(',');
+    let lat = tmp[0];
+    let lng = tmp[1];
+    let coord = {
+        lat: parseFloat(lat),
+        lng: parseFloat(lng)
+    }
+    return coord;
+}

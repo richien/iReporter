@@ -1,6 +1,6 @@
 
 function mapView(location, mapid) {
-    let lat = location.split(",")[0].trim().slice(2);
+    let lat = location.split(",")[0].trim();
     let lng = location.split(",")[1].trim();
 
     let coordinates =  {
@@ -20,35 +20,6 @@ function mapView(location, mapid) {
     let marker = new mapboxgl.Marker()
         .setLngLat([coordinates.lng, coordinates.lat])
         .addTo(map);
-    
-    // let geocoder = new MapboxGeocoder({
-    //     accessToken: 'pk.eyJ1IjoiZ2VvZmZ3aWxsaXMiLCJhIjoiY2pzOGd3ZHExMTdjbzQ0bzVqdmEyNGhyNCJ9.W7-VDuBTuVX9BtZ4LI-VBw'
-    // })
-    // map.addControl(geocoder);
-
-    // map.on('load', function() {
-    //     map.addSource('single-point', {
-    //         type: 'geojson',
-    //         data: {
-    //             type: 'FeatureCollection',
-    //             features: []
-    //         }
-    //     });
-    //     map.addLayer({
-    //         id: 'point',
-    //         source: 'single-point',
-    //         type: 'circle',
-    //         paint: {
-    //             'circle-radius': 10,
-    //             'circle-color': '#447FF5'
-    //         }
-    //     });
-    //     geocoder.on('result', function(e) {
-    //         map.getSource('single-point').setData(e.result.geometry);
-    //         updateMarkerAddress(e.latlng);
-    //     });
-    // });
-    
 }
 
 // function getAddress(location) {

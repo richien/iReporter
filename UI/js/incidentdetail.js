@@ -13,10 +13,10 @@ function displayText(color, text) {
 function doEditComment(id, type) {
     let url;
     if(type === 'red-flag') {
-        url = `https://irepo-api.herokuapp.com/api/v1/red-flags/${id}/comment`;
+        url = `http://localhost:5000/api/v1/red-flags/${id}/comment`;
     }
     else {
-        url = `https://irepo-api.herokuapp.com/api/v1/interventions/${id}/comment`;
+        url = `http://localhost:5000/api/v1/interventions/${id}/comment`;
     }
 
     let comment = document.getElementById(`input-edit-comment-${id}`);
@@ -50,10 +50,10 @@ function doEditComment(id, type) {
 function doEditStatus(id, type, status) {
     let url;
     if(type === 'red-flag') {
-        url = `https://irepo-api.herokuapp.com/api/v1/red-flags/${id}/status`;
+        url = `http://localhost:5000/api/v1/red-flags/${id}/status`;
     }
     else {
-        url = `https://irepo-api.herokuapp.com/api/v1/interventions/${id}/status`;
+        url = `http://localhost:5000/api/v1/interventions/${id}/status`;
     }
 
     let newstatus = {status: status}
@@ -85,10 +85,10 @@ function doEditStatus(id, type, status) {
 function deleteIncident(id, type) {
     let url;
     if(type === 'red-flag') {
-        url = `https://irepo-api.herokuapp.com/api/v1/red-flags/${id}`;
+        url = `http://localhost:5000/api/v1/red-flags/${id}`;
     }
     else {
-        url = `https://irepo-api.herokuapp.com/api/v1/interventions/${id}`;
+        url = `http://localhost:5000/api/v1/interventions/${id}`;
     }
 
     fetch(url, {

@@ -1,4 +1,4 @@
-const url = 'https://irepo-api.herokuapp.com/api/v1/users';
+const url = 'http://localhost:5000/api/v1/users';
 const message = document.getElementById("flash-message");
 const loader = document.getElementById("loader");
 const success = "green";

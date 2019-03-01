@@ -9,9 +9,9 @@ let loader = document.getElementById("loader");
 const message = document.getElementById("flash-message");
 const success = "green";
 const fail = "red";
-const urlRedflags = 'https://irepo-api.herokuapp.com/api/v1/red-flags';
-const urlInterventions = 'https://irepo-api.herokuapp.com/api/v1/interventions';
-const usersurl = 'https://irepo-api.herokuapp.com/api/v1/users';
+const urlRedflags = 'http://localhost:5000/api/v1/red-flags';
+const urlInterventions = 'http://localhost:5000/api/v1/interventions';
+const usersurl = 'http://localhost:5000/api/v1/users';
 
 
 let user = JSON.parse(sessionStorage.getItem("user"));
@@ -302,7 +302,7 @@ function storeResponse(data) {
         text = data.data[i].comment;
         status =  data.data[i].status;
         createdOn = data.data[i].createdOn; 
-        address = data.data[i].location;
+        address = JSON.parse(data.data[i].location);
         createdBy = data.data[i].createdby;
         
         response = new ResponseObj(id, title, type, text, status, createdOn, address, createdBy);
@@ -347,7 +347,7 @@ function showLess(id) {
 }
 
 function getAddress(location) {
-    let lat = location.split(",")[0].trim().slice(2);
+    let lat = location.split(",")[0].trim();
     let lng = location.split(",")[1].trim();
 
     let coordinates =  {
