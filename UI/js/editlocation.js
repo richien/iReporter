@@ -105,8 +105,8 @@ function doEditLocation(id, type) {
         return false;
     }
 
-    let urlRedFlags = `http://localhost:5000/api/v1/red-flags/${id}/location`;
-    let urlInterventions = `http://localhost:5000/api/v1/interventions/${id}/location`;
+    let urlRedFlags = `https://irepo-api.herokuapp.com/api/v1/red-flags/${id}/location`;
+    let urlInterventions = `https://irepo-api.herokuapp.com/api/v1/interventions/${id}/location`;
     let url = "";
     if ( type === 'red-flag') {
         url = urlRedFlags;

@@ -9,9 +9,9 @@ let loader = document.getElementById("loader");
 const message = document.getElementById("flash-message");
 const success = "green";
 const fail = "red";
-const urlRedflags = 'http://localhost:5000/api/v1/red-flags';
-const urlInterventions = 'http://localhost:5000/api/v1/interventions';
-const usersurl = 'http://localhost:5000/api/v1/users';
+const urlRedflags = 'https://irepo-api.herokuapp.com/api/v1/red-flags';
+const urlInterventions = 'https://irepo-api.herokuapp.com/api/v1/interventions';
+const usersurl = 'https://irepo-api.herokuapp.com/api/v1/users';
 
 
 let user = JSON.parse(sessionStorage.getItem("user"));

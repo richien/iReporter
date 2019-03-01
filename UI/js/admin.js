@@ -1,6 +1,6 @@
 let incident = document.getElementById("display-list-wrapper");
 let welcome = document.getElementById("welcome");
-const usersurl = 'http://localhost:5000/api/v1/users';
+const usersurl = 'https://irepo-api.herokuapp.com/api/v1/users';
 let redflagClicked = false;
 let interveneClicked = false;
 let response = null;
